@@ -45,7 +45,7 @@
     padding: 10px 16px;
     font-weight: 600;
     white-space: nowrap;
-    box-shadow: 2px 3px 0 rgba(28, 28, 28, 0.12);
+    box-shadow: var(--vnp-shadow);
   }
   .entity--circle {
     border-radius: 999px;

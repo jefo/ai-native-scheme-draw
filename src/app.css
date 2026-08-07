@@ -22,9 +22,12 @@
   /* stroke */
   --vnp-border: 2px solid var(--vnp-ink);
   --vnp-border-soft: 2px dashed var(--vnp-ink-soft);
+  --vnp-shadow: 2px 3px 0 rgba(28, 28, 28, 0.12);
   /* type */
   --vnp-font: 'Segoe UI', system-ui, -apple-system, sans-serif;
   --vnp-font-hand: 'Segoe Print', 'Comic Sans MS', cursive;
+  --vnp-font-display: var(--vnp-font);
+  --vnp-font-mono: 'Courier New', monospace;
   /* radius */
   --vnp-radius: 12px;
 }

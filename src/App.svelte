@@ -18,6 +18,7 @@
     Dim,
     Scene,
   } from './lib/index.ts';
+  import BrutalistDemo from './BrutalistDemo.svelte';
 </script>
 
 <svelte:head>
@@ -256,6 +257,8 @@
 <footer class="preview-footer">
   Visual Narrative Library · BD visual grammar v2 · milestone 1 — грамматика примитивов на одном экране
 </footer>
+
+<BrutalistDemo />
 
 <style>
   .preview-header {

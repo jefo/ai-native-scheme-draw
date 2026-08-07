@@ -21,7 +21,7 @@
     padding: 22px 14px 14px;
     position: relative;
     background: var(--vnp-card);
-    box-shadow: 2px 3px 0 rgba(28, 28, 28, 0.12);
+    box-shadow: var(--vnp-shadow);
   }
   .containment__label {
     position: absolute;
