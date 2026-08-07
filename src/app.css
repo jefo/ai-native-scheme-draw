@@ -1,0 +1,49 @@
+/* ============================================================
+   Visual Narrative Library — design tokens (sketch / paper style)
+   Экран TikTok 9:16: светлая «бумага», чернильные штрихи,
+   один акцентный цвет для состояний.
+   ============================================================ */
+
+:root {
+  /* surface */
+  --vnp-paper: #faf7f0;
+  --vnp-paper-deep: #f0ead9;
+  --vnp-card: #ffffff;
+  /* ink */
+  --vnp-ink: #1c1c1c;
+  --vnp-ink-soft: #6b6b6b;
+  --vnp-ink-faint: #b5b5b5;
+  /* accent (states) */
+  --vnp-good: #2e9e5b;
+  --vnp-bad: #d64545;
+  --vnp-warn: #d99a26;
+  --vnp-info: #3b6fd4;
+  --vnp-glow: rgba(217, 154, 38, 0.35);
+  /* stroke */
+  --vnp-border: 2px solid var(--vnp-ink);
+  --vnp-border-soft: 2px dashed var(--vnp-ink-soft);
+  /* type */
+  --vnp-font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --vnp-font-hand: 'Segoe Print', 'Comic Sans MS', cursive;
+  /* radius */
+  --vnp-radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background: var(--vnp-paper);
+  color: var(--vnp-ink);
+  font-family: var(--vnp-font);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+#app {
+  min-height: 100vh;
+}
