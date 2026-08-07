@@ -13,6 +13,15 @@ colors:
   mint: "#2dd4bf"
   mint-glow: "rgba(45,212,191,0.28)"
   mint-soft: "rgba(45,212,191,0.10)"
+  copper: "#c9984a"
+  copper-dim: "rgba(201,152,74,0.05)"
+  copper-border: "rgba(201,152,74,0.10)"
+  steel-blue: "#5b9bd5"
+  steel-blue-dim: "rgba(91,155,213,0.05)"
+  steel-blue-border: "rgba(91,155,213,0.10)"
+  amber: "#d4a040"
+  amber-dim: "rgba(212,160,64,0.05)"
+  amber-border: "rgba(212,160,64,0.10)"
 typography:
   display:
     fontFamily: "Inter, SF Pro, system-ui, -apple-system, sans-serif"

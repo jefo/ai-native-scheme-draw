@@ -41,9 +41,10 @@
     font-weight: 600;
     font-size: 12px;
     font-family: var(--vnp-font-mono);
-    color: var(--vnp-ink-soft);
+    color: rgba(212, 160, 64, 0.55);
+    transition: color 0.2s ease;
   }
   .event--flash .event__label {
-    color: var(--vnp-good);
+    color: rgba(212, 160, 64, 0.85);
   }
 </style>

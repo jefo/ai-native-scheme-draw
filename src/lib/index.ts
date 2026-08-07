@@ -23,5 +23,15 @@ export { default as Reveal } from './predicates/attention/Reveal.svelte';
 export { default as Highlight } from './predicates/attention/Highlight.svelte';
 export { default as Dim } from './predicates/attention/Dim.svelte';
 
+// Icons — domain-specific outline icons (25 icons, Phosphor/Lucide style)
+export { default as Icon } from './icons/Icon.svelte';
+
 // Scene — Visual Thought Unit (семантическая композиция)
 export { default as Scene } from './scene/Scene.svelte';
+
+// Organisms — domain-specific HoC compositions (service, infra, devops, AI)
+export { default as ServiceNode } from './organisms/ServiceNode.svelte';
+export { default as InfraNode } from './organisms/InfraNode.svelte';
+export { default as Pipeline } from './organisms/Pipeline.svelte';
+export { default as DeployDiff } from './organisms/DeployDiff.svelte';
+export { default as ModelCard } from './organisms/ModelCard.svelte';

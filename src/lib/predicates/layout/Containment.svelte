@@ -24,7 +24,7 @@
     transition: border-color 0.2s ease;
   }
   .containment:hover {
-    border-color: var(--vnp-border-color-active);
+    border-color: var(--vnp-zone-layout-border);
   }
   .containment__label {
     position: absolute;

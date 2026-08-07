@@ -40,7 +40,9 @@
   .highlight--on .highlight__stage {
     border-color: var(--vnp-good);
     box-shadow: 0 0 0 2px var(--vnp-glow);
-    background: var(--vnp-card);
+    background:
+      linear-gradient(var(--vnp-zone-attention), var(--vnp-zone-attention)),
+      var(--vnp-card);
   }
   .highlight--on .highlight__label {
     color: var(--vnp-good);

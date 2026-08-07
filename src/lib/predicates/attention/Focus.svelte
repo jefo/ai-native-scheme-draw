@@ -49,6 +49,8 @@
   .focus--zoomed .focus__stage {
     border-color: var(--vnp-good);
     box-shadow: 0 0 0 3px var(--vnp-glow);
-    background: var(--vnp-card);
+    background:
+      linear-gradient(var(--vnp-zone-attention), var(--vnp-zone-attention)),
+      var(--vnp-card);
   }
 </style>

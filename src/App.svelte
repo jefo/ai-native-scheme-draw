@@ -17,6 +17,11 @@
     Highlight,
     Dim,
     Scene,
+    ServiceNode,
+    InfraNode,
+    Pipeline,
+    DeployDiff,
+    ModelCard,
   } from './lib/index.ts';
 </script>
 
@@ -28,7 +33,7 @@
   <div>
     <h1 class="preview-title">Visual Narrative Library</h1>
     <p class="preview-sub">
-      Grammar of primitives — Semantic Objects → Predicates (HoC) → Scene
+      Grammar of primitives — Objects → Predicates (HoC) → Scene · software · infra · AI
     </p>
   </div>
   <div class="preview-meta">
@@ -42,64 +47,64 @@
 <main class="preview-body">
   <!-- ═══════════ LAYER 1: SEMANTIC OBJECTS ═══════════ -->
   <section class="section">
-    <h2 class="section-title">Semantic Objects<span class="section-desc">— что существует</span></h2>
+    <h2 class="section-title">Semantic Objects<span class="section-desc">— what exists in the system</span></h2>
     <div class="grid">
       <article class="tile">
-        <div class="tile-demo"><Entity label="Customer" /></div>
-        <div class="tile-info"><strong>Entity</strong><span>entity · channel: form</span></div>
+        <div class="tile-demo"><Entity label="api-gateway" icon="gateway" /></div>
+        <div class="tile-info"><strong>Entity</strong><span>service · channel: form + icon</span></div>
         <div class="tile-variants">
-          <Entity label="AI" variant="circle" />
-          <Entity label="Money" variant="cube" />
-          <Entity label="User" variant="avatar" />
-          <Entity label="Model" variant="plate" />
+          <Entity label="llm-router" icon="model" />
+          <Entity label="cache-store" icon="cache" />
+          <Entity label="oncall" variant="avatar" />
+          <Entity label="feature-flag" icon="git-branch" variant="plate" />
         </div>
       </article>
 
       <article class="tile">
         <div class="tile-demo">
-          <Relation label="owns" /><br />
-          <Relation label="creates" variant="dashed" /><br />
-          <Relation label="blocks" variant="magnet" />
+          <Relation label="calls" /><br />
+          <Relation label="publishes" variant="dashed" /><br />
+          <Relation label="depends-on" variant="magnet" />
         </div>
         <div class="tile-info"><strong>Relation</strong><span>connection · channel: link</span></div>
         <div class="tile-variants">
           <Relation variant="line" />
           <Relation variant="chain" />
-          <Relation variant="arrow" label="causes" />
+          <Relation variant="arrow" label="routes-to" />
         </div>
       </article>
 
       <article class="tile">
         <div class="tile-demo tile-demo--col">
-          <State state="broken"><Entity label="GPU" /></State>
-          <State state="growing"><Entity label="Revenue" /></State>
+          <State state="broken"><Entity label="gpu-node" icon="gpu" /></State>
+          <State state="growing"><Entity label="replica-set" icon="container" /></State>
         </div>
-        <div class="tile-info"><strong>State</strong><span>state · channel: modulation</span></div>
+        <div class="tile-info"><strong>State</strong><span>health · channel: modulation</span></div>
         <div class="tile-variants">
-          <State state="waiting"><Entity label="Queue" /></State>
-          <State state="correct"><Entity label="Model" /></State>
-          <State state="wrong"><Entity label="Config" /></State>
+          <State state="waiting"><Entity label="task-queue" icon="queue" /></State>
+          <State state="correct"><Entity label="terraform" icon="gear" /></State>
+          <State state="wrong"><Entity label="helm-release" icon="container" /></State>
         </div>
       </article>
 
       <article class="tile">
         <div class="tile-demo tile-demo--col">
-          <Value label="Latency" value={80} unit="ms" direction="down" variant="bar" />
-          <Value label="Revenue" value={35} unit="$" variant="counter" />
+          <Value label="p99" value={320} unit="ms" direction="down" variant="bar" />
+          <Value label="RPS" value={2.4} unit="k" variant="counter" />
         </div>
-        <div class="tile-info"><strong>Value</strong><span>quantity · channel: metric</span></div>
+        <div class="tile-info"><strong>Value</strong><span>metric · channel: measurement</span></div>
         <div class="tile-variants">
-          <Value label="FPS" value={144} variant="digit" />
-          <Value label="Heat" value={70} variant="thermo" />
-          <Value label="Risk" value={90} direction="down" variant="chart" />
+          <Value label="GPU util" value={98} variant="digit" />
+          <Value label="Memory" value={64} unit="GB" variant="thermo" />
+          <Value label="Errors" value={0.3} unit="%" direction="down" variant="chart" />
         </div>
       </article>
 
       <article class="tile">
         <div class="tile-demo tile-demo--col">
-          <Event label="Deploy" />
-          <Event label="Fail" variant="wave" />
-          <Event label="Approve" variant="appear" />
+          <Event label="deploy-v2.1" />
+          <Event label="crashloop" variant="wave" />
+          <Event label="canary-ok" variant="appear" />
         </div>
         <div class="tile-info"><strong>Event</strong><span>what happened · channel: temporal</span></div>
       </article>
@@ -113,78 +118,78 @@
       <article class="tile">
         <div class="tile-demo">
           <Flow>
-            <Entity label="Research" />
+            <Entity label="commit" icon="git-branch" />
             <Relation variant="arrow" />
-            <Entity label="Article" />
+            <Entity label="build" icon="container" />
             <Relation variant="arrow" />
-            <Entity label="Feedback" />
+            <Entity label="deploy" icon="deploy" />
           </Flow>
         </div>
-        <div class="tile-info"><strong>Flow</strong><span>sequence A → B → C</span></div>
+        <div class="tile-info"><strong>Flow</strong><span>sequence commit → build → deploy</span></div>
       </article>
 
       <article class="tile">
         <div class="tile-demo">
           <Compare>
-            <Entity label="Before" />
+            <Entity label="canary" icon="deploy" />
             <Relation variant="line" />
-            <Entity label="After" />
+            <Entity label="stable" icon="server" />
           </Compare>
         </div>
-        <div class="tile-info"><strong>Compare</strong><span>juxtaposition A vs B</span></div>
+        <div class="tile-info"><strong>Compare</strong><span>canary vs stable diff</span></div>
       </article>
 
       <article class="tile">
         <div class="tile-demo">
-          <Containment label="System">
-            <Entity label="GPU" />
+          <Containment label="k8s-cluster">
+            <Entity label="pod-7a3" icon="container" />
           </Containment>
         </div>
-        <div class="tile-info"><strong>Containment</strong><span>nesting A inside B</span></div>
+        <div class="tile-info"><strong>Containment</strong><span>nesting pod inside cluster</span></div>
       </article>
 
       <article class="tile">
         <div class="tile-demo">
-          <Hierarchy root="Computer">
-            <Entity label="CPU" />
-            <Entity label="GPU" />
-            <Entity label="RAM" />
+          <Hierarchy root="cluster">
+            <Entity label="node-1" icon="server" />
+            <Entity label="node-2" icon="server" />
+            <Entity label="node-3" icon="server" />
           </Hierarchy>
         </div>
-        <div class="tile-info"><strong>Hierarchy</strong><span>tree: root → leaves</span></div>
+        <div class="tile-info"><strong>Hierarchy</strong><span>tree: cluster → nodes</span></div>
       </article>
 
       <article class="tile">
         <div class="tile-demo">
           <Timeline>
-            <Entity label="Now" />
+            <Entity label="t₀ deploy" icon="deploy" />
             <Relation variant="arrow" />
-            <Entity label="Future" />
+            <Entity label="t₁ scale" icon="container" />
           </Timeline>
         </div>
-        <div class="tile-info"><strong>Timeline</strong><span>time axis Now → Future</span></div>
+        <div class="tile-info"><strong>Timeline</strong><span>deploy → scale over time</span></div>
       </article>
 
       <article class="tile">
         <div class="tile-demo">
           <Cycle>
-            <Entity label="Research" />
+            <Entity label="observe" icon="metrics" />
             <Relation variant="line" />
-            <Entity label="Feedback" />
+            <Entity label="decide" icon="model" />
             <Relation variant="line" />
-            <Entity label="Article" />
+            <Entity label="act" icon="deploy" />
           </Cycle>
         </div>
-        <div class="tile-info"><strong>Cycle</strong><span>closed loop sequence</span></div>
+        <div class="tile-info"><strong>Cycle</strong><span>control loop: observe → decide → act</span></div>
       </article>
 
       <article class="tile">
         <div class="tile-demo">
-          <TradeOff left="Noise ↑" right="FPS ↑">
-            <Entity label="GPU" />
+          <TradeOff left="Consistency ↑" right="Latency ↑">
+            <Entity label="db" icon="database" />
           </TradeOff>
         </div>
-        <div class="tile-info"><strong>Trade-off</strong><span>axis opposition</span></div>
+        <div class="tile-info"><strong>Trade-off</strong><span>CAP theorem: consistency vs latency</span></div>
       </article>
     </div>
   </section>
@@ -195,32 +200,32 @@
     <div class="grid">
       <article class="tile">
         <div class="tile-demo">
-          <Focus><Entity label="GPU" /></Focus>
+          <Focus><Entity label="gpu-node" icon="gpu" /></Focus>
         </div>
-        <div class="tile-info"><strong>Focus</strong><span>zoom-in (System → GPU)</span></div>
+        <div class="tile-info"><strong>Focus</strong><span>zoom-in: cluster → gpu-node</span></div>
       </article>
 
       <article class="tile">
         <div class="tile-demo">
           <Reveal>
-            <Entity label="Language" />
+            <Entity label="domain-model" icon="dataset" />
           </Reveal>
         </div>
-        <div class="tile-info"><strong>Reveal</strong><span>hidden → visible</span></div>
+        <div class="tile-info"><strong>Reveal</strong><span>hidden dependency → visible</span></div>
       </article>
 
       <article class="tile">
         <div class="tile-demo">
-          <Highlight><Entity label="Hook" /></Highlight>
+          <Highlight><Entity label="circuit-breaker" icon="lock" /></Highlight>
         </div>
-        <div class="tile-info"><strong>Highlight</strong><span>emphasis (glow ring)</span></div>
+        <div class="tile-info"><strong>Highlight</strong><span>emphasis on circuit-breaker</span></div>
       </article>
 
       <article class="tile">
         <div class="tile-demo">
-          <Dim><Entity label="Noise" /></Dim>
+          <Dim><Entity label="deprecated-api" icon="clock" /></Dim>
         </div>
-        <div class="tile-info"><strong>Dim</strong><span>de-emphasis of the rest</span></div>
+        <div class="tile-info"><strong>Dim</strong><span>de-emphasis of deprecated API</span></div>
       </article>
     </div>
   </section>
@@ -229,28 +234,91 @@
   <section class="section">
     <h2 class="section-title">Scene<span class="section-desc">— Visual Thought Unit: objects + predicates = thought (9:16)</span></h2>
     <div class="scene-row">
-      <Scene title="Paradox · AI → DDD">
+      <Scene title="Deploy · Canary vs Stable">
         <Compare>
           <div class="scene-col">
-            <Entity label="Code" />
-            <Value label="Cost" value={75} direction="down" variant="bar" />
+            <State state="growing"><Entity label="canary-v2" icon="deploy" /></State>
+            <Value label="p99" value={180} unit="ms" direction="down" variant="bar" />
           </div>
           <div class="scene-col">
-            <Entity label="Model" />
-            <Value label="Cost" value={85} direction="up" variant="bar" />
+            <State state="completed"><Entity label="stable-v1" icon="server" /></State>
+            <Value label="p99" value={210} unit="ms" variant="bar" />
           </div>
         </Compare>
       </Scene>
-      <Scene title="Reframe · Hero Shift">
+      <Scene title="Scale · Before vs After">
         <Reveal>
-          <Containment label="DDD">
-            <Entity label="Language" />
+          <Containment label="autoscaler">
+            <Entity label="HPA+3" icon="container" />
           </Containment>
         </Reveal>
-        <div class="scene-caption">Code gets cheaper — model doesn't</div>
+        <div class="scene-caption">p99 drops 30ms after HPA triggers</div>
       </Scene>
     </div>
   </section>
+
+  <!-- ═══════════ LAYER 4: ORGANISMS — domain HoC compositions ═══════════ -->
+  <section class="section">
+    <h2 class="section-title">Organisms<span class="section-desc">— domain HoC: primitives composed with icons + semantics</span></h2>
+    <div class="grid">
+      <article class="tile">
+        <div class="tile-demo">
+          <ServiceNode name="api-gateway" kind="gateway" health="healthy" p99={42} />
+        </div>
+        <div class="tile-info"><strong>ServiceNode</strong><span>service + health + p99 · kinds: api, worker, gateway, storage</span></div>
+        <div class="tile-variants">
+          <ServiceNode name="worker-3" kind="worker" health="degraded" p99={340} />
+          <ServiceNode name="pg-store" kind="storage" health="healthy" p99={12} />
+        </div>
+      </article>
+
+      <article class="tile">
+        <div class="tile-demo">
+          <InfraNode name="pg-primary" kind="db" metric="conn" metricValue={78} />
+        </div>
+        <div class="tile-info"><strong>InfraNode</strong><span>infra + typed icon + metric · kinds: db, cache, queue, lb, cdn</span></div>
+        <div class="tile-variants">
+          <InfraNode name="redis-main" kind="cache" metric="hit%" metricValue={94} />
+          <InfraNode name="sqs-dlq" kind="queue" metric="depth" metricValue={12} metricUnit="" metricMax={50} />
+          <InfraNode name="nginx" kind="lb" metric="rps" metricValue={2.4} metricUnit="k" metricMax={5} />
+        </div>
+      </article>
+
+      <article class="tile">
+        <div class="tile-demo">
+          <Pipeline stages={[
+            { name: 'lint', status: 'passing', duration: '12s' },
+            { name: 'test', status: 'passing', duration: '1m03s' },
+            { name: 'build', status: 'running', duration: '45s' },
+            { name: 'deploy', status: 'waiting' },
+          ]} />
+        </div>
+        <div class="tile-info"><strong>Pipeline</strong><span>CI/CD stages: lint → test → build → deploy</span></div>
+      </article>
+
+      <article class="tile">
+        <div class="tile-demo">
+          <DeployDiff
+            beforeName="stable-v1" beforeHealth="healthy" beforeP99={210}
+            afterName="canary-v2" afterHealth="healthy" afterP99={180}
+          />
+        </div>
+        <div class="tile-info"><strong>DeployDiff</strong><span>before/after deployment compare with metrics</span></div>
+      </article>
+
+      <article class="tile">
+        <div class="tile-demo">
+          <ModelCard name="llm-router" version="3.1.0" accuracy={94.2} status="ready" />
+        </div>
+        <div class="tile-info"><strong>ModelCard</strong><span>ML model: version + accuracy + training status</span></div>
+        <div class="tile-variants">
+          <ModelCard name="text-embed" version="2.0.1" accuracy={88.5} status="training" />
+          <ModelCard name="v1-classifier" version="1.5.0" status="deprecated" />
+        </div>
+      </article>
+    </div>
+  </section>
+
 </main>
 
 <footer class="preview-footer">
@@ -303,14 +371,14 @@
     color: var(--vnp-good);
   }
   .badge--layout {
-    border-color: rgba(45, 212, 191, 0.15);
-    color: var(--vnp-good);
-    opacity: 0.8;
+    border-color: rgba(201, 152, 74, 0.18);
+    color: var(--vnp-color-relation);
+    opacity: 0.85;
   }
   .badge--attention {
-    border-color: rgba(45, 212, 191, 0.12);
-    color: var(--vnp-good);
-    opacity: 0.65;
+    border-color: rgba(91, 155, 213, 0.18);
+    color: var(--vnp-color-value);
+    opacity: 0.8;
   }
 
   .preview-body {

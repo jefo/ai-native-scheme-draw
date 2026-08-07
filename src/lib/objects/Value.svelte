@@ -68,7 +68,7 @@
   .value__label {
     font-family: var(--vnp-font);
     font-size: 11px;
-    color: var(--vnp-ink-soft);
+    color: rgba(91, 155, 213, 0.55);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -77,7 +77,7 @@
     font-family: var(--vnp-font-mono);
     font-size: 18px;
     font-weight: 400;
-    color: var(--vnp-ink);
+    color: rgba(91, 155, 213, 0.85);
     font-variant-numeric: tabular-nums;
   }
   .value__unit {

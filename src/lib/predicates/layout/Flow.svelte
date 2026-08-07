@@ -25,8 +25,10 @@
     transition: background 0.2s ease, border-color 0.2s ease;
   }
   .flow:hover {
-    background: var(--vnp-card);
-    border-color: var(--vnp-border-color-active);
+    background:
+      linear-gradient(var(--vnp-zone-layout), var(--vnp-zone-layout)),
+      var(--vnp-card);
+    border-color: var(--vnp-zone-layout-border);
   }
   .flow--col {
     flex-direction: column;

@@ -8,6 +8,36 @@
         "value": "radial-gradient",
         "createdAt": "2026-08-07T13:21:49.040Z",
         "reason": "Blueprint grid is the core design system identity — confirmed in DESIGN.md as the defining visual feature"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "26px",
+        "createdAt": "2026-08-07T13:26:57.124Z",
+        "reason": "Demo page hero title — intentional one-off, not a design system token"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "12px",
+        "createdAt": "2026-08-07T13:26:58.189Z",
+        "reason": "Scene caption and relation labels — legitimate micro-typography, close to label scale step"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "16px",
+        "createdAt": "2026-08-07T13:32:56.995Z",
+        "reason": "Blueprint sub-grid in demo tiles — intentional, consistent with the Blueprint Engine identity"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "0.02",
+        "createdAt": "2026-08-07T13:41:08.886Z",
+        "reason": "Blueprint sub-grid in tile-demo — intentional Blueprint Engine identity pattern"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "0.04",
+        "createdAt": "2026-08-07T13:52:04.259Z",
+        "reason": "Blueprint sub-grid in tile-demo — intentional identity pattern, already suppressed similar values"
       }
     ]
   }

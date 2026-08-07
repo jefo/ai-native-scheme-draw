@@ -58,14 +58,14 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: var(--vnp-ink-soft);
+    color: rgba(201, 152, 74, 0.55);
     font-size: 12px;
     font-style: italic;
     white-space: nowrap;
     transition: color 0.2s ease;
   }
   .relation:hover {
-    color: var(--vnp-ink);
+    color: rgba(201, 152, 74, 0.85);
   }
   .relation__body {
     display: inline-flex;

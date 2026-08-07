@@ -73,6 +73,51 @@
           "oklch(88% 0.10 180)",
           "oklch(95% 0.06 180)"
         ]
+      },
+      "copper": {
+        "role": "secondary",
+        "displayName": "Copper",
+        "canonical": "oklch(65% 0.08 70)",
+        "tonalRamp": [
+          "oklch(20% 0.03 65)",
+          "oklch(30% 0.04 68)",
+          "oklch(42% 0.05 70)",
+          "oklch(55% 0.06 70)",
+          "oklch(65% 0.08 70)",
+          "oklch(75% 0.10 70)",
+          "oklch(85% 0.08 70)",
+          "oklch(94% 0.04 70)"
+        ]
+      },
+      "steel-blue": {
+        "role": "secondary",
+        "displayName": "Steel Blue",
+        "canonical": "oklch(60% 0.10 250)",
+        "tonalRamp": [
+          "oklch(18% 0.03 250)",
+          "oklch(28% 0.04 250)",
+          "oklch(40% 0.06 250)",
+          "oklch(52% 0.08 250)",
+          "oklch(60% 0.10 250)",
+          "oklch(72% 0.10 250)",
+          "oklch(84% 0.08 250)",
+          "oklch(94% 0.03 250)"
+        ]
+      },
+      "amber": {
+        "role": "secondary",
+        "displayName": "Amber",
+        "canonical": "oklch(68% 0.11 75)",
+        "tonalRamp": [
+          "oklch(22% 0.04 70)",
+          "oklch(34% 0.06 72)",
+          "oklch(46% 0.08 75)",
+          "oklch(58% 0.10 75)",
+          "oklch(68% 0.11 75)",
+          "oklch(78% 0.10 75)",
+          "oklch(87% 0.08 75)",
+          "oklch(95% 0.04 75)"
+        ]
       }
     },
     "typographyMeta": {

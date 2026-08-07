@@ -43,7 +43,9 @@
     filter: blur(0);
     opacity: 1;
     border-color: var(--vnp-border-color-active);
-    background: var(--vnp-card);
+    background:
+      linear-gradient(var(--vnp-zone-attention), var(--vnp-zone-attention)),
+      var(--vnp-card);
   }
   .reveal--shown .reveal__label {
     color: var(--vnp-good);

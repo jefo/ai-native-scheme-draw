@@ -1,16 +1,20 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import Icon from '../icons/Icon.svelte';
 
   /** Entity — сущность: то, что существует.
-   *  Канал кодирования: ФОРМА. Визуальные варианты: card, icon, avatar, cube, circle, plate.
-   *  Самодостаточный объект (арность 0) — подложка для State/Value/Relation/Event. */
+   *  Канал кодирования: ФОРМА + ИКОНОГРАФИЯ.
+   *  `icon` prop принимает ключ из библиотеки (25 domain-specific outline icons).
+   *  Варианты (card, cube, circle, plate, avatar) — геометрические модификаторы. */
   let {
     label = '',
     variant = 'card',
+    icon = '',
     children,
   }: {
     label?: string;
     variant?: 'card' | 'icon' | 'avatar' | 'cube' | 'circle' | 'plate';
+    icon?: string;
     children?: Snippet;
   } = $props();
 </script>
@@ -19,19 +23,10 @@
   {#if children}
     {@render children()}
   {:else}
-    {#if variant === 'avatar'}
-      <span class="entity__avatar">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="8" cy="5" r="3" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.5"/>
-        </svg>
-      </span>
-    {:else if variant === 'icon'}
-      <span class="entity__icon">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
-        </svg>
-      </span>
+    {#if icon}
+      <span class="entity__ico"><Icon name={icon} /></span>
+    {:else if variant === 'avatar'}
+      <span class="entity__ico"><Icon name="user" /></span>
     {:else if variant === 'cube'}
       <span class="entity__cube"></span>
     {:else if variant === 'circle'}
@@ -47,9 +42,11 @@
   .entity {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    border: var(--vnp-border);
-    background: var(--vnp-card);
+    gap: 7px;
+    border: 1px solid var(--vnp-color-entity-border);
+    background:
+      linear-gradient(var(--vnp-color-entity-dim), var(--vnp-color-entity-dim)),
+      var(--vnp-card);
     border-radius: var(--vnp-radius);
     padding: 8px 14px;
     font-weight: 600;
@@ -59,12 +56,24 @@
     transition: background 0.2s ease, border-color 0.2s ease;
   }
   .entity:hover {
-    background: var(--vnp-card-raised);
-    border-color: var(--vnp-border-color-active);
+    background:
+      linear-gradient(var(--vnp-color-entity-dim), var(--vnp-color-entity-dim)),
+      var(--vnp-card-raised);
+    border-color: rgba(45, 212, 191, 0.2);
   }
   .entity:focus-visible {
     outline: 1px solid var(--vnp-good);
     outline-offset: 2px;
+  }
+
+  .entity__ico {
+    display: flex;
+    align-items: center;
+    color: var(--vnp-color-entity);
+    flex-shrink: 0;
+  }
+  .entity__label {
+    color: var(--vnp-ink);
   }
 
   .entity--circle {
@@ -78,6 +87,9 @@
   .entity--plate:hover {
     background: rgba(255, 255, 255, 0.03);
   }
+  .entity--plate .entity__ico {
+    color: var(--vnp-ink-soft);
+  }
   .entity--cube {
     transform: rotate(-1deg);
   }
@@ -86,16 +98,6 @@
     border-radius: var(--vnp-radius);
   }
 
-  .entity__icon {
-    display: flex;
-    align-items: center;
-    color: var(--vnp-ink-soft);
-  }
-  .entity__avatar {
-    display: flex;
-    align-items: center;
-    color: var(--vnp-ink-soft);
-  }
   .entity__cube {
     width: 12px;
     height: 12px;
