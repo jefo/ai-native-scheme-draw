@@ -31,17 +31,21 @@
 <style>
   .fc {
     position: relative;
-    width: 240px;
-    height: 427px; /* 9:16 */
+    width: 360px;
+    height: 640px; /* 9:16 — Android baseline 360dp, iPhone SE width */
     flex-shrink: 0;
     transition: transform 0.2s ease;
+    /* device frame — subtle phone screen outline */
+    outline: 1px solid rgba(255,255,255,0.04);
+    outline-offset: 4px;
+    border-radius: 12px;
   }
   .fc:hover {
     transform: translateY(-2px);
   }
   .fc--compact {
-    width: 200px;
-    height: 356px;
+    width: 300px;
+    height: 533px;
   }
   .fc :global(.scene) {
     width: 100%;

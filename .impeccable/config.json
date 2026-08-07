@@ -86,6 +86,12 @@
         "value": "3px",
         "createdAt": "2026-08-07T14:14:53.125Z",
         "reason": "Frame index badge — incidental page element"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "12px",
+        "createdAt": "2026-08-07T14:16:07.945Z",
+        "reason": "Phone screen device frame — mimics iPhone/Android rounded corners, not a design system token"
       }
     ]
   }
