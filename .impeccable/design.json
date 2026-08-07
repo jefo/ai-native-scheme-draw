@@ -135,27 +135,23 @@
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Descriptions, explanations, running text. 65ch max line length."
+        "purpose": "Descriptions, explanations, running text. 65ch max line length. Dark-mode compensated tracking."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Metadata, badges, timestamps, predicate type annotations. Uppercase, tracked-out."
+        "purpose": "Metadata, badges, chips, scene headers, predicate annotations. Single label role — covers what overline and label previously split."
       },
       "mono": {
         "displayName": "Mono",
-        "purpose": "Numerical values, units, code, technical identifiers. Tabular numbers enabled."
+        "purpose": "Numerical values, units, code, technical identifiers. Matches body size for seamless inline use. Tabular numbers enabled."
       },
       "caption": {
         "displayName": "Caption",
-        "purpose": "Predicate type labels, micro-annotations. Smallest readable size."
-      },
-      "overline": {
-        "displayName": "Overline",
-        "purpose": "Chips, scene headers, badges, status indicators. Uppercase Mono at utility size."
+        "purpose": "Predicate type labels, micro-annotations. Smallest readable size — bumped from 9px for dark-mode legibility."
       },
       "metric": {
         "displayName": "Metric",
-        "purpose": "Value digits, numerical displays, counts. Large Mono with tabular-nums."
+        "purpose": "Value digits, numerical displays, counts. Large Mono at 500 weight — dark-mode digits need the heft."
       }
     },
     "shadows": [],

@@ -53,7 +53,7 @@
     flex: 0 0 auto;
     padding: 10px 14px;
     font-family: var(--vnp-font-mono);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.08em;

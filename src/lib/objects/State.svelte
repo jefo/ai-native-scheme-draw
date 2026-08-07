@@ -41,7 +41,7 @@
   }
   .state__chip {
     font-family: var(--vnp-font-mono);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.05em;

@@ -76,7 +76,7 @@
   .value__digit {
     font-family: var(--vnp-font-mono);
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 500;
     color: rgba(91, 155, 213, 0.85);
     font-variant-numeric: tabular-nums;
   }

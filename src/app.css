@@ -21,28 +21,28 @@
   --vnp-bad: #ef4444;            /* Red — system errors only */
   --vnp-warn: #f59e0b;           /* Amber — warnings only */
   --vnp-info: #2dd4bf;           /* Mint — info/active */
-  --vnp-glow: rgba(45, 212, 191, 0.28);  /* Mint glow — spatial markers */
-  --vnp-glow-soft: rgba(45, 212, 191, 0.10); /* Mint subtle — accent bg */
+  --vnp-glow: rgba(45, 212, 191, 0.35);  /* Mint glow — spatial markers */
+  --vnp-glow-soft: rgba(45, 212, 191, 0.12); /* Mint subtle — accent bg */
 
-  /* ── semantic identity hues: object-type whispers (3-10% opacity, never glow) ── */
+  /* ── semantic identity hues: legible identity, never glow ── */
   --vnp-color-entity: #2dd4bf;          /* Mint — entities are the primary object */
-  --vnp-color-entity-dim: rgba(45, 212, 191, 0.05);
-  --vnp-color-entity-border: rgba(45, 212, 191, 0.12);
+  --vnp-color-entity-dim: rgba(45, 212, 191, 0.08);
+  --vnp-color-entity-border: rgba(45, 212, 191, 0.18);
   --vnp-color-relation: #c9984a;        /* Copper — connections, signal paths */
-  --vnp-color-relation-dim: rgba(201, 152, 74, 0.05);
-  --vnp-color-relation-border: rgba(201, 152, 74, 0.10);
+  --vnp-color-relation-dim: rgba(201, 152, 74, 0.08);
+  --vnp-color-relation-border: rgba(201, 152, 74, 0.15);
   --vnp-color-value: #5b9bd5;           /* Steel Blue — data, precision, measurement */
-  --vnp-color-value-dim: rgba(91, 155, 213, 0.05);
-  --vnp-color-value-border: rgba(91, 155, 213, 0.10);
+  --vnp-color-value-dim: rgba(91, 155, 213, 0.08);
+  --vnp-color-value-border: rgba(91, 155, 213, 0.15);
   --vnp-color-event: #d4a040;           /* Amber — temporal, transient, flare */
-  --vnp-color-event-dim: rgba(212, 160, 64, 0.05);
-  --vnp-color-event-border: rgba(212, 160, 64, 0.10);
+  --vnp-color-event-dim: rgba(212, 160, 64, 0.08);
+  --vnp-color-event-border: rgba(212, 160, 64, 0.15);
 
   /* ── zonal undertones: atmospheric temperature for predicate families ── */
-  --vnp-zone-layout: rgba(201, 152, 74, 0.025);     /* warm-slate — structure */
-  --vnp-zone-layout-border: rgba(201, 152, 74, 0.07);
-  --vnp-zone-attention: rgba(91, 155, 213, 0.025);  /* cool-slate — focus */
-  --vnp-zone-attention-border: rgba(91, 155, 213, 0.07);
+  --vnp-zone-layout: rgba(201, 152, 74, 0.04);      /* warm-slate — structure */
+  --vnp-zone-layout-border: rgba(201, 152, 74, 0.10);
+  --vnp-zone-attention: rgba(91, 155, 213, 0.04);   /* cool-slate — focus */
+  --vnp-zone-attention-border: rgba(91, 155, 213, 0.10);
 
   /* ── stroke: hairline borders (1px only, vary opacity) ── */
   --vnp-border-color: rgba(255, 255, 255, 0.07);        /* Stealth */
@@ -65,7 +65,7 @@
 
   /* ── blueprint grid ── */
   --vnp-grid-size: 32px;
-  --vnp-grid-color: rgba(255, 255, 255, 0.035);
+  --vnp-grid-color: rgba(255, 255, 255, 0.05);
 }
 
 * {
@@ -87,6 +87,7 @@ body {
   font-family: var(--vnp-font);
   font-size: 14px;
   line-height: 1.5;
+  letter-spacing: 0.005em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

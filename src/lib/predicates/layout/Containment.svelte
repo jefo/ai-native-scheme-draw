@@ -33,7 +33,7 @@
     background: var(--vnp-paper);
     padding: 0 6px;
     font-family: var(--vnp-font-mono);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 500;
     color: var(--vnp-ink-soft);
     letter-spacing: 0.04em;

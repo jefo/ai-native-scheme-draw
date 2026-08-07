@@ -46,7 +46,7 @@ typography:
     fontSize: "14px"
     fontWeight: 400
     lineHeight: 1.5
-    letterSpacing: "normal"
+    letterSpacing: "0.005em"
   label:
     fontFamily: "Inter, SF Pro, system-ui, -apple-system, sans-serif"
     fontSize: "11px"
@@ -55,26 +55,20 @@ typography:
     letterSpacing: "0.05em"
   mono:
     fontFamily: "'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace"
-    fontSize: "13px"
+    fontSize: "14px"
     fontWeight: 400
     lineHeight: 1.45
     letterSpacing: "normal"
   caption:
     fontFamily: "'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace"
-    fontSize: "9px"
-    fontWeight: 400
-    lineHeight: 1.2
-    letterSpacing: "0.08em"
-  overline:
-    fontFamily: "'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace"
     fontSize: "10px"
-    fontWeight: 500
+    fontWeight: 400
     lineHeight: 1.2
     letterSpacing: "0.06em"
   metric:
     fontFamily: "'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace"
     fontSize: "18px"
-    fontWeight: 400
+    fontWeight: 500
     lineHeight: 1.1
     letterSpacing: "normal"
 rounded:

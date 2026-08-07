@@ -56,7 +56,7 @@
     display: flex;
     justify-content: space-between;
     font-family: var(--vnp-font-mono);
-    font-size: 10px;
+    font-size: 11px;
     color: var(--vnp-ink-soft);
     text-transform: uppercase;
     letter-spacing: 0.05em;

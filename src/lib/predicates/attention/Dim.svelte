@@ -23,7 +23,7 @@
   }
   .dim__label {
     font-family: var(--vnp-font-mono);
-    font-size: 9px;
+    font-size: 10px;
     color: var(--vnp-ink-faint);
     text-transform: uppercase;
     letter-spacing: 0.08em;

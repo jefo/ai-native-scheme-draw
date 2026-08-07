@@ -31,13 +31,61 @@
         "rule": "codex-grid-background",
         "value": "0.02",
         "createdAt": "2026-08-07T13:41:08.886Z",
-        "reason": "Blueprint sub-grid in tile-demo — intentional Blueprint Engine identity pattern"
+        "reason": "Scene blueprint grid at 2% opacity — lighter than page grid, intentional layering"
       },
       {
         "rule": "codex-grid-background",
         "value": "0.04",
         "createdAt": "2026-08-07T13:52:04.259Z",
         "reason": "Blueprint sub-grid in tile-demo — intentional identity pattern, already suppressed similar values"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "0.05",
+        "createdAt": "2026-08-07T13:55:21.116Z",
+        "reason": "Blueprint grid at bolder 5% opacity — core system signature, amplified intentionally"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(239, 68, 68, 0.2)",
+        "createdAt": "2026-08-07T14:00:02.128Z",
+        "reason": "Functional error-red glow in State broken — intentional, confirmed in color strategy"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(239, 68, 68, 0.3)",
+        "createdAt": "2026-08-07T14:00:02.163Z",
+        "reason": "Functional error-red border in State broken chip"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(239, 68, 68, 0.08)",
+        "createdAt": "2026-08-07T14:00:02.199Z",
+        "reason": "Functional error-red bg in State broken chip"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "22px",
+        "createdAt": "2026-08-07T14:14:53.020Z",
+        "reason": "Dashboard title — page-level display, not a library token"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "24px",
+        "createdAt": "2026-08-07T14:14:53.054Z",
+        "reason": "Project page title — page-level display"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "13px",
+        "createdAt": "2026-08-07T14:14:53.091Z",
+        "reason": "Frame card wireframe text — page-level component, not library"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "3px",
+        "createdAt": "2026-08-07T14:14:53.125Z",
+        "reason": "Frame index badge — incidental page element"
       }
     ]
   }
