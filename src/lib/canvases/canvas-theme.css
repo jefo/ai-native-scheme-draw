@@ -1,0 +1,111 @@
+/* ============================================================
+   CANVAS THEME — Miro-style sticky notes
+   ------------------------------------------------------------
+   Strategic thinking canvases (VPC, Lean Canvas, Roadmap, …).
+   Light paper surface, colored sticky notes, marker typography,
+   dotted strokes, subtle shadows.
+
+   Применение: <div class="theme-canvas"> …канвасы… </div>
+   ------------------------------------------------------------
+   Два слоя токенов:
+   1. Переопределение --vnp-* внутри .theme-canvas — Scene chrome
+   2. Новые --canvas-* — собственный visual vocabulary канвасов
+   ============================================================ */
+
+.theme-canvas {
+  /* ── surface: paper stack ── */
+  --vnp-paper: #faf8f5;              /* warm off-white paper */
+  --vnp-paper-deep: #f0ebe0;         /* kraft paper undertone */
+  --vnp-card: #ffffff;
+  --vnp-card-raised: #fefefe;
+
+  /* ── ink: soft charcoal ── */
+  --vnp-ink: #2d2d2d;
+  --vnp-ink-soft: #777777;
+  --vnp-ink-faint: #bbbbbb;
+
+  /* ── accent: muted, editorial ── */
+  --vnp-good: #5b9bd5;               /* steel blue (not mint) */
+  --vnp-bad: #e05555;
+  --vnp-warn: #e0a040;
+  --vnp-info: #5b9bd5;
+  --vnp-glow: rgba(91, 155, 213, 0.15);
+  --vnp-glow-soft: rgba(91, 155, 213, 0.06);
+
+  /* ── stroke: dotted pen lines (не hairline blueprint) ── */
+  --vnp-border-color: rgba(0, 0, 0, 0.1);
+  --vnp-border-color-active: rgba(0, 0, 0, 0.18);
+  --vnp-border: 1px solid var(--vnp-border-color);
+  --vnp-border-active: 1px solid var(--vnp-border-color-active);
+  --vnp-border-soft: 1px dotted rgba(0, 0, 0, 0.15);
+  --vnp-shadow: none;
+
+  /* ── radius: slightly softer ── */
+  --vnp-radius: 8px;
+  --vnp-radius-sm: 4px;
+  --vnp-radius-chip: 4px;
+
+  /* ── type: читаемый sans + marker display ── */
+  --vnp-font: 'Inter', system-ui, -apple-system, sans-serif;
+  --vnp-font-hand: 'Permanent Marker', 'Caveat', 'Comic Sans MS', cursive, sans-serif;
+  --vnp-font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --vnp-font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+
+  color: var(--vnp-ink);
+  background: var(--vnp-paper);
+}
+
+/* ── canvas-specific tokens (не --vnp-*) ── */
+
+.theme-canvas {
+  --canvas-sticky-yellow: #ffd866;
+  --canvas-sticky-yellow-border: #e6c04a;
+  --canvas-sticky-pink: #ffb3b3;
+  --canvas-sticky-pink-border: #e89999;
+  --canvas-sticky-green: #b3e6cc;
+  --canvas-sticky-green-border: #8fd4af;
+  --canvas-sticky-blue: #b3d9ff;
+  --canvas-sticky-blue-border: #8fc4f0;
+
+  --canvas-ink: #2d2d2d;
+  --canvas-ink-soft: #999999;
+  --canvas-font-marker: 'Permanent Marker', 'Caveat', 'Comic Sans MS', cursive, sans-serif;
+  --canvas-note-shadow: 2px 2px 6px rgba(0, 0, 0, 0.10);
+  --canvas-stroke: 1px dotted rgba(0, 0, 0, 0.20);
+}
+
+/* ── Scene chrome override: paper card ── */
+
+.theme-canvas .scene {
+  border: var(--canvas-stroke);
+  border-radius: 8px;
+  background: var(--vnp-card);
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.theme-canvas .scene::before {
+  display: none; /* убираем blueprint grid, здесь не нужен */
+}
+
+.theme-canvas .scene__header {
+  background: var(--vnp-paper-deep);
+  color: var(--vnp-ink);
+  font-family: var(--canvas-font-marker);
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  border-bottom: var(--canvas-stroke);
+  padding: 12px 18px;
+}
+
+.theme-canvas .scene__footer {
+  border-top: var(--canvas-stroke);
+  background: var(--vnp-paper);
+}
+
+.theme-canvas .scene__reaction {
+  font-family: var(--vnp-font-mono);
+  font-size: 10px;
+  color: var(--canvas-ink-soft);
+}

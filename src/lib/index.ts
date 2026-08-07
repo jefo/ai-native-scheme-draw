@@ -35,3 +35,7 @@ export { default as InfraNode } from './organisms/InfraNode.svelte';
 export { default as Pipeline } from './organisms/Pipeline.svelte';
 export { default as DeployDiff } from './organisms/DeployDiff.svelte';
 export { default as ModelCard } from './organisms/ModelCard.svelte';
+
+// Canvases — стратегические организмы (Miro-style, 16:9)
+export { default as StickyNote } from './canvases/atoms/StickyNote.svelte';
+export { default as ValuePropositionCanvas } from './canvases/ValuePropositionCanvas.svelte';
