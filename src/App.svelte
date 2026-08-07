@@ -18,18 +18,17 @@
     Dim,
     Scene,
   } from './lib/index.ts';
-  import BrutalistDemo from './BrutalistDemo.svelte';
 </script>
 
 <svelte:head>
-  <title>Visual Narrative Library — Semantic Primitives</title>
+  <title>Visual Narrative Library — Blueprint Engine</title>
 </svelte:head>
 
 <header class="preview-header">
   <div>
-    <h1>Visual Narrative Library</h1>
+    <h1 class="preview-title">Visual Narrative Library</h1>
     <p class="preview-sub">
-      Грамматика примитивов · таксономия v2 — Semantic Objects → Predicates (HoC) → Scene
+      Grammar of primitives — Semantic Objects → Predicates (HoC) → Scene
     </p>
   </div>
   <div class="preview-meta">
@@ -41,17 +40,17 @@
 </header>
 
 <main class="preview-body">
-  <!-- ═══════════ СЛОЙ 1: SEMANTIC OBJECTS ═══════════ -->
+  <!-- ═══════════ LAYER 1: SEMANTIC OBJECTS ═══════════ -->
   <section class="section">
-    <h2 class="section-title">Semantic Objects <span class="section-desc">— что существует</span></h2>
+    <h2 class="section-title">Semantic Objects<span class="section-desc">— что существует</span></h2>
     <div class="grid">
       <article class="tile">
         <div class="tile-demo"><Entity label="Customer" /></div>
-        <div class="tile-info"><strong>Entity</strong><span>сущность · канал: форма</span></div>
+        <div class="tile-info"><strong>Entity</strong><span>entity · channel: form</span></div>
         <div class="tile-variants">
           <Entity label="AI" variant="circle" />
           <Entity label="Money" variant="cube" />
-          <Entity label="👤" variant="avatar" />
+          <Entity label="User" variant="avatar" />
           <Entity label="Model" variant="plate" />
         </div>
       </article>
@@ -62,7 +61,7 @@
           <Relation label="creates" variant="dashed" /><br />
           <Relation label="blocks" variant="magnet" />
         </div>
-        <div class="tile-info"><strong>Relation</strong><span>связь · канал: соединение</span></div>
+        <div class="tile-info"><strong>Relation</strong><span>connection · channel: link</span></div>
         <div class="tile-variants">
           <Relation variant="line" />
           <Relation variant="chain" />
@@ -75,7 +74,7 @@
           <State state="broken"><Entity label="GPU" /></State>
           <State state="growing"><Entity label="Revenue" /></State>
         </div>
-        <div class="tile-info"><strong>State</strong><span>состояние · канал: модуляция</span></div>
+        <div class="tile-info"><strong>State</strong><span>state · channel: modulation</span></div>
         <div class="tile-variants">
           <State state="waiting"><Entity label="Queue" /></State>
           <State state="correct"><Entity label="Model" /></State>
@@ -88,7 +87,7 @@
           <Value label="Latency" value={80} unit="ms" direction="down" variant="bar" />
           <Value label="Revenue" value={35} unit="$" variant="counter" />
         </div>
-        <div class="tile-info"><strong>Value</strong><span>величина · канал: квант. отметка</span></div>
+        <div class="tile-info"><strong>Value</strong><span>quantity · channel: metric</span></div>
         <div class="tile-variants">
           <Value label="FPS" value={144} variant="digit" />
           <Value label="Heat" value={70} variant="thermo" />
@@ -102,14 +101,14 @@
           <Event label="Fail" variant="wave" />
           <Event label="Approve" variant="appear" />
         </div>
-        <div class="tile-info"><strong>Event</strong><span>что произошло · канал: временной эффект</span></div>
+        <div class="tile-info"><strong>Event</strong><span>what happened · channel: temporal</span></div>
       </article>
     </div>
   </section>
 
-  <!-- ═══════════ СЛОЙ 2: LAYOUT PREDICATES ═══════════ -->
+  <!-- ═══════════ LAYER 2: LAYOUT PREDICATES ═══════════ -->
   <section class="section">
-    <h2 class="section-title">Layout Predicates <span class="section-desc">— information design (HoC)</span></h2>
+    <h2 class="section-title">Layout Predicates<span class="section-desc">— information design (HoC)</span></h2>
     <div class="grid">
       <article class="tile">
         <div class="tile-demo">
@@ -121,7 +120,7 @@
             <Entity label="Feedback" />
           </Flow>
         </div>
-        <div class="tile-info"><strong>Flow</strong><span>последовательность A → B → C</span></div>
+        <div class="tile-info"><strong>Flow</strong><span>sequence A → B → C</span></div>
       </article>
 
       <article class="tile">
@@ -132,7 +131,7 @@
             <Entity label="After" />
           </Compare>
         </div>
-        <div class="tile-info"><strong>Compare</strong><span>сопоставление A vs B</span></div>
+        <div class="tile-info"><strong>Compare</strong><span>juxtaposition A vs B</span></div>
       </article>
 
       <article class="tile">
@@ -141,7 +140,7 @@
             <Entity label="GPU" />
           </Containment>
         </div>
-        <div class="tile-info"><strong>Containment</strong><span>вложенность A inside B</span></div>
+        <div class="tile-info"><strong>Containment</strong><span>nesting A inside B</span></div>
       </article>
 
       <article class="tile">
@@ -152,7 +151,7 @@
             <Entity label="RAM" />
           </Hierarchy>
         </div>
-        <div class="tile-info"><strong>Hierarchy</strong><span>дерево: корень → листья</span></div>
+        <div class="tile-info"><strong>Hierarchy</strong><span>tree: root → leaves</span></div>
       </article>
 
       <article class="tile">
@@ -163,7 +162,7 @@
             <Entity label="Future" />
           </Timeline>
         </div>
-        <div class="tile-info"><strong>Timeline</strong><span>ось времени Now → Future</span></div>
+        <div class="tile-info"><strong>Timeline</strong><span>time axis Now → Future</span></div>
       </article>
 
       <article class="tile">
@@ -176,7 +175,7 @@
             <Entity label="Article" />
           </Cycle>
         </div>
-        <div class="tile-info"><strong>Cycle</strong><span>замкнутая последовательность</span></div>
+        <div class="tile-info"><strong>Cycle</strong><span>closed loop sequence</span></div>
       </article>
 
       <article class="tile">
@@ -185,20 +184,20 @@
             <Entity label="GPU" />
           </TradeOff>
         </div>
-        <div class="tile-info"><strong>Trade-off</strong><span>противопоставление по осям</span></div>
+        <div class="tile-info"><strong>Trade-off</strong><span>axis opposition</span></div>
       </article>
     </div>
   </section>
 
-  <!-- ═══════════ СЛОЙ 3: ATTENTION PREDICATES ═══════════ -->
+  <!-- ═══════════ LAYER 3: ATTENTION PREDICATES ═══════════ -->
   <section class="section">
-    <h2 class="section-title">Attention Predicates <span class="section-desc">— механики внимания (HoC)</span></h2>
+    <h2 class="section-title">Attention Predicates<span class="section-desc">— attention mechanics (HoC)</span></h2>
     <div class="grid">
       <article class="tile">
         <div class="tile-demo">
           <Focus><Entity label="GPU" /></Focus>
         </div>
-        <div class="tile-info"><strong>Focus</strong><span>приближение (System → GPU)</span></div>
+        <div class="tile-info"><strong>Focus</strong><span>zoom-in (System → GPU)</span></div>
       </article>
 
       <article class="tile">
@@ -207,28 +206,28 @@
             <Entity label="Language" />
           </Reveal>
         </div>
-        <div class="tile-info"><strong>Reveal</strong><span>скрыто → видно</span></div>
+        <div class="tile-info"><strong>Reveal</strong><span>hidden → visible</span></div>
       </article>
 
       <article class="tile">
         <div class="tile-demo">
           <Highlight><Entity label="Hook" /></Highlight>
         </div>
-        <div class="tile-info"><strong>Highlight</strong><span>акцент (свечение/обводка)</span></div>
+        <div class="tile-info"><strong>Highlight</strong><span>emphasis (glow ring)</span></div>
       </article>
 
       <article class="tile">
         <div class="tile-demo">
           <Dim><Entity label="Noise" /></Dim>
         </div>
-        <div class="tile-info"><strong>Dim</strong><span>деэмфаза остального</span></div>
+        <div class="tile-info"><strong>Dim</strong><span>de-emphasis of the rest</span></div>
       </article>
     </div>
   </section>
 
-  <!-- ═══════════ СЦЕНА: СЕМАНТИЧЕСКАЯ КОМПОЗИЦИЯ ═══════════ -->
+  <!-- ═══════════ SCENE: SEMANTIC COMPOSITION ═══════════ -->
   <section class="section">
-    <h2 class="section-title">Scene <span class="section-desc">— Visual Thought Unit: объекты + предикаты = мысль (9:16)</span></h2>
+    <h2 class="section-title">Scene<span class="section-desc">— Visual Thought Unit: objects + predicates = thought (9:16)</span></h2>
     <div class="scene-row">
       <Scene title="Paradox · AI → DDD">
         <Compare>
@@ -248,17 +247,16 @@
             <Entity label="Language" />
           </Containment>
         </Reveal>
-        <div class="scene-caption">«Код дешевеет — модель нет»</div>
+        <div class="scene-caption">Code gets cheaper — model doesn't</div>
       </Scene>
     </div>
   </section>
 </main>
 
 <footer class="preview-footer">
-  Visual Narrative Library · BD visual grammar v2 · milestone 1 — грамматика примитивов на одном экране
+  <span>Visual Narrative Library</span>
+  <span>Blueprint Engine · v2 grammar · milestone 1</span>
 </footer>
-
-<BrutalistDemo />
 
 <style>
   .preview-header {
@@ -268,17 +266,21 @@
     flex-wrap: wrap;
     gap: 12px;
     padding: 28px 32px 20px;
-    border-bottom: 2px solid var(--vnp-ink);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     background: var(--vnp-paper-deep);
   }
-  .preview-header h1 {
-    font-size: 28px;
+  .preview-title {
+    font-family: var(--vnp-font);
+    font-size: 26px;
+    font-weight: 700;
     letter-spacing: -0.02em;
+    color: var(--vnp-ink);
   }
   .preview-sub {
     color: var(--vnp-ink-soft);
-    font-size: 14px;
+    font-size: 13px;
     margin-top: 4px;
+    font-family: var(--vnp-font-mono);
   }
   .preview-meta {
     display: flex;
@@ -286,69 +288,88 @@
     flex-wrap: wrap;
   }
   .badge {
-    font-size: 12px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border: 2px solid var(--vnp-ink);
-    border-radius: 999px;
-    background: var(--vnp-card);
+    font-family: var(--vnp-font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border: 1px solid var(--vnp-border-color);
+    border-radius: var(--vnp-radius-chip);
+    color: var(--vnp-ink-soft);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
   .badge--objects {
-    background: #e8f0fe;
+    border-color: rgba(45, 212, 191, 0.2);
+    color: var(--vnp-good);
   }
   .badge--layout {
-    background: #e6f4ea;
+    border-color: rgba(45, 212, 191, 0.15);
+    color: var(--vnp-good);
+    opacity: 0.8;
   }
   .badge--attention {
-    background: #fef7e0;
+    border-color: rgba(45, 212, 191, 0.12);
+    color: var(--vnp-good);
+    opacity: 0.65;
   }
 
   .preview-body {
-    padding: 24px 32px 40px;
+    padding: 32px;
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    gap: 48px;
   }
 
   .section-title {
-    font-size: 18px;
-    margin-bottom: 16px;
-    padding-bottom: 6px;
-    border-bottom: 2px dashed var(--vnp-ink-soft);
+    font-family: var(--vnp-font);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--vnp-ink);
   }
   .section-desc {
     font-weight: 400;
     color: var(--vnp-ink-soft);
-    font-size: 14px;
+    font-size: 13px;
+    margin-left: 8px;
   }
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 16px;
   }
 
   .tile {
-    border: 2px solid var(--vnp-ink);
+    border: var(--vnp-border);
     border-radius: var(--vnp-radius);
     background: var(--vnp-card);
-    padding: 14px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    box-shadow: 2px 3px 0 rgba(28, 28, 28, 0.1);
+    gap: 12px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .tile:hover {
+    border-color: var(--vnp-border-color-active);
+    background: var(--vnp-card-raised);
   }
   .tile-demo {
     min-height: 96px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
-    padding: 8px;
-    border: 1.5px dashed var(--vnp-ink-soft);
-    border-radius: 8px;
-    background: var(--vnp-paper);
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--vnp-radius-sm);
+    background:
+      radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 1px),
+      var(--vnp-paper);
+    background-size: 16px 16px;
   }
   .tile-demo--col {
     flex-direction: column;
@@ -357,18 +378,24 @@
   .tile-info {
     display: flex;
     flex-direction: column;
+    gap: 2px;
+  }
+  .tile-info strong {
+    font-size: 14px;
+    color: var(--vnp-ink);
   }
   .tile-info span {
+    font-family: var(--vnp-font-mono);
     color: var(--vnp-ink-soft);
-    font-size: 13px;
+    font-size: 11px;
   }
   .tile-variants {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
     align-items: center;
-    padding-top: 6px;
-    border-top: 1px dashed var(--vnp-ink-faint);
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
   }
 
   .scene-row {
@@ -378,26 +405,31 @@
   }
   .scene-row :global(.scene) {
     width: 320px;
-    height: 569px; /* 9:16 */
+    height: 569px;
   }
   .scene-col {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     align-items: center;
   }
   .scene-caption {
-    font-family: var(--vnp-font-hand);
-    font-size: 15px;
+    font-family: var(--vnp-font-mono);
+    font-size: 12px;
     color: var(--vnp-ink-soft);
-    margin-top: 8px;
+    margin-top: 10px;
     text-align: center;
   }
 
   .preview-footer {
-    padding: 16px 32px;
-    border-top: 2px solid var(--vnp-ink);
-    font-size: 12px;
-    color: var(--vnp-ink-soft);
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    font-family: var(--vnp-font-mono);
+    font-size: 10px;
+    color: var(--vnp-ink-faint);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 </style>

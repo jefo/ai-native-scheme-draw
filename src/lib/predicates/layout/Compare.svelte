@@ -21,7 +21,8 @@
     position: relative;
   }
   .compare__label {
-    font-size: 10px;
+    font-family: var(--vnp-font-mono);
+    font-size: 9px;
     color: var(--vnp-ink-faint);
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -31,9 +32,13 @@
     display: inline-flex;
     align-items: center;
     gap: 14px;
-    padding: 10px;
-    border: 1.5px dashed var(--vnp-ink-soft);
+    padding: 12px;
+    border: var(--vnp-border);
     border-radius: var(--vnp-radius);
-    background: rgba(255, 255, 255, 0.5);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .compare__body:hover {
+    background: var(--vnp-card);
+    border-color: var(--vnp-border-color-active);
   }
 </style>

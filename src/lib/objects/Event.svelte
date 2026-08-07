@@ -13,17 +13,19 @@
 
 <div class="event event--{variant}" title="Event: {label || 'событие'}">
   {#if variant === 'flash'}
-    <svg viewBox="0 0 20 24" width="16" height="20" aria-hidden="true">
-      <polygon points="12,0 2,14 9,14 7,24 18,9 11,9" fill="var(--vnp-warn)" stroke="var(--vnp-ink)" stroke-width="1.5" />
+    <svg viewBox="0 0 16 20" width="14" height="18" aria-hidden="true">
+      <polygon points="10,0 1,12 7,12 5,20 15,8 9,8"
+        fill="var(--vnp-good)" stroke="none" />
     </svg>
   {:else if variant === 'appear'}
-    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-      <circle cx="12" cy="12" r="9" fill="none" stroke="var(--vnp-info)" stroke-width="2.5" stroke-dasharray="4 4" />
-      <circle cx="12" cy="12" r="3" fill="var(--vnp-info)" />
+    <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
+      <circle cx="10" cy="10" r="7" fill="none" stroke="var(--vnp-good)" stroke-width="1.5" stroke-dasharray="3 3" />
+      <circle cx="10" cy="10" r="2.5" fill="var(--vnp-good)" />
     </svg>
   {:else if variant === 'wave'}
-    <svg viewBox="0 0 24 12" width="24" height="12" aria-hidden="true">
-      <path d="M0 6 Q6 0 12 6 T24 6" fill="none" stroke="var(--vnp-info)" stroke-width="2.5" />
+    <svg viewBox="0 0 24 12" width="22" height="10" aria-hidden="true">
+      <path d="M1 6 Q6 0 12 6 T23 6"
+        fill="none" stroke="var(--vnp-good)" stroke-width="1.5" />
     </svg>
   {/if}
   {#if label}
@@ -37,9 +39,11 @@
     align-items: center;
     gap: 6px;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 12px;
+    font-family: var(--vnp-font-mono);
+    color: var(--vnp-ink-soft);
   }
   .event--flash .event__label {
-    color: var(--vnp-warn);
+    color: var(--vnp-good);
   }
 </style>

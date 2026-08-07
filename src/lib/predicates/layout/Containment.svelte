@@ -16,21 +16,27 @@
 <style>
   .containment {
     display: inline-block;
-    border: 2px solid var(--vnp-ink);
+    border: var(--vnp-border);
     border-radius: var(--vnp-radius);
-    padding: 22px 14px 14px;
+    padding: 20px 14px 14px;
     position: relative;
     background: var(--vnp-card);
-    box-shadow: var(--vnp-shadow);
+    transition: border-color 0.2s ease;
+  }
+  .containment:hover {
+    border-color: var(--vnp-border-color-active);
   }
   .containment__label {
     position: absolute;
-    top: -10px;
+    top: -9px;
     left: 12px;
     background: var(--vnp-paper);
     padding: 0 6px;
-    font-size: 12px;
-    font-weight: 700;
+    font-family: var(--vnp-font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--vnp-ink-soft);
+    letter-spacing: 0.04em;
   }
   .containment__inner {
     display: inline-flex;

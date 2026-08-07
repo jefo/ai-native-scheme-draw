@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-07T15:00:00.000Z",
+  "title": "Design System: Visual Narrative Library — Premium Dark DevTools",
+  "extensions": {
+    "colorMeta": {
+      "deep-space": {
+        "role": "neutral",
+        "displayName": "Deep Space",
+        "canonical": "oklch(12% 0.008 240)",
+        "tonalRamp": [
+          "oklch(8% 0.008 240)",
+          "oklch(12% 0.008 240)",
+          "oklch(16% 0.007 235)",
+          "oklch(20% 0.006 230)",
+          "oklch(26% 0.005 225)",
+          "oklch(32% 0.004 220)",
+          "oklch(40% 0.003 215)",
+          "oklch(50% 0.002 210)"
+        ]
+      },
+      "abyss": {
+        "role": "neutral",
+        "displayName": "Abyss",
+        "canonical": "oklch(16% 0.007 235)",
+        "tonalRamp": [
+          "oklch(12% 0.008 240)",
+          "oklch(16% 0.007 235)",
+          "oklch(20% 0.006 230)",
+          "oklch(24% 0.005 225)",
+          "oklch(30% 0.005 220)",
+          "oklch(36% 0.004 215)",
+          "oklch(44% 0.003 210)",
+          "oklch(54% 0.002 205)"
+        ]
+      },
+      "void": {
+        "role": "neutral",
+        "displayName": "Void",
+        "canonical": "oklch(20% 0.006 230)",
+        "tonalRamp": [
+          "oklch(16% 0.007 235)",
+          "oklch(20% 0.006 230)",
+          "oklch(24% 0.005 225)",
+          "oklch(28% 0.005 220)",
+          "oklch(34% 0.004 215)",
+          "oklch(40% 0.004 210)",
+          "oklch(48% 0.003 205)",
+          "oklch(58% 0.002 200)"
+        ]
+      },
+      "white-smoke": {
+        "role": "neutral",
+        "displayName": "White Smoke",
+        "canonical": "oklch(92% 0.005 230)"
+      },
+      "ghost": {
+        "role": "neutral",
+        "displayName": "Ghost",
+        "canonical": "oklch(52% 0.005 235)"
+      },
+      "mint": {
+        "role": "primary",
+        "displayName": "Mint",
+        "canonical": "oklch(80% 0.12 180)",
+        "tonalRamp": [
+          "oklch(30% 0.12 180)",
+          "oklch(40% 0.12 180)",
+          "oklch(50% 0.12 180)",
+          "oklch(62% 0.12 180)",
+          "oklch(72% 0.12 180)",
+          "oklch(80% 0.12 180)",
+          "oklch(88% 0.10 180)",
+          "oklch(95% 0.06 180)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Scene titles and hero headlines. Maximum 3 instances per viewport."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headers, card titles, primary navigation labels."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Component titles, group labels, list item headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptions, explanations, running text. 65ch max line length."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Metadata, badges, timestamps, predicate type annotations. Uppercase, tracked-out."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Numerical values, units, code, technical identifiers. Tabular numbers enabled."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Predicate type labels, micro-annotations. Smallest readable size."
+      },
+      "overline": {
+        "displayName": "Overline",
+        "purpose": "Chips, scene headers, badges, status indicators. Uppercase Mono at utility size."
+      },
+      "metric": {
+        "displayName": "Metric",
+        "purpose": "Value digits, numerical displays, counts. Large Mono with tabular-nums."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-functional",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "State transitions: border colour, background shifts, opacity changes. 150–200ms duration."
+      },
+      {
+        "name": "ease-reveal",
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "purpose": "Reveal sequences, content appearance. 250–350ms duration. No bounce, no spring."
+      },
+      {
+        "name": "duration-instant",
+        "value": "100ms",
+        "purpose": "Hover state entry. Must feel immediate."
+      },
+      {
+        "name": "duration-standard",
+        "value": "200ms",
+        "purpose": "Default transition duration for state changes."
+      },
+      {
+        "name": "duration-reveal",
+        "value": "300ms",
+        "purpose": "Reveal and content-appearance transitions."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "scene-min",
+        "value": "280px",
+        "purpose": "Minimum Scene width. Below this, internal padding compresses to 8px."
+      },
+      {
+        "name": "scene-max",
+        "value": "400px",
+        "purpose": "Maximum rendered Scene width. Scenes never render wider than 400px regardless of viewport."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Entity Card",
+      "kind": "card",
+      "refersTo": "entity-card",
+      "description": "The fundamental semantic object. A label inside a bordered container on the blueprint surface.",
+      "html": "<div class=\"ds-entity\" data-variant=\"card\"><span class=\"ds-entity-label\">Customer</span></div>",
+      "css": ".ds-entity { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border: 1px solid rgba(255,255,255,0.07); border-radius: 6px; background: #0f131a; color: #e6edf3; font-family: 'Inter', 'SF Pro', system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; white-space: nowrap; transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-entity:hover { background: #161b24; border-color: rgba(255,255,255,0.11); } .ds-entity:focus-visible { outline: 1px solid #2dd4bf; outline-offset: 2px; } .ds-entity-label { color: #e6edf3; }"
+    },
+    {
+      "name": "Entity Plate",
+      "kind": "card",
+      "refersTo": "entity-card",
+      "description": "Transparent entity variant — border-only, for secondary or de-emphasised objects.",
+      "html": "<div class=\"ds-entity ds-entity-plate\"><span class=\"ds-entity-label\">Context</span></div>",
+      "css": ".ds-entity-plate { background: transparent; border: 1px dashed rgba(255,255,255,0.07); } .ds-entity-plate:hover { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.11); }"
+    },
+    {
+      "name": "Mint Chip",
+      "kind": "chip",
+      "refersTo": "chip-mint",
+      "description": "Active/functional status chip. The sole use of the mint accent in label form.",
+      "html": "<span class=\"ds-chip-mint\">running</span>",
+      "css": ".ds-chip-mint { display: inline-flex; align-items: center; padding: 2px 8px; border: 1px solid rgba(45,212,191,0.25); border-radius: 4px; background: rgba(45,212,191,0.10); color: #2dd4bf; font-family: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Ghost Chip",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "Neutral metadata chip — muted, no accent. For completed states and secondary labels.",
+      "html": "<span class=\"ds-chip-ghost\">completed</span>",
+      "css": ".ds-chip-ghost { display: inline-flex; align-items: center; padding: 2px 8px; border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; background: transparent; color: #6b7482; font-family: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Relation Arrow",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Directed connection between entities. SVG-drawn, 2px stroke, orthogonal aesthetic.",
+      "html": "<div class=\"ds-relation\"><span class=\"ds-relation-dot\"></span><svg class=\"ds-relation-arrow\" viewBox=\"0 0 60 12\" width=\"60\" height=\"12\" aria-hidden=\"true\"><line x1=\"0\" y1=\"6\" x2=\"46\" y2=\"6\" stroke=\"currentColor\" stroke-width=\"2\"/><polygon points=\"60,6 46,0 46,12\" fill=\"currentColor\"/></svg><span class=\"ds-relation-dot\"></span><span class=\"ds-relation-label\">causes</span></div>",
+      "css": ".ds-relation { display: inline-flex; align-items: center; gap: 6px; color: #6b7482; font-family: 'Inter', 'SF Pro', system-ui, -apple-system, sans-serif; font-size: 12px; font-style: italic; white-space: nowrap; } .ds-relation-dot { width: 5px; height: 5px; border-radius: 1px; background: currentColor; } .ds-relation-arrow { flex-shrink: 0; } .ds-relation-label { color: #6b7482; font-style: italic; } .ds-relation:hover { color: #e6edf3; } .ds-relation.active { color: #2dd4bf; }"
+    },
+    {
+      "name": "Value Bar",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Horizontal bar encoding a quantitative value. Mint fill proportional to the measurement.",
+      "html": "<div class=\"ds-value\"><span class=\"ds-value-label\">LATENCY</span><span class=\"ds-value-bar\"><span class=\"ds-value-fill\" style=\"width:65%\"></span></span><span class=\"ds-value-digit\">65<span class=\"ds-value-unit\">ms</span></span></div>",
+      "css": ".ds-value { display: inline-flex; align-items: center; gap: 8px; } .ds-value-label { font-family: 'Inter', 'SF Pro', system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; color: #6b7482; text-transform: uppercase; letter-spacing: 0.05em; } .ds-value-bar { display: inline-block; width: 80px; height: 8px; border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; background: #0f131a; overflow: hidden; } .ds-value-fill { display: block; height: 100%; background: #2dd4bf; border-radius: 3px; transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); } .ds-value-digit { font-family: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace; font-size: 18px; font-weight: 400; color: #e6edf3; font-variant-numeric: tabular-nums; } .ds-value-unit { font-family: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace; font-size: 11px; color: #6b7482; margin-left: 1px; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Scene Card",
+      "kind": "card",
+      "refersTo": "scene-card",
+      "description": "The Visual Thought Unit — a 9:16 vertical card with header, stage, and footer.",
+      "html": "<div class=\"ds-scene\"><header class=\"ds-scene-header\">PARADOX · AI → DDD</header><main class=\"ds-scene-stage\"><div style=\"display:flex;align-items:center;gap:16px;padding:16px;\"><div class=\"ds-entity\"><span class=\"ds-entity-label\">Code</span></div><div class=\"ds-relation\"><span class=\"ds-relation-dot\"></span><svg viewBox=\"0 0 60 12\" width=\"60\" height=\"12\"><line x1=\"0\" y1=\"6\" x2=\"60\" y2=\"6\" stroke=\"#6b7482\" stroke-width=\"1.5\" stroke-dasharray=\"4 4\"/></svg><span class=\"ds-relation-dot\"></span></div><div class=\"ds-entity\"><span class=\"ds-entity-label\">Model</span></div></div></main><footer class=\"ds-scene-footer\"><span class=\"ds-scene-reaction\"></span></footer></div>",
+      "css": ".ds-scene { display: flex; flex-direction: column; width: 320px; height: 569px; background: #0f131a; border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; position: relative; } .ds-scene::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; border-radius: 8px; } .ds-scene-header { flex: 0 0 auto; padding: 10px 14px; font-family: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: #2dd4bf; border-bottom: 1px solid rgba(255,255,255,0.07); background: #080b0f; } .ds-scene-stage { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; padding: 16px; overflow: hidden; } .ds-scene-footer { flex: 0 0 auto; height: 38px; border-top: 1px solid rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: center; } .ds-scene-reaction { font-family: 'Inter', 'SF Pro', system-ui, -apple-system, sans-serif; font-size: 12px; color: #6b7482; }"
+    },
+    {
+      "name": "Flow Predicate",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Layout predicate — linear sequence container with orthogonal routing.",
+      "html": "<div class=\"ds-predicate\"><span class=\"ds-predicate-label\">flow →</span><div style=\"display:flex;align-items:center;gap:12px;padding:4px\"><div class=\"ds-entity\"><span>Research</span></div><div class=\"ds-relation\"><span class=\"ds-relation-dot\"></span><svg viewBox=\"0 0 60 12\" width=\"60\" height=\"12\"><line x1=\"0\" y1=\"6\" x2=\"46\" y2=\"6\" stroke=\"#6b7482\" stroke-width=\"2\"/><polygon points=\"60,6 46,0 46,12\" fill=\"#6b7482\"/></svg><span class=\"ds-relation-dot\"></span></div><div class=\"ds-entity\"><span>Article</span></div></div></div>",
+      "css": ".ds-predicate { display: inline-flex; align-items: center; gap: 10px; padding: 10px; border: 1px solid rgba(255,255,255,0.07); border-radius: 6px; position: relative; transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-predicate:hover { background: #0f131a; border-color: rgba(255,255,255,0.11); } .ds-predicate-label { position: absolute; top: -8px; right: 8px; font-family: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace; font-size: 9px; color: #6b7482; text-transform: uppercase; letter-spacing: 0.08em; background: #080b0f; padding: 0 4px; }"
+    },
+    {
+      "name": "Focus Predicate",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Attention predicate — zoom emphasis with mint glow ring.",
+      "html": "<div class=\"ds-focus\"><span class=\"ds-focus-label\">focus</span><div class=\"ds-focus-stage\"><div class=\"ds-entity\"><span>GPU</span></div></div></div>",
+      "css": ".ds-focus { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; } .ds-focus-label { font-family: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace; font-size: 9px; color: #6b7482; text-transform: uppercase; letter-spacing: 0.08em; } .ds-focus-stage { padding: 14px; border: 1px solid #2dd4bf; border-radius: 6px; box-shadow: 0 0 0 3px rgba(45,212,191,0.28); background: rgba(15,19,26,0.8); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); } .ds-focus-stage .ds-entity { transform: scale(1.08); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }"
+    },
+    {
+      "name": "Dim Predicate",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Attention predicate — de-emphasis through opacity and desaturation.",
+      "html": "<div class=\"ds-dim\"><span class=\"ds-dim-label\">dim</span><div class=\"ds-dim-stage\"><div class=\"ds-entity\"><span>Noise</span></div></div></div>",
+      "css": ".ds-dim { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; } .ds-dim-label { font-family: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace; font-size: 9px; color: #6b7482; text-transform: uppercase; letter-spacing: 0.08em; } .ds-dim-stage { padding: 10px; border-radius: 6px; opacity: 0.35; filter: grayscale(0.8); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); } .ds-dim-stage:hover { opacity: 0.6; filter: grayscale(0.4); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Blueprint Engine",
+    "overview": "A precision instrument for composing visual thought. The interface is a dark, silent engineering workspace — deep-space slate backgrounds, hairline borders, and a single mint-teal accent that marks structure and state. Nothing screams. Nothing persuades. The system earns its authority through restraint: every pixel is load-bearing, every glow has a function.\n\nThe aesthetic draws from premium developer tools (Linear, Vercel, Supabase) where the interface recedes and the work stands forward. It is a tool for serious people reasoning about complex systems — the visual equivalent of a blueprint table in a darkened workshop. The only \"decoration\" is a faint orthogonal grid that covers every surface, whispering: this is where things get built.",
+    "keyCharacteristics": [
+      "95% monochrome deep-slate palette; color is exclusively functional (mint = activity, structure, connection)",
+      "Hairline borders (1px, 7–11% white opacity) replace shadows for layer separation",
+      "Swiss grotesk typography (Inter) with strict binary contrast — bright headings, muted body",
+      "Global blueprint grid at ~4% white opacity on every surface",
+      "Orthogonal (90°) line routing; dotted connections that visualise structure without weight",
+      "Mint glow is the sole \"magic\" effect — soft neon at connection nodes and active states"
+    ],
+    "rules": [
+      {
+        "name": "The One Color Rule",
+        "body": "Mint (#2dd4bf) occupies ≤5% of any given screen. Its rarity is its power. If mint appears on more than two non-background elements, the design has lost restraint.",
+        "section": "colors"
+      },
+      {
+        "name": "The Binary Contrast Rule",
+        "body": "Text exists in exactly two brightnesses: White Smoke (primary) and Ghost (secondary). No intermediate grey. Hierarchy is communicated through size and weight, not through a graduated grey scale.",
+        "section": "colors"
+      },
+      {
+        "name": "The Glow Is Functional Rule",
+        "body": "Every mint glow serves a specific state or structural purpose. No decorative ambient glow. No bloom for bloom's sake.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Brightness Rule",
+        "body": "Text colour is binary: White Smoke or Ghost. Never use Faint for any text that must be read. If a label needs to recede, use size and letter-spacing, not reduced opacity.",
+        "section": "typography"
+      },
+      {
+        "name": "The Metric Weight Rule",
+        "body": "All numerical values (digits, units, counters) use Mono + tabular-nums. A Value component's digit must never appear in Inter. The shift in typeface is the signal: this is data, not prose.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Shadow Rule",
+        "body": "Elevation is communicated through background lightening and border brightness, never through box-shadow. A lifted element is a lighter slate with a slightly brighter border. This is the single most important rule for the DevTools aesthetic.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Hairline Separation Rule",
+        "body": "Every border in the system is exactly 1px. No 2px, no 3px, no \"strong\" vs \"weak\" border weights. Variation comes from opacity (Stealth 7% vs Stealth-Active 11%), not line weight.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use the Two-Brightness Rule: White Smoke for primary text, Ghost for secondary. Never invent an intermediate grey.",
+      "Do use exactly 1px borders for all layer separation. Variation comes from opacity, never line weight.",
+      "Do use Mint exclusively for functional signals (activity, connection nodes, structural markers).",
+      "Do route all connection lines orthogonally (90° turns).",
+      "Do apply the blueprint grid globally. Every surface without a solid fill shows the grid.",
+      "Do use Mono for all numerical values, units, and technical identifiers.",
+      "Do keep spacing generous — 16px minimum internal padding, 24px between elements, 48px between sections.",
+      "Do use outline-style, mono-weight icons (Phosphor or Lucide). 16px inline, 20px standalone."
+    ],
+    "donts": [
+      "Don't use drop shadows or box-shadow for elevation. The No-Shadow Rule is the system's defining constraint.",
+      "Don't use pure black (#000000) as a background. The darkest surface is Deep Space (#080b0f).",
+      "Don't use pure white (#ffffff) for text. The brightest text is White Smoke (#e6edf3).",
+      "Don't add more than one accent colour. Mint is the system's only chromatic voice.",
+      "Don't use border-radius above 8px. No pills, no circles, no fully rounded elements.",
+      "Don't use more than 2 type sizes on any surface.",
+      "Don't animate for delight. Motion is functional: state transitions (0.2s ease), reveal sequences (0.3s ease).",
+      "Don't mix the paper/sketch theme tokens with this system."
+    ]
+  }
+}

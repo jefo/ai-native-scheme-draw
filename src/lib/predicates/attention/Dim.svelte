@@ -2,7 +2,8 @@
   import type { Snippet } from 'svelte';
 
   /** Dim — деэмфаза остального: содержимое приглушается.
-   *  Attention predicate (механики внимания): всё, кроме фокуса, уходит в тень. */
+   *  Attention predicate (механики внимания): всё, кроме фокуса, уходит в тень.
+   *  Opacity drop + desaturation — the void reclaims. */
   let { children, dimmed = true }: { children?: Snippet; dimmed?: boolean } = $props();
 </script>
 
@@ -21,7 +22,8 @@
     gap: 6px;
   }
   .dim__label {
-    font-size: 10px;
+    font-family: var(--vnp-font-mono);
+    font-size: 9px;
     color: var(--vnp-ink-faint);
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -34,7 +36,7 @@
     transition: all 0.3s ease;
   }
   .dim--on .dim__stage {
-    opacity: 0.35;
+    opacity: 0.3;
     filter: grayscale(0.8);
   }
 </style>

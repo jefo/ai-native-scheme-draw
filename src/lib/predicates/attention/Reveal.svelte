@@ -2,7 +2,8 @@
   import type { Snippet } from 'svelte';
 
   /** Reveal — было скрыто → стало видно (Hidden Dependency).
-   *  Attention predicate (механики внимания): прогрессивное раскрытие содержимого. */
+   *  Attention predicate (механики внимания): прогрессивное раскрытие содержимого.
+   *  Blur + opacity transition — content emerges from the void. */
   let { children, revealed = true }: { children?: Snippet; revealed?: boolean } = $props();
 </script>
 
@@ -21,25 +22,30 @@
     gap: 6px;
   }
   .reveal__label {
-    font-size: 10px;
+    font-family: var(--vnp-font-mono);
+    font-size: 9px;
     color: var(--vnp-ink-faint);
     text-transform: uppercase;
     letter-spacing: 0.08em;
+    transition: color 0.3s ease;
   }
   .reveal__stage {
     display: inline-flex;
     align-items: center;
     padding: 12px;
-    border: 1.5px dashed var(--vnp-ink-soft);
+    border: var(--vnp-border);
     border-radius: var(--vnp-radius);
-    background: rgba(255, 255, 255, 0.5);
     transition: all 0.35s ease;
-    filter: blur(4px);
-    opacity: 0.45;
+    filter: blur(6px);
+    opacity: 0.3;
   }
   .reveal--shown .reveal__stage {
     filter: blur(0);
     opacity: 1;
-    border-color: var(--vnp-ink);
+    border-color: var(--vnp-border-color-active);
+    background: var(--vnp-card);
+  }
+  .reveal--shown .reveal__label {
+    color: var(--vnp-good);
   }
 </style>

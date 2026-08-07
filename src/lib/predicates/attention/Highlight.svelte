@@ -2,7 +2,8 @@
   import type { Snippet } from 'svelte';
 
   /** Highlight — акцент на объекте (свечение, обводка).
-   *  Attention predicate (механики внимания): выделение содержимого на фоне остальных. */
+   *  Attention predicate (механики внимания): выделение содержимого на фоне остальных.
+   *  Mint glow ring + raised background. */
   let { children, active = true }: { children?: Snippet; active?: boolean } = $props();
 </script>
 
@@ -21,10 +22,12 @@
     gap: 6px;
   }
   .highlight__label {
-    font-size: 10px;
+    font-family: var(--vnp-font-mono);
+    font-size: 9px;
     color: var(--vnp-ink-faint);
     text-transform: uppercase;
     letter-spacing: 0.08em;
+    transition: color 0.3s ease;
   }
   .highlight__stage {
     display: inline-flex;
@@ -32,9 +35,14 @@
     padding: 10px;
     border-radius: var(--vnp-radius);
     transition: all 0.3s ease;
+    border: 1px solid transparent;
   }
   .highlight--on .highlight__stage {
-    box-shadow: 0 0 0 3px var(--vnp-warn), 0 0 18px var(--vnp-glow);
-    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--vnp-good);
+    box-shadow: 0 0 0 2px var(--vnp-glow);
+    background: var(--vnp-card);
+  }
+  .highlight--on .highlight__label {
+    color: var(--vnp-good);
   }
 </style>

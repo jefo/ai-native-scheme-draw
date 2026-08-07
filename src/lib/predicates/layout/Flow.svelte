@@ -10,7 +10,7 @@
 
 <div class="flow flow--{direction}">
   {@render children?.()}
-  <span class="flow__note">flow →</span>
+  <span class="flow__note">flow</span>
 </div>
 
 <style>
@@ -18,11 +18,15 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 10px;
-    border: 1.5px dashed var(--vnp-ink-soft);
+    padding: 12px;
+    border: var(--vnp-border);
     border-radius: var(--vnp-radius);
-    background: rgba(255, 255, 255, 0.5);
     position: relative;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .flow:hover {
+    background: var(--vnp-card);
+    border-color: var(--vnp-border-color-active);
   }
   .flow--col {
     flex-direction: column;
@@ -32,9 +36,10 @@
   }
   .flow__note {
     position: absolute;
-    top: -9px;
+    top: -7px;
     right: 8px;
-    font-size: 10px;
+    font-family: var(--vnp-font-mono);
+    font-size: 9px;
     color: var(--vnp-ink-faint);
     text-transform: uppercase;
     letter-spacing: 0.08em;

@@ -3,7 +3,7 @@
 
   /** Focus — приближение/фокус на объекте (System → GPU).
    *  Attention predicate (механики внимания): содержимое в центре, остальное уходит.
-   *  Zoom-эффект эмулируется масштабом. */
+   *  Mint glow ring + subtle scale — the only "magic" effect in the system. */
   let { children, zoomed = true }: { children?: Snippet; zoomed?: boolean } = $props();
 </script>
 
@@ -25,16 +25,16 @@
     position: relative;
   }
   .focus__label {
-    font-size: 10px;
+    font-family: var(--vnp-font-mono);
+    font-size: 9px;
     color: var(--vnp-ink-faint);
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
   .focus__stage {
     padding: 14px;
-    border: 1.5px dashed var(--vnp-ink-soft);
+    border: var(--vnp-border);
     border-radius: var(--vnp-radius);
-    background: rgba(255, 255, 255, 0.5);
     transition: all 0.3s ease;
   }
   .focus__scale {
@@ -44,10 +44,11 @@
     transition: transform 0.3s ease;
   }
   .focus--zoomed .focus__scale {
-    transform: scale(1.12);
+    transform: scale(1.08);
   }
   .focus--zoomed .focus__stage {
-    border-color: var(--vnp-warn);
+    border-color: var(--vnp-good);
     box-shadow: 0 0 0 3px var(--vnp-glow);
+    background: var(--vnp-card);
   }
 </style>

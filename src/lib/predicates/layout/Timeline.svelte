@@ -8,9 +8,13 @@
 
 <div class="timeline">
   <div class="timeline__track">
-    <span class="timeline__marker">◉</span>
+    <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
+      <circle cx="5" cy="5" r="3.5" fill="var(--vnp-good)" />
+    </svg>
     <span class="timeline__line"></span>
-    <span class="timeline__marker">◎</span>
+    <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
+      <circle cx="5" cy="5" r="3.5" fill="none" stroke="var(--vnp-ink-soft)" stroke-width="1.5" />
+    </svg>
   </div>
   <div class="timeline__labels">
     <span class="timeline__now">Now</span>
@@ -26,11 +30,15 @@
     display: inline-flex;
     flex-direction: column;
     gap: 6px;
-    padding: 10px 12px;
-    border: 1.5px dashed var(--vnp-ink-soft);
+    padding: 12px;
+    border: var(--vnp-border-soft);
     border-radius: var(--vnp-radius);
-    background: rgba(255, 255, 255, 0.5);
     min-width: 180px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .timeline:hover {
+    background: var(--vnp-card);
+    border-color: var(--vnp-border-color-active);
   }
   .timeline__track {
     display: flex;
@@ -39,20 +47,17 @@
   }
   .timeline__line {
     flex: 1;
-    height: 2.5px;
-    background: var(--vnp-ink);
-  }
-  .timeline__marker {
-    font-size: 12px;
-    line-height: 1;
+    height: 1px;
+    background: var(--vnp-border-color-active);
   }
   .timeline__labels {
     display: flex;
     justify-content: space-between;
-    font-size: 11px;
+    font-family: var(--vnp-font-mono);
+    font-size: 10px;
     color: var(--vnp-ink-soft);
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
   }
   .timeline__content {
     display: inline-flex;
