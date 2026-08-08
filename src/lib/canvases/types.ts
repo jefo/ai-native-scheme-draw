@@ -1,5 +1,8 @@
 /** Общие типы канвасов — формализованных систем мышления. */
 
+/** Ступень отступа шкалы Stage (density масштабирует значения). */
+export type Gap = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
 /** Тип ребра в фич-диаграмме (FODA-нотация):
  *  mandatory ● / optional ○ / alternative ○ (1 of N) / excluded ✕ */
 export type FeatureKind = 'mandatory' | 'optional' | 'alternative' | 'excluded';
@@ -79,4 +82,107 @@ export interface MapVectorDef {
   from: string;
   to: string | { x: MapValue; y: MapValue };
   label?: string;
+}
+
+/* ═══ Story grammar — операция мышления: проследить трансформацию ═══
+ *
+ *  User Story (Domain Storytelling): Actor → Action → Artifact → System →
+ *  Handoff → Decision → Outcome. Шаги — это последовательность; канвас
+ *  собирает из них цепочку. Artifact — связующая entity: одно и то же имя
+ *  в разных местах стори соединяется нитью («Brief — это entity в модели,
+ *  а не кусок UI»). */
+
+/** Субъект действия — человек, роль или система. */
+export interface StoryActorDef {
+  kind: 'actor';
+  name: string;
+}
+
+/** Действие: глагол + объект, выполняет actor. */
+export interface StoryActionDef {
+  kind: 'action';
+  label: string;
+  actor?: string;
+}
+
+/** Связующая entity — что производится и трансформируется. Повтор имени
+ *  = тот же артефакт, канвас связывает вхождения нитью. */
+export interface StoryArtifactDef {
+  kind: 'artifact';
+  name: string;
+}
+
+/** Граница среды: шаги внутри system выполняются в её контексте. */
+export interface StorySystemDef {
+  kind: 'system';
+  label: string;
+  steps: StoryStepDef[];
+}
+
+/** Передача артефакта между акторами. */
+export interface StoryHandoffDef {
+  kind: 'handoff';
+  from: string;
+  to: string;
+  artifact?: string;
+}
+
+/** Развилка в цепочке. */
+export interface StoryDecisionDef {
+  kind: 'decision';
+  label: string;
+  actor?: string;
+}
+
+/** Конечное состояние — реализованная ценность. */
+export interface StoryOutcomeDef {
+  kind: 'outcome';
+  label: string;
+}
+
+/** Шаг стори — рекурсивный union (system содержит шаги). */
+export type StoryStepDef =
+  | StoryActorDef
+  | StoryActionDef
+  | StoryArtifactDef
+  | StorySystemDef
+  | StoryHandoffDef
+  | StoryDecisionDef
+  | StoryOutcomeDef;
+
+/* ═══ Roadmap grammar — операция мышления: показать причинную прогрессию ═══
+ *
+ *  Каузальный путь (не календарь): горизонтальный хребет из фаз, вехи-ромбы
+ *  на стыках фаз, хорайзоны (Now/Next/Later) — зоны-колонны, зависимости —
+ *  дуги по имени вехи (реестр имён, как Player и Artifact). */
+
+/** Сегмент хребта — этап работы. */
+export interface RoadmapPhaseDef {
+  kind: 'phase';
+  label: string;
+}
+
+/** Веха на стыке фаз — точка-ромб на хребте. name = ключ реестра
+ *  (на него ссылается Dependency). */
+export interface RoadmapMilestoneDef {
+  kind: 'milestone';
+  name: string;
+}
+
+/** Шаг внутри хорайзона: фаза или веха. */
+export type RoadmapStepDef = RoadmapPhaseDef | RoadmapMilestoneDef;
+
+/** Зона-колонна (Now/Next/Later): группа фаз и вех. */
+export interface RoadmapHorizonDef {
+  kind: 'horizon';
+  label: string;
+  steps: RoadmapStepDef[];
+}
+
+/** Причинная связь между вехами. Точки связываются по имени,
+ *  геометрию (дугу над хребтом) решает канвас. */
+export interface RoadmapDependencyDef {
+  kind: 'dependency';
+  from: string;
+  to: string;
 }

@@ -1,6 +1,11 @@
 <script lang="ts">
   /** Ось Positioning Map: линия + подписи концов + заголовок.
-   *  Сетка и отступы плота объявлены через --pom-inset-* (задаёт PositioningMap). */
+   *
+   *  Рендерится ВНУТРИ семантического слоя (.pom__layer), поэтому линии
+   *  идут по его рёбрам (left: 0 / right: 0 / bottom: 0) — это рёбра бокса
+   *  сетки. Подписи концов x и заголовок свисают в нижний жёлоб
+   *  (--pom-inset-b); подписи концов y — чипы ВНУТРИ сетки у концов линии
+   *  (в левом жёлобе 44px горизонтальная подпись обрезалась бы). */
   let {
     id,
     label,
@@ -42,15 +47,15 @@
     background: var(--canvas-plot-axis);
   }
   .pom-axis--x .pom-axis__line {
-    left: var(--pom-inset-l);
-    right: var(--pom-inset-x);
-    bottom: var(--pom-inset-b);
+    left: 0;
+    right: 0;
+    bottom: 0;
     height: 1px;
   }
   .pom-axis--y .pom-axis__line {
-    left: var(--pom-inset-l);
-    top: var(--pom-inset-y);
-    bottom: var(--pom-inset-b);
+    left: 0;
+    top: 0;
+    bottom: 0;
     width: 1px;
   }
   .pom-axis__end {
@@ -61,22 +66,30 @@
     color: var(--canvas-ink-soft);
   }
   .pom-axis--x .pom-axis__end--low {
-    left: var(--pom-inset-l);
-    bottom: 10px;
+    left: 0;
+    bottom: -20px;
   }
   .pom-axis--x .pom-axis__end--high {
-    right: var(--pom-inset-x);
-    bottom: 10px;
+    right: 0;
+    bottom: -20px;
   }
+  /* концы y — чипы внутри сетки у концов линии (жёлоб 44px узок
+     для горизонтальной подписи) */
   .pom-axis--y .pom-axis__end--low {
-    left: calc(var(--pom-inset-l) - 8px);
-    bottom: var(--pom-inset-b);
-    transform: translateX(-100%);
+    left: 8px;
+    bottom: 8px;
+    background: var(--vnp-card);
+    border: 1px solid color-mix(in srgb, var(--canvas-ink-soft) 30%, transparent);
+    border-radius: 3px;
+    padding: 2px 7px;
   }
   .pom-axis--y .pom-axis__end--high {
-    left: calc(var(--pom-inset-l) - 8px);
-    top: var(--pom-inset-y);
-    transform: translateX(-100%);
+    left: 8px;
+    top: 8px;
+    background: var(--vnp-card);
+    border: 1px solid color-mix(in srgb, var(--canvas-ink-soft) 30%, transparent);
+    border-radius: 3px;
+    padding: 2px 7px;
   }
   .pom-axis__title {
     position: absolute;
@@ -88,12 +101,14 @@
   }
   .pom-axis--x .pom-axis__title {
     left: 50%;
-    bottom: 8px;
+    bottom: -28px;
     transform: translateX(-50%);
   }
+  /* y-заголовок вертикальный — живёт в левом жёлобе; wrap в координатах
+     слоя: левый край жёлоба = calc(-1 * inset-l + 8px) */
   .pom-axis__title-wrap {
     position: absolute;
-    left: 6px;
+    left: calc(-1 * var(--pom-inset-l) + 8px);
     top: 0;
     bottom: 0;
     display: flex;

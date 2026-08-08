@@ -49,7 +49,9 @@
     children?: Snippet;
   } = $props();
 
-  let plotEl = $state<HTMLDivElement | null>(null);
+  /** Семантический слой = бокс сетки (inset такой же, как у gridlines):
+   *  координаты игроков в % откладываются от НЕГО, а не от плота. */
+  let layerEl = $state<HTMLDivElement | null>(null);
 
   const ctx = $state({
     points: {} as Record<string, { x: number; y: number }>,
@@ -60,7 +62,7 @@
   setPositioningCtx(ctx);
 
   $effect(() => {
-    const el = plotEl;
+    const el = layerEl;
     if (!el) return;
     const measure = () => {
       ctx.ratio = el.clientWidth / Math.max(1, el.clientHeight);
@@ -82,27 +84,29 @@
 </script>
 
 <div class="pom">
-  <div class="pom__plot" bind:this={plotEl}>
+  <div class="pom__plot">
     <div class="pom__grid"></div>
-    {#if children}
-      {@render children()}
-    {:else}
-      {#each axes as a}
-        <Axis id={a.id} label={a.label} low={a.low} high={a.high} />
-      {/each}
-      {#each territories as t}
-        <Territory x={t.x} y={t.y} label={t.label} width={t.width} height={t.height} tone={t.tone} />
-      {/each}
-      {#each players as p}
-        <Player name={p.name} x={p.x} y={p.y} state={p.state ?? 'default'} />
-      {/each}
-      {#each tensions as t}
-        <Tension between={t.between} label={t.label} />
-      {/each}
-      {#each vectors as v}
-        <Vector from={v.from} to={v.to} label={v.label} />
-      {/each}
-    {/if}
+    <div class="pom__layer" bind:this={layerEl}>
+      {#if children}
+        {@render children()}
+      {:else}
+        {#each axes as a}
+          <Axis id={a.id} label={a.label} low={a.low} high={a.high} />
+        {/each}
+        {#each territories as t}
+          <Territory x={t.x} y={t.y} label={t.label} width={t.width} height={t.height} tone={t.tone} />
+        {/each}
+        {#each players as p}
+          <Player name={p.name} x={p.x} y={p.y} state={p.state ?? 'default'} />
+        {/each}
+        {#each tensions as t}
+          <Tension between={t.between} label={t.label} />
+        {/each}
+        {#each vectors as v}
+          <Vector from={v.from} to={v.to} label={v.label} />
+        {/each}
+      {/if}
+    </div>
   </div>
 
   {#if showLegend}
@@ -148,6 +152,12 @@
       linear-gradient(to right, var(--canvas-plot-grid) 1px, transparent 1px),
       linear-gradient(to bottom, var(--canvas-plot-grid) 1px, transparent 1px);
     background-size: 25% 25%, 25% 25%;
+  }
+  /* семантический слой — та же геометрия, что у сетки: % координаты
+     атомов откладываются от бокса сетки, а не от всего плота */
+  .pom__layer {
+    position: absolute;
+    inset: var(--pom-inset-y) var(--pom-inset-x) var(--pom-inset-b) var(--pom-inset-l);
   }
   .pom__legend {
     flex: 0 0 auto;

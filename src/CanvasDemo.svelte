@@ -12,6 +12,26 @@
     Player,
     Tension,
     Vector,
+    Story,
+    Actor,
+    Action,
+    Artifact,
+    System,
+    Handoff,
+    Decision,
+    Outcome,
+    Roadmap,
+    Horizon,
+    Phase,
+    Milestone,
+    Dependency,
+    Stage,
+    Stack,
+    Split,
+    Rail,
+    Overlay,
+    Zone,
+    Divider,
     Scene,
     StickyNote,
   } from './lib/index.ts';
@@ -21,8 +41,8 @@
 <div class="theme-canvas">
   <div class="cdemo">
     <header class="cdemo__header">
-      <h1 class="cdemo__title">Canvas Demo — VPC · Lean Canvas · Feature Model · Trade-offs · Positioning Map</h1>
-      <p class="cdemo__sub">16:9 horizontal · technical editorial · slots mode</p>
+      <h1 class="cdemo__title">Canvas Demo — VPC · Lean · Feature Model · Trade-offs · Positioning Map · User Story · Roadmap · Composition</h1>
+      <p class="cdemo__sub">16:9 · technical editorial · composition system</p>
     </header>
 
     <div class="cdemo__grid">
@@ -104,6 +124,97 @@
             <Vector from="Us" to={{ x: 92, y: 90 }} label="Autonomous modeling" />
           </PositioningMap>
         </Scene>
+      </div>
+
+      <!-- ═══ USER STORY — slots mode (Domain Storytelling) ═══ -->
+      <div class="cdemo__item">
+        <span class="cdemo__badge">user story · slots</span>
+        <Scene title="User Story — From Insight to Value">
+          <Story>
+            <Actor name="Founder" />
+            <Action actor="Founder" label="Write the brief" />
+            <Artifact name="Brief" />
+            <System label="Launch Console">
+              <Action actor="AI" label="Implement from the brief" />
+              <Artifact name="Brief" />
+              <Artifact name="Scene" />
+            </System>
+            <Decision actor="Founder" label="Ship?" />
+            <Outcome label="Value realized" />
+          </Story>
+        </Scene>
+      </div>
+
+      <!-- ═══ ROADMAP — slots mode (causal path, not a calendar) ═══ -->
+      <div class="cdemo__item">
+        <span class="cdemo__badge">roadmap · slots</span>
+        <Scene title="Roadmap — From Grammar to Ecosystem">
+          <Roadmap>
+            <Horizon label="Now">
+              <Phase label="Grammar" />
+              <Milestone name="Taxonomy" />
+              <Phase label="Canvases" />
+              <Milestone name="Canon" />
+            </Horizon>
+            <Horizon label="Next">
+              <Phase label="Editor" />
+              <Milestone name="Render" />
+            </Horizon>
+            <Horizon label="Later">
+              <Phase label="Scale" />
+              <Milestone name="Ecosystem" />
+            </Horizon>
+            <Dependency from="Canon" to="Render" />
+            <Dependency from="Taxonomy" to="Ecosystem" />
+          </Roadmap>
+        </Scene>
+      </div>
+
+      <!-- ═══ COMPOSITION — Stage · Rail · Stack (16:9, YouTube classic) ═══ -->
+      <div class="cdemo__item">
+        <span class="cdemo__badge">composition · stage · rail · stack</span>
+        <Stage aspect="16:9" density="editorial">
+          <Rail side="right" width="260px" gap="lg">
+            <PositioningMap showLegend={false} />
+            {#snippet rail()}
+              <Stack gap="md">
+                <Stack gap="sm">
+                  <span class="cdemo__eyebrow">POSITIONING</span>
+                  <h2 class="cdemo__headline">The market isn't where you think it is</h2>
+                </Stack>
+                <Divider />
+                <Stack gap="sm">
+                  <span class="cdemo__evidence cdemo__evidence--rose">● Miro owns playfulness — and the noise</span>
+                  <span class="cdemo__evidence cdemo__evidence--amber">● Us owns rigor — and the meaning</span>
+                  <span class="cdemo__evidence">● The opening is the tension between them</span>
+                </Stack>
+                <Divider />
+                <div class="cdemo__insight">The opening is here.</div>
+              </Stack>
+            {/snippet}
+          </Rail>
+        </Stage>
+      </div>
+
+      <!-- ═══ COMPOSITION — Shorts safe areas (9:16) ═══ -->
+      <div class="cdemo__item cdemo__item--short">
+        <span class="cdemo__badge">composition · shorts · safe areas</span>
+        <Stage aspect="9:16" density="editorial" safeArea="shorts">
+          <Overlay>
+            <PositioningMap showLegend={false} />
+            {#snippet overlay()}
+              <Zone placement="safe-top">
+                <Stack gap="sm">
+                  <span class="cdemo__eyebrow">POSITIONING</span>
+                  <h2 class="cdemo__headline">The market isn't where you think it is</h2>
+                </Stack>
+              </Zone>
+              <Zone placement="safe-bottom">
+                <div class="cdemo__insight">The opening is here.</div>
+              </Zone>
+            {/snippet}
+          </Overlay>
+        </Stage>
       </div>
 
       <!-- ═══ TRADE-OFF MATRIX — slots mode ═══ -->
@@ -262,9 +373,53 @@
     max-width: 960px;
     aspect-ratio: 16 / 9;
   }
-  .cdemo__item :global(.scene) {
+  .cdemo__item--short {
+    max-width: 360px;
+    aspect-ratio: 9 / 16;
+  }
+  .cdemo__item :global(.scene),
+  .cdemo__item :global(.stage) {
     width: 100%;
     height: 100%;
+  }
+
+  /* ── composition demo content ── */
+  .cdemo__eyebrow {
+    font-family: var(--vnp-font-mono);
+    font-size: var(--stage-type-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--canvas-highlight-ink);
+  }
+  .cdemo__headline {
+    margin: 0;
+    font-family: var(--vnp-font);
+    font-size: var(--stage-type-lg);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--vnp-ink);
+  }
+  .cdemo__evidence {
+    font-family: var(--vnp-font-mono);
+    font-size: var(--stage-type-xs);
+    letter-spacing: 0.02em;
+    color: var(--canvas-ink-soft);
+  }
+  .cdemo__evidence--rose {
+    color: var(--canvas-mark-cross);
+  }
+  .cdemo__evidence--amber {
+    color: var(--canvas-highlight-ink);
+  }
+  .cdemo__insight {
+    border: 1px solid color-mix(in srgb, var(--canvas-highlight-ink) 45%, transparent);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-family: var(--vnp-font);
+    font-size: var(--stage-type-md);
+    font-weight: 600;
+    color: var(--canvas-highlight-ink);
+    background: color-mix(in srgb, var(--canvas-highlight-ink) 7%, transparent);
   }
   .cdemo__badge {
     font-family: var(--vnp-font-mono);

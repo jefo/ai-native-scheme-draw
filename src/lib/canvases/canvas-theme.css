@@ -102,6 +102,49 @@
   --canvas-plot-grid: rgba(255, 255, 255, 0.05);
   --canvas-plot-axis: rgba(255, 255, 255, 0.25);
   --canvas-plot-tension: rgba(251, 113, 133, 0.7);
+
+  /* ── stage: media composition — шкалы, варьируемые density ── */
+  --stage-gap-xs: 4px;
+  --stage-gap-sm: 8px;
+  --stage-gap-md: 16px;
+  --stage-gap-lg: 24px;
+  --stage-gap-xl: 40px;
+
+  --stage-type-xs: 10px;
+  --stage-type-sm: 12px;
+  --stage-type-md: 14px;
+  --stage-type-lg: 20px;
+  --stage-type-xl: 28px;
+  --stage-type-xxl: 40px;
+
+  /* ── stage: safe zones (Shorts: UI платформы съедает края) ── */
+  --stage-safe-top: 140px;
+  --stage-safe-bottom: 220px;
+  --stage-safe-left: 24px;
+  --stage-safe-right: 24px;
+}
+
+/* ── stage chrome: карта-носитель композиции ── */
+.theme-canvas .stage {
+  border: var(--canvas-stroke);
+  border-radius: 12px;
+  background: var(--vnp-card);
+}
+
+/* ── density variants: один организм в любой плотности ── */
+.theme-canvas .stage[data-density='compact'] {
+  --stage-gap-lg: 16px;
+  --stage-gap-xl: 24px;
+  --stage-type-lg: 16px;
+  --stage-type-xl: 22px;
+  --stage-type-xxl: 32px;
+}
+.theme-canvas .stage[data-density='cinematic'] {
+  --stage-gap-lg: 32px;
+  --stage-gap-xl: 56px;
+  --stage-type-lg: 24px;
+  --stage-type-xl: 34px;
+  --stage-type-xxl: 52px;
 }
 
 /* ── Scene chrome override: тёмная стеклянная карта ── */

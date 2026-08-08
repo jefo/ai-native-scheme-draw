@@ -92,6 +92,15 @@
         "value": "12px",
         "createdAt": "2026-08-07T14:16:07.945Z",
         "reason": "Phone screen device frame — mimics iPhone/Android rounded corners, not a design system token"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "src/lib/canvases/canvas-theme.css"
+        ],
+        "createdAt": "2026-08-08T12:53:36.656Z",
+        "reason": "Launch Console dot-grid stage — intentional canvas-surface texture, confirmed by user (documented in DESIGN.md)"
       }
     ]
   }
