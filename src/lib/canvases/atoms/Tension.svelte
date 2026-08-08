@@ -54,7 +54,7 @@
   }
   .tension__line {
     position: absolute;
-    height: 1px;
+    height: 1.5px;
     background: repeating-linear-gradient(90deg, var(--canvas-plot-tension) 0 5px, transparent 5px 10px);
     transform-origin: left center;
   }
@@ -64,9 +64,10 @@
     background: var(--vnp-card);
     border: 1px solid color-mix(in srgb, var(--canvas-mark-cross) 40%, transparent);
     border-radius: 3px;
-    padding: 2px 7px;
+    padding: 2px 8px;
     font-family: var(--vnp-font-mono);
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 600;
     letter-spacing: 0.02em;
     color: var(--canvas-mark-cross);
     white-space: nowrap;

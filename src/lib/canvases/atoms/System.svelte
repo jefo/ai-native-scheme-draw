@@ -34,7 +34,8 @@
     background: var(--vnp-card);
     padding: 0 6px;
     font-family: var(--vnp-font-mono);
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--vnp-info);
@@ -43,6 +44,6 @@
   .uf-system__track {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 12px;
   }
 </style>

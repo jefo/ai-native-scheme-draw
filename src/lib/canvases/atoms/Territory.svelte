@@ -40,7 +40,8 @@
   }
   .territory__label {
     font-family: var(--vnp-font-mono);
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--canvas-ink-soft);

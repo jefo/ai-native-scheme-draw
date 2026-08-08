@@ -1,5 +1,5 @@
 <script lang="ts">
-  /** Развилка: ромб-маркер + подпись решения. Кто решает — tag actor. */
+  /** Развилка: янтарный чип с ромбом + подпись решения. Кто решает — tag actor. */
   let {
     label,
     actor,
@@ -11,10 +11,14 @@
 
 <div class="uf-step uf-decision">
   {#if actor}
-    <span class="uf-decision__actor">{actor}</span>
+    <span class="uf-decision__actor">
+      <span class="uf-decision__actor-dot"></span>{actor}
+    </span>
   {/if}
-  <span class="uf-decision__diamond"></span>
-  <span class="uf-decision__label">{label}</span>
+  <div class="uf-decision__row">
+    <span class="uf-decision__diamond"></span>
+    <span class="uf-decision__label">{label}</span>
+  </div>
 </div>
 
 <style>
@@ -22,30 +26,50 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
-    padding: 4px 10px;
+    gap: 4px;
+    border: 1px solid color-mix(in srgb, var(--canvas-highlight-ink) 70%, transparent);
+    border-radius: 8px;
+    background: var(--canvas-panel-bg);
+    padding: 8px 14px;
+    min-height: 34px;
   }
   .uf-decision__actor {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     font-family: var(--vnp-font-mono);
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--canvas-ink-soft);
     white-space: nowrap;
   }
+  .uf-decision__actor-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--vnp-info);
+  }
+  .uf-decision__row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
   .uf-decision__diamond {
-    width: 34px;
-    height: 34px;
+    width: 8px;
+    height: 8px;
     transform: rotate(45deg);
     border: 1px solid var(--canvas-sticky-yellow-border);
     background: var(--canvas-sticky-yellow);
-    border-radius: 3px;
+    border-radius: 2px;
+    flex: none;
   }
   .uf-decision__label {
-    font-family: var(--vnp-font-mono);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+    font-family: var(--vnp-font);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     color: var(--canvas-highlight-ink);
     white-space: nowrap;
   }

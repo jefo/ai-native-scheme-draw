@@ -71,9 +71,9 @@
   }
   .vector__line {
     position: absolute;
-    height: 1px;
+    height: 1.5px;
     background: var(--canvas-highlight-ink);
-    opacity: 0.75;
+    opacity: 0.85;
     transform-origin: left center;
   }
   .vector__head {
@@ -86,9 +86,10 @@
     background: var(--vnp-card);
     border: 1px solid color-mix(in srgb, var(--canvas-highlight-ink) 35%, transparent);
     border-radius: 3px;
-    padding: 2px 7px;
+    padding: 2px 8px;
     font-family: var(--vnp-font-mono);
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 600;
     letter-spacing: 0.02em;
     color: var(--canvas-highlight-ink);
     white-space: nowrap;

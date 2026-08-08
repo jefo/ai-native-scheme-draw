@@ -23,8 +23,8 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    border: var(--canvas-stroke);
-    border-radius: 6px;
+    border: 1px solid color-mix(in srgb, var(--canvas-ink-soft) 34%, transparent);
+    border-radius: 8px;
     background: var(--canvas-panel-bg);
     padding: 8px 12px;
     min-width: 88px;
@@ -36,22 +36,25 @@
     align-items: center;
     gap: 5px;
     font-family: var(--vnp-font-mono);
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--canvas-ink-soft);
     white-space: nowrap;
   }
   .uf-action__dot {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: var(--vnp-info);
   }
   .uf-action__label {
-    font-family: var(--vnp-font-mono);
-    font-size: 10px;
-    line-height: 1.45;
+    font-family: var(--vnp-font);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
     color: var(--canvas-ink);
   }
 </style>

@@ -61,19 +61,26 @@
 <style>
   .uf-artifact {
     border: 1px solid var(--canvas-sticky-blue-border);
-    border-radius: 4px;
+    border-radius: 8px;
     background: var(--canvas-sticky-blue);
-    padding: 6px 10px;
-    min-width: 60px;
+    padding: 8px 14px;
+    min-width: 64px;
+    min-height: 34px;
+    box-shadow:
+      var(--canvas-note-shadow),
+      0 0 14px color-mix(in srgb, var(--canvas-sticky-blue-border) 28%, transparent);
   }
   .uf-artifact--ref {
     border-style: dashed;
     background: color-mix(in srgb, var(--canvas-sticky-blue-border) 9%, transparent);
+    box-shadow: none;
   }
   .uf-artifact__label {
-    font-family: var(--vnp-font-mono);
-    font-size: 10px;
-    color: var(--vnp-info);
+    font-family: var(--vnp-font);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--canvas-ink);
     white-space: nowrap;
   }
 </style>

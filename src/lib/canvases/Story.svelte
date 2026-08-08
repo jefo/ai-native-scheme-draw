@@ -145,8 +145,11 @@
   .story__track {
     position: relative;
     display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 12px;
     width: 100%;
     min-width: 0;
   }
@@ -154,28 +157,12 @@
     flex: 0 1 auto;
     /* min-width уважаем из атомов (не схлопывать в щепки) */
     min-width: unset;
-    /* containing block для коннектора ::after (иначе стрелки
-       якорятся к треку и сваливаются у его правого края) */
-    position: relative;
-  }
-  /* коннекторы: стрелка между шагами (кроме последнего в треке) */
-  .story__track :global(.uf-step:not(:last-child))::after {
-    content: '→';
-    position: absolute;
-    top: 50%;
-    right: -10px;
-    transform: translate(50%, -50%);
-    font-family: var(--vnp-font-mono);
-    font-size: 11px;
-    color: var(--canvas-ink-soft);
-    z-index: 2;
-    pointer-events: none;
   }
 
   /* нить артефакта: повторное вхождение того же имени */
   .story__thread {
     position: absolute;
-    height: 1px;
+    height: 1.5px;
     background: repeating-linear-gradient(
       90deg,
       var(--canvas-sticky-blue-border) 0 5px,
@@ -190,11 +177,12 @@
     transform: translate(-50%, -50%);
     z-index: 3;
     font-family: var(--vnp-font-mono);
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 600;
     color: var(--vnp-info);
     background: var(--vnp-card);
     border-radius: 3px;
-    padding: 0 3px;
+    padding: 1px 5px;
     pointer-events: none;
   }
 

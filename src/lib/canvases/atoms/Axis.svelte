@@ -61,7 +61,8 @@
   .pom-axis__end {
     position: absolute;
     font-family: var(--vnp-font-mono);
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 600;
     letter-spacing: 0.03em;
     color: var(--canvas-ink-soft);
   }
@@ -94,7 +95,8 @@
   .pom-axis__title {
     position: absolute;
     font-family: var(--vnp-font-mono);
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: var(--canvas-ink-soft);

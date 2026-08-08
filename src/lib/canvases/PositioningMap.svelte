@@ -194,7 +194,7 @@
   }
   .pom__legend-mark--competitor {
     background: transparent;
-    border: 1.5px solid var(--canvas-ink-soft);
+    border: 1.5px solid var(--canvas-mark-cross);
   }
   .pom__legend-mark--reference {
     background: transparent;
@@ -209,6 +209,6 @@
   }
   .pom__legend-mark--emerging {
     background: transparent;
-    border: 1.5px solid var(--canvas-ink-soft);
+    border: 1.5px solid var(--canvas-sticky-blue-border);
   }
 </style>
