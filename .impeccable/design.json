@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "generatedAt": "2026-08-07T15:00:00.000Z",
-  "title": "Design System: Visual Narrative Library — Premium Dark DevTools",
+  "title": "Design System: Visual Narrative Library — Two Projections (Blueprint Engine + Launch Console)",
   "extensions": {
     "colorMeta": {
       "deep-space": {
@@ -118,6 +118,146 @@
           "oklch(87% 0.08 75)",
           "oklch(95% 0.04 75)"
         ]
+      },
+      "carbon": {
+        "role": "neutral",
+        "displayName": "Carbon",
+        "canonical": "oklch(8% 0.01 250)",
+        "tonalRamp": [
+          "oklch(6% 0.008 250)",
+          "oklch(8% 0.01 250)",
+          "oklch(11% 0.011 250)",
+          "oklch(14% 0.011 250)",
+          "oklch(18% 0.01 250)",
+          "oklch(24% 0.009 250)",
+          "oklch(32% 0.007 250)",
+          "oklch(44% 0.005 250)"
+        ]
+      },
+      "glass": {
+        "role": "neutral",
+        "displayName": "Glass",
+        "canonical": "oklch(13% 0.012 250)",
+        "tonalRamp": [
+          "oklch(11% 0.011 250)",
+          "oklch(13% 0.012 250)",
+          "oklch(16% 0.013 250)",
+          "oklch(20% 0.012 250)",
+          "oklch(26% 0.011 250)",
+          "oklch(34% 0.009 250)",
+          "oklch(44% 0.007 250)",
+          "oklch(56% 0.005 250)"
+        ]
+      },
+      "smoke": {
+        "role": "neutral",
+        "displayName": "Smoke",
+        "canonical": "oklch(95% 0.003 250)"
+      },
+      "signal-cyan": {
+        "role": "secondary",
+        "displayName": "Signal Cyan",
+        "canonical": "oklch(78% 0.14 200)",
+        "tonalRamp": [
+          "oklch(25% 0.06 200)",
+          "oklch(36% 0.09 200)",
+          "oklch(48% 0.11 200)",
+          "oklch(60% 0.13 200)",
+          "oklch(70% 0.14 200)",
+          "oklch(78% 0.14 200)",
+          "oklch(87% 0.10 200)",
+          "oklch(95% 0.05 200)"
+        ]
+      },
+      "signal-violet": {
+        "role": "secondary",
+        "displayName": "Signal Violet",
+        "canonical": "oklch(72% 0.16 290)",
+        "tonalRamp": [
+          "oklch(22% 0.06 290)",
+          "oklch(33% 0.09 290)",
+          "oklch(45% 0.12 290)",
+          "oklch(57% 0.14 290)",
+          "oklch(66% 0.15 290)",
+          "oklch(72% 0.16 290)",
+          "oklch(82% 0.12 290)",
+          "oklch(93% 0.05 290)"
+        ]
+      },
+      "signal-amber": {
+        "role": "secondary",
+        "displayName": "Signal Amber",
+        "canonical": "oklch(82% 0.15 85)",
+        "tonalRamp": [
+          "oklch(25% 0.05 85)",
+          "oklch(38% 0.08 85)",
+          "oklch(50% 0.10 85)",
+          "oklch(63% 0.12 85)",
+          "oklch(73% 0.14 85)",
+          "oklch(82% 0.15 85)",
+          "oklch(90% 0.11 85)",
+          "oklch(96% 0.05 85)"
+        ]
+      },
+      "signal-mint": {
+        "role": "secondary",
+        "displayName": "Signal Mint",
+        "canonical": "oklch(78% 0.15 165)",
+        "tonalRamp": [
+          "oklch(22% 0.06 165)",
+          "oklch(34% 0.09 165)",
+          "oklch(46% 0.12 165)",
+          "oklch(58% 0.14 165)",
+          "oklch(69% 0.15 165)",
+          "oklch(78% 0.15 165)",
+          "oklch(87% 0.11 165)",
+          "oklch(95% 0.05 165)"
+        ]
+      },
+      "signal-rose": {
+        "role": "secondary",
+        "displayName": "Signal Rose",
+        "canonical": "oklch(74% 0.16 5)",
+        "tonalRamp": [
+          "oklch(24% 0.06 5)",
+          "oklch(36% 0.09 5)",
+          "oklch(48% 0.12 5)",
+          "oklch(60% 0.14 5)",
+          "oklch(68% 0.16 5)",
+          "oklch(74% 0.16 5)",
+          "oklch(84% 0.12 5)",
+          "oklch(94% 0.05 5)"
+        ]
+      },
+      "signal-orange": {
+        "role": "secondary",
+        "displayName": "Signal Orange",
+        "canonical": "oklch(76% 0.15 50)",
+        "tonalRamp": [
+          "oklch(24% 0.05 50)",
+          "oklch(36% 0.08 50)",
+          "oklch(49% 0.11 50)",
+          "oklch(61% 0.13 50)",
+          "oklch(69% 0.14 50)",
+          "oklch(76% 0.15 50)",
+          "oklch(85% 0.11 50)",
+          "oklch(94% 0.05 50)"
+        ]
+      },
+      "plot-grid": {
+        "role": "neutral",
+        "displayName": "Plot Grid",
+        "canonical": "oklch(95% 0.003 250 / 0.05)"
+      },
+      "plot-axis": {
+        "role": "neutral",
+        "displayName": "Plot Axis",
+        "canonical": "oklch(95% 0.003 250 / 0.25)"
+      },
+      "plot-tension": {
+        "role": "secondary",
+        "displayName": "Plot Tension",
+        "canonical": "oklch(74% 0.16 5 / 0.7)"
       }
     },
     "typographyMeta": {
@@ -140,6 +280,10 @@
       "label": {
         "displayName": "Label",
         "purpose": "Metadata, badges, chips, scene headers, predicate annotations. Single label role — covers what overline and label previously split."
+      },
+      "chip": {
+        "displayName": "Chip",
+        "purpose": "Glass chip labels in the Launch Console projection. Data-bearing, never decorative — Inter 600 at 13px with tight tracking."
       },
       "mono": {
         "displayName": "Mono",
@@ -221,6 +365,22 @@
       "css": ".ds-chip-mint { display: inline-flex; align-items: center; padding: 2px 8px; border: 1px solid rgba(45,212,191,0.25); border-radius: 4px; background: rgba(45,212,191,0.10); color: #2dd4bf; font-family: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }"
     },
     {
+      "name": "Glass Chip (StickyNote)",
+      "kind": "chip",
+      "refersTo": "sticky-note",
+      "description": "Launch Console atom — the canvas kit's answer to the sticky note. Colored border and glow carry the semantics (amber=jobs, rose=pains, mint=gains, cyan=products).",
+      "html": "<div class=\"ds-chip-glass\" data-tone=\"mint\"><span class=\"ds-chip-badge\">✓</span>Zero downtime</div>",
+      "css": ".ds-chip-glass { display: inline-flex; align-items: center; justify-content: center; padding: 8px 14px; min-width: 64px; min-height: 34px; border: 1px solid rgba(52,211,153,0.55); border-radius: 8px; background: rgba(52,211,153,0.13); color: #f2f3f6; font-family: 'Inter', 'SF Pro', system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: -0.01em; box-shadow: 0 6px 14px rgba(0,0,0,0.45), 0 0 14px rgba(52,211,153,0.28); position: relative; transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), filter 0.15s cubic-bezier(0.4, 0, 0.2, 1); } .ds-chip-glass:hover { transform: translateY(-2px); filter: brightness(1.12); } .ds-chip-badge { position: absolute; top: -6px; left: -6px; width: 18px; height: 18px; border-radius: 50%; border: 2px solid #0b0c0f; background: #34d399; color: #0b0c0f; font-family: 'JetBrains Mono', 'SF Mono', monospace; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; }"
+    },
+    {
+      "name": "Glass Panel (CanvasSection)",
+      "kind": "card",
+      "refersTo": "canvas-section",
+      "description": "Canvas kit grid cell with mono uppercase label. tone=highlight applies the cyan→violet gradient ring — reserved for exactly one key cell per canvas.",
+      "html": "<div class=\"ds-panel ds-panel-highlight\"><h4 class=\"ds-panel-label\">UNIQUE VALUE</h4><div class=\"ds-panel-body\"><div class=\"ds-chip-glass\" data-tone=\"amber\">Grammar, not templates</div></div></div>",
+      "css": ".ds-panel { display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; background: rgba(255,255,255,0.035); padding: 10px 12px; min-width: 0; min-height: 0; } .ds-panel-label { font-family: 'JetBrains Mono', 'SF Mono', monospace; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #9aa0ab; text-align: center; margin: 0 0 8px; } .ds-panel-body { display: flex; flex-wrap: wrap; gap: 6px; align-items: flex-start; justify-content: center; } .ds-panel-highlight { border: 1px solid transparent; background: linear-gradient(rgba(251,191,36,0.07), rgba(251,191,36,0.07)) padding-box, linear-gradient(135deg, rgba(34,211,238,0.55), rgba(167,139,250,0.55)) border-box; } .ds-panel-highlight .ds-panel-label { color: #fbbf24; font-size: 11px; letter-spacing: 0.08em; }"
+    },
+    {
       "name": "Ghost Chip",
       "kind": "chip",
       "refersTo": null,
@@ -279,7 +439,7 @@
   ],
   "narrative": {
     "northStar": "The Blueprint Engine",
-    "overview": "A precision instrument for composing visual thought. The interface is a dark, silent engineering workspace — deep-space slate backgrounds, hairline borders, and a single mint-teal accent that marks structure and state. Nothing screams. Nothing persuades. The system earns its authority through restraint: every pixel is load-bearing, every glow has a function.\n\nThe aesthetic draws from premium developer tools (Linear, Vercel, Supabase) where the interface recedes and the work stands forward. It is a tool for serious people reasoning about complex systems — the visual equivalent of a blueprint table in a darkened workshop. The only \"decoration\" is a faint orthogonal grid that covers every surface, whispering: this is where things get built.",
+    "overview": "A precision instrument for composing visual thought. The interface is a dark, silent engineering workspace — deep-space slate backgrounds, hairline borders, and a single mint-teal accent that marks structure and state. Nothing screams. Nothing persuades. The system earns its authority through restraint: every pixel is load-bearing, every glow has a function.\n\nThe aesthetic draws from premium developer tools (Linear, Vercel, Supabase) where the interface recedes and the work stands forward. It is a tool for serious people reasoning about complex systems — the visual equivalent of a blueprint table in a darkened workshop. The only \"decoration\" is a faint orthogonal grid that covers every surface, whispering: this is where things get built.\n\nThe product is a DX-native visual modeling kit: developers declaratively describe a model of thinking with components, and the UI is its projection. The sibling projection, The Launch Console, voices the canvas kit (VPC, Lean Canvas, Feature Model, Trade-off Matrix) as carbon-dark mission control with glass panels, neon signal edges, and glow — IBM Think cinema × a young AI startup, built for thought leadership on YouTube (16:9). One model, many voices.",
     "keyCharacteristics": [
       "95% monochrome deep-slate palette; color is exclusively functional (mint = activity, structure, connection)",
       "Hairline borders (1px, 7–11% white opacity) replace shadows for layer separation",
@@ -323,6 +483,31 @@
         "name": "The Hairline Separation Rule",
         "body": "Every border in the system is exactly 1px. No 2px, no 3px, no \"strong\" vs \"weak\" border weights. Variation comes from opacity (Stealth 7% vs Stealth-Active 11%), not line weight.",
         "section": "elevation"
+      },
+      {
+        "name": "The Projection Rule",
+        "body": "The declarative model never changes between projections — a VPC declared once must project into any voice without a single model change. Only the visual voice moves.",
+        "section": "colors"
+      },
+      {
+        "name": "The Neon Edge Rule",
+        "body": "In the Launch Console, a glass chip's colored border and glow ARE the semantics — amber=jobs, rose=pains, mint=gains, cyan=products. A chip's border color must match its semantic role; never decorative.",
+        "section": "colors"
+      },
+      {
+        "name": "The Gradient Ring Rule",
+        "body": "The cyan→violet gradient border is reserved for exactly one key cell per canvas (UVP in Lean Canvas, root in Feature Model, highlight in VPC). One signal per screen; the gradient is the loudest voice.",
+        "section": "colors"
+      },
+      {
+        "name": "The Console Glow Rule",
+        "body": "In the Launch Console, glow is always the chip's own signal color — never white, never a neutral bloom. The glow extends the semantics instead of decorating the surface.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Editorial Diagram Rule",
+        "body": "Diagram surfaces (plot-type canvases: Positioning Map, later User Flow, Roadmap) live in the technical-editorial register: hairline 1px lines and gridlines on a faint panel, mono captions, uppercase only for chrome (axes, territories). Color exists only as semantic state — focus=amber, tension=rose, vector=amber, territory=tonal zone — never as decoration. No glow, no gradient rings, no glass chips inside a plot; the chip grammar belongs to board-type canvases.",
+        "section": "colors"
       }
     ],
     "dos": [
@@ -333,7 +518,10 @@
       "Do apply the blueprint grid globally. Every surface without a solid fill shows the grid.",
       "Do use Mono for all numerical values, units, and technical identifiers.",
       "Do keep spacing generous — 16px minimum internal padding, 24px between elements, 48px between sections.",
-      "Do use outline-style, mono-weight icons (Phosphor or Lucide). 16px inline, 20px standalone."
+      "Do use outline-style, mono-weight icons (Phosphor or Lucide). 16px inline, 20px standalone.",
+      "Do keep the declarative model identical across projections; preserve the semantic color mapping (jobs=amber, pains=rose, gains=mint, products=cyan).",
+      "Do (Launch Console) let a chip's colored border and glow carry its semantics; reserve the Gradient Ring for the one key cell per canvas.",
+      "Do use canonical kit forms — Strategyzer VPC, 9-block Lean Canvas, FODA feature trees. The kit's recognizability is its value."
     ],
     "donts": [
       "Don't use drop shadows or box-shadow for elevation. The No-Shadow Rule is the system's defining constraint.",
@@ -343,7 +531,10 @@
       "Don't use border-radius above 8px. No pills, no circles, no fully rounded elements.",
       "Don't use more than 2 type sizes on any surface.",
       "Don't animate for delight. Motion is functional: state transitions (0.2s ease), reveal sequences (0.3s ease).",
-      "Don't mix the paper/sketch theme tokens with this system."
+      "Don't mix two projections inside one Scene — one scene, one voice.",
+      "Don't add new layouts to kits to express a new idea — new expression belongs to the projection layer; kits stay canonical and finite.",
+      "Don't revive the paper sticky aesthetic (Miro). Tested hypothesis, retired; the canvas kit projects as the Launch Console.",
+      "Don't expect the Launch Console to obey the Blueprint No-Shadow Rule — the console's glow is its own doctrine."
     ]
   }
 }

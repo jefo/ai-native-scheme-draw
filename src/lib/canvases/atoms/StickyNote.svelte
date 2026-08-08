@@ -1,18 +1,25 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
 
-  /** StickyNote — атом канвасов: цветной стикер как в Miro.
-   *  Цвета: yellow (Jobs), pink (Pains/Pain Relievers), green (Gains/Gain Creators), blue (Products).
+  /** StickyNote — атом канвасов: стеклянный чип с неоновой кромкой.
+   *  Цвет = семантика: amber (jobs/decisions), rose (pains/sacrificed),
+   *  mint (gains/chosen), cyan (products/data), orange (UVP), violet (advantage).
+   *  `mark` — бейдж в углу: 'check' (✓ выбран) | 'cross' (✗ пожертвован).
    *  Dual API: `label` для быстрого текста, `children` Snippet для полного контроля. */
   let {
     color = 'yellow',
     label = '',
+    mark,
     children,
   }: {
-    color?: 'yellow' | 'pink' | 'green' | 'blue';
+    color?: 'yellow' | 'pink' | 'green' | 'blue' | 'orange' | 'purple';
     label?: string;
+    mark?: 'check' | 'cross';
     children?: Snippet;
   } = $props();
+
+  const markGlyph = $derived(mark === 'check' ? '✓' : mark === 'cross' ? '✗' : '');
+  const markTitle = $derived(mark === 'check' ? 'chosen' : mark === 'cross' ? 'sacrificed' : '');
 </script>
 
 <div class="sticky sticky--{color}">
@@ -21,7 +28,9 @@
   {:else if label}
     <span class="sticky__body">{label}</span>
   {/if}
-  <span class="sticky__fold"></span>
+  {#if mark}
+    <span class="sticky__mark sticky__mark--{mark}" title={markTitle}>{markGlyph}</span>
+  {/if}
 </div>
 
 <style>
@@ -29,31 +38,25 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 14px 12px;
+    padding: 8px 14px;
     min-width: 64px;
-    min-height: 40px;
-    border: 1px solid transparent;
-    border-radius: 2px 2px 4px 2px;
-    box-shadow: var(--canvas-note-shadow);
-    position: relative;
-    font-family: var(--canvas-font-marker, 'Caveat', cursive);
-    font-size: 14px;
-    line-height: 1.3;
+    min-height: 34px;
+    border: 1px solid;
+    border-radius: 8px;
+    font-family: var(--vnp-font);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
     color: var(--canvas-ink);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    position: relative;
+    transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
     cursor: default;
   }
 
-  /* ── rotation: чередование для естественного вида ── */
-  .sticky:nth-child(odd) {
-    transform: rotate(1.5deg);
-  }
-  .sticky:nth-child(even) {
-    transform: rotate(-1.2deg);
-  }
   .sticky:hover {
-    transform: rotate(0deg) scale(1.03);
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.14);
+    transform: translateY(-2px);
+    filter: brightness(1.12);
     z-index: 1;
   }
 
@@ -65,33 +68,68 @@
     text-align: center;
   }
 
-  /* ── fold: складка стикера сверху ── */
-  .sticky__fold {
+  /* ── mark: бейдж выбора (✓ / ✗) в углу, кольцо из фона ── */
+  .sticky__mark {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 14px;
-    height: 10px;
-    background: rgba(0, 0, 0, 0.06);
-    border-radius: 0 0 0 4px;
-    z-index: 0;
+    top: -6px;
+    left: -6px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--vnp-paper);
+    font-family: var(--vnp-font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  .sticky__mark--check {
+    background: var(--canvas-mark-check);
+    color: var(--vnp-paper);
+  }
+  .sticky__mark--cross {
+    background: var(--canvas-mark-cross);
+    color: var(--vnp-paper);
   }
 
-  /* ── palette ── */
+  /* ── palette: стеклянные чипы, цвет = семантика ── */
   .sticky--yellow {
     background: var(--canvas-sticky-yellow);
     border-color: var(--canvas-sticky-yellow-border);
+    box-shadow: var(--canvas-note-shadow),
+      0 0 14px color-mix(in srgb, var(--canvas-sticky-yellow-border) 28%, transparent);
   }
   .sticky--pink {
     background: var(--canvas-sticky-pink);
     border-color: var(--canvas-sticky-pink-border);
+    box-shadow: var(--canvas-note-shadow),
+      0 0 14px color-mix(in srgb, var(--canvas-sticky-pink-border) 28%, transparent);
   }
   .sticky--green {
     background: var(--canvas-sticky-green);
     border-color: var(--canvas-sticky-green-border);
+    box-shadow: var(--canvas-note-shadow),
+      0 0 14px color-mix(in srgb, var(--canvas-sticky-green-border) 28%, transparent);
   }
   .sticky--blue {
     background: var(--canvas-sticky-blue);
     border-color: var(--canvas-sticky-blue-border);
+    box-shadow: var(--canvas-note-shadow),
+      0 0 14px color-mix(in srgb, var(--canvas-sticky-blue-border) 28%, transparent);
+  }
+  .sticky--orange {
+    background: var(--canvas-sticky-orange);
+    border-color: var(--canvas-sticky-orange-border);
+    box-shadow: var(--canvas-note-shadow),
+      0 0 14px color-mix(in srgb, var(--canvas-sticky-orange-border) 28%, transparent);
+  }
+  .sticky--purple {
+    background: var(--canvas-sticky-purple);
+    border-color: var(--canvas-sticky-purple-border);
+    box-shadow: var(--canvas-note-shadow),
+      0 0 14px color-mix(in srgb, var(--canvas-sticky-purple-border) 28%, transparent);
   }
 </style>

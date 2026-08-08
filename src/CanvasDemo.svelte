@@ -1,62 +1,34 @@
 <script lang="ts">
-  import { ValuePropositionCanvas, Scene, StickyNote } from './lib/index.ts';
+  import {
+    ValuePropositionCanvas,
+    LeanCanvas,
+    FeatureModel,
+    TradeOffMatrix,
+    TradeOffRow,
+    FeatureNode,
+    PositioningMap,
+    Axis,
+    Territory,
+    Player,
+    Tension,
+    Vector,
+    Scene,
+    StickyNote,
+  } from './lib/index.ts';
   import './lib/canvases/canvas-theme.css';
 </script>
 
 <div class="theme-canvas">
   <div class="cdemo">
     <header class="cdemo__header">
-      <h1 class="cdemo__title">Canvas Demo — Value Proposition Canvas</h1>
-      <p class="cdemo__sub">16:9 horizontal · Miro-style sticky notes</p>
+      <h1 class="cdemo__title">Canvas Demo — VPC · Lean Canvas · Feature Model · Trade-offs · Positioning Map</h1>
+      <p class="cdemo__sub">16:9 horizontal · technical editorial · slots mode</p>
     </header>
 
     <div class="cdemo__grid">
-      <!-- ═══ DATA MODE ═══ -->
+      <!-- ═══ VPC — slots mode ═══ -->
       <div class="cdemo__item">
-        <span class="cdemo__badge">data mode</span>
-        <Scene title="Value Proposition Canvas">
-          <ValuePropositionCanvas
-            customerJobs={[
-              'Write code',
-              'Debug errors',
-              'Review PRs',
-              'Deploy services',
-            ]}
-            pains={[
-              'Slow IDE startup',
-              'Complex cloud config',
-              'Context switching',
-              'Fragile toolchain',
-            ]}
-            gains={[
-              'Fast feedback loop',
-              'One-click deploy',
-              'Real-time collaboration',
-              'Built-in best practices',
-            ]}
-            products={[
-              'Cloud IDE',
-              'AI Copilot',
-              'Pre-built dev environments',
-            ]}
-            painRelievers={[
-              'Instant env spin-up',
-              'Zero-config cloud',
-              'Unified workflow',
-            ]}
-            gainCreators={[
-              'Hot-reload in 50ms',
-              'Deploy to prod in 1 click',
-              'Multiplayer editing',
-              'Lint/test built-in',
-            ]}
-          />
-        </Scene>
-      </div>
-
-      <!-- ═══ SLOTS MODE (custom atoms) ═══ -->
-      <div class="cdemo__item">
-        <span class="cdemo__badge">slots mode</span>
+        <span class="cdemo__badge">vpc · slots</span>
         <Scene title="Value Proposition Canvas">
           <ValuePropositionCanvas
             customerJobsSlot={jobs}
@@ -66,6 +38,99 @@
             painRelieversSlot={prs}
             gainCreatorsSlot={gcs}
           />
+        </Scene>
+      </div>
+
+      <!-- ═══ LEAN CANVAS — slots mode ═══ -->
+      <div class="cdemo__item">
+        <span class="cdemo__badge">lean canvas · slots</span>
+        <Scene title="Lean Canvas — Custom">
+          <LeanCanvas
+            problemSlot={lcProblem}
+            solutionSlot={lcSolution}
+            keyMetricsSlot={lcMetrics}
+            uvpSlot={lcUvp}
+            unfairAdvantageSlot={lcAdvantage}
+            channelsSlot={lcChannels}
+            customerSegmentsSlot={lcSegments}
+            costStructureSlot={lcCost}
+            revenueStreamsSlot={lcRevenue}
+          />
+        </Scene>
+      </div>
+
+      <!-- ═══ FEATURE MODEL — slots mode ═══ -->
+      <div class="cdemo__item">
+        <span class="cdemo__badge">feature model · slots</span>
+        <Scene title="Feature Model — Visual Narrative Library">
+          <FeatureModel root="Visual Narrative Library">
+            {#snippet children()}
+              <FeatureNode label="Core Grammar" kind="mandatory">
+                <FeatureNode label="Objects" kind="mandatory" />
+                <FeatureNode label="Predicates" kind="mandatory" />
+                <FeatureNode label="Scene" kind="mandatory" />
+              </FeatureNode>
+              <FeatureNode label="Canvases" kind="optional">
+                <FeatureNode label="VPC" kind="optional" />
+                <FeatureNode label="Lean" kind="optional" />
+                <FeatureNode label="Feature Model" kind="optional" />
+              </FeatureNode>
+              <FeatureNode label="Themes" kind="alternative" hint="1 of N">
+                <FeatureNode label="Blueprint" kind="alternative" />
+                <FeatureNode label="Brutalist" kind="alternative" />
+                <FeatureNode label="Canvas" kind="alternative" />
+              </FeatureNode>
+              <FeatureNode label="Visual Editor" kind="excluded" />
+            {/snippet}
+          </FeatureModel>
+        </Scene>
+      </div>
+
+      <!-- ═══ POSITIONING MAP — slots mode (DSL) ═══ -->
+      <div class="cdemo__item">
+        <span class="cdemo__badge">positioning map · slots</span>
+        <Scene title="Positioning Map — Visual Modeling Tools">
+          <PositioningMap>
+            <Axis id="x" label="Degree of automation" low="Manual" high="Autonomous" />
+            <Axis id="y" label="Customer control" low="Service" high="Self-serve" />
+            <Territory x={72} y={75} label="Visual modeling platforms" />
+            <Player name="Miro" x={38} y={62} state="competitor" />
+            <Player name="Zapier" x={62} y={32} state="competitor" />
+            <Player name="Linear" x={48} y={72} state="reference" />
+            <Player name="AI copilots" x={76} y={26} state="emerging" />
+            <Player name="???" x={20} y={25} state="unknown" />
+            <Player name="Us" x={82} y={80} state="focus" />
+            <Tension between={['Us', 'Miro']} label="Rigor vs playfulness" />
+            <Vector from="Us" to={{ x: 92, y: 90 }} label="Autonomous modeling" />
+          </PositioningMap>
+        </Scene>
+      </div>
+
+      <!-- ═══ TRADE-OFF MATRIX — slots mode ═══ -->
+      <div class="cdemo__item">
+        <span class="cdemo__badge">trade-off matrix · slots</span>
+        <Scene title="Trade-off Matrix — Product Decisions">
+          <TradeOffMatrix>
+            {#snippet children()}
+              <TradeOffRow decision="Format">
+                <StickyNote color="pink" label="9:16 Shorts" mark="cross" />
+                <StickyNote color="green" label="16:9 Classic" mark="check" />
+              </TradeOffRow>
+              <TradeOffRow decision="Aesthetic" note="canon dictates the form">
+                <StickyNote color="pink" label="Blueprint" mark="cross" />
+                <StickyNote color="pink" label="Brutalist" mark="cross" />
+                <StickyNote color="green" label="Miro sticky" mark="check" />
+              </TradeOffRow>
+              <TradeOffRow decision="Architecture">
+                <StickyNote color="pink" label="organisms/" mark="cross" />
+                <StickyNote color="green" label="canvases/" mark="check" />
+              </TradeOffRow>
+              <TradeOffRow decision="Scope" note="one organism at a time">
+                <StickyNote color="pink" label="All 7 at once" mark="cross" />
+                <StickyNote color="green" label="One at a time" mark="check" />
+              </TradeOffRow>
+            {/snippet}
+          </TradeOffMatrix>
         </Scene>
       </div>
     </div>
@@ -108,6 +173,56 @@
 {#snippet gcs()}
   <StickyNote color="green" label="Canary deploys" />
   <StickyNote color="green" label="Instant rollback" />
+{/snippet}
+
+{#snippet lcProblem()}
+  <StickyNote color="pink" label="Manual diagrams" />
+  <StickyNote color="pink" label="One-off canvases" />
+  <StickyNote color="pink">
+    <strong>🔥 Lost time</strong>
+  </StickyNote>
+{/snippet}
+
+{#snippet lcSolution()}
+  <StickyNote color="green" label="Semantic grammar" />
+  <StickyNote color="green" label="Canonical organisms" />
+{/snippet}
+
+{#snippet lcMetrics()}
+  <StickyNote color="blue" label="Scenes / project" />
+  <StickyNote color="blue" label="Time to first idea" />
+{/snippet}
+
+{#snippet lcUvp()}
+  <StickyNote color="orange" label="Grammar, not templates" />
+  <StickyNote color="orange">
+    <em>Meaning over geometry</em>
+  </StickyNote>
+{/snippet}
+
+{#snippet lcAdvantage()}
+  <StickyNote color="purple" label="Canonical systems" />
+  <StickyNote color="purple" label="Dual API: data + slots" />
+{/snippet}
+
+{#snippet lcChannels()}
+  <StickyNote color="blue" label="GitHub" />
+  <StickyNote color="blue" label="X / LinkedIn" />
+{/snippet}
+
+{#snippet lcSegments()}
+  <StickyNote color="yellow" label="Explainer authors" />
+  <StickyNote color="yellow" label="Tech leads" />
+{/snippet}
+
+{#snippet lcCost()}
+  <StickyNote color="pink" label="Dev time" />
+  <StickyNote color="pink" label="Theme upkeep" />
+{/snippet}
+
+{#snippet lcRevenue()}
+  <StickyNote color="green" label="OSS + sponsorship" />
+  <StickyNote color="green" label="Consulting" />
 {/snippet}
 
 <style>

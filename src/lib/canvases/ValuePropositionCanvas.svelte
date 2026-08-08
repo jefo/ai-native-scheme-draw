@@ -172,15 +172,15 @@
     padding-left: 4px;
   }
 
-  /* ── section titles (marker style) ── */
+  /* ── section titles (display style) ── */
   .vpc__section-title {
-    font-family: var(--canvas-font-marker);
-    font-size: 15px;
-    font-weight: 400;
+    font-family: var(--vnp-font);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
     color: var(--canvas-ink);
     text-align: center;
     margin: 0 0 4px;
-    letter-spacing: 0.01em;
   }
   .vpc__section-title--map {
     border-bottom: var(--canvas-stroke);
@@ -194,9 +194,9 @@
   /* ── bands (horizontal sections in Value Map) ── */
   .vpc__band {
     border: var(--canvas-stroke);
-    border-radius: 6px;
+    border-radius: 8px;
     padding: 8px 10px 10px;
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--canvas-panel-bg);
     flex: 1 1 0;
     display: flex;
     flex-direction: column;
@@ -258,7 +258,7 @@
     border: var(--canvas-stroke);
     border-radius: 50%;
     padding: 14px;
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--canvas-panel-bg);
     min-height: 0;
     aspect-ratio: 1 / 1;
     max-width: 100%;

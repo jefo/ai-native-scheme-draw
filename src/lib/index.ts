@@ -36,6 +36,34 @@ export { default as Pipeline } from './organisms/Pipeline.svelte';
 export { default as DeployDiff } from './organisms/DeployDiff.svelte';
 export { default as ModelCard } from './organisms/ModelCard.svelte';
 
-// Canvases — стратегические организмы (Miro-style, 16:9)
+// Canvases — semantic DSL kits (16:9, Launch Console projection)
 export { default as StickyNote } from './canvases/atoms/StickyNote.svelte';
+export { default as CanvasSection } from './canvases/molecules/CanvasSection.svelte';
+export { default as FeatureNode } from './canvases/atoms/FeatureNode.svelte';
 export { default as ValuePropositionCanvas } from './canvases/ValuePropositionCanvas.svelte';
+export { default as LeanCanvas } from './canvases/LeanCanvas.svelte';
+export { default as FeatureModel } from './canvases/FeatureModel.svelte';
+export { default as TradeOffMatrix } from './canvases/TradeOffMatrix.svelte';
+export { default as TradeOffRow } from './canvases/molecules/TradeOffRow.svelte';
+
+// Positioning Map grammar — «сравнить / противопоставить»
+export { default as PositioningMap } from './canvases/PositioningMap.svelte';
+export { default as Axis } from './canvases/atoms/Axis.svelte';
+export { default as Territory } from './canvases/atoms/Territory.svelte';
+export { default as Player } from './canvases/atoms/Player.svelte';
+export { default as Tension } from './canvases/atoms/Tension.svelte';
+export { default as Vector } from './canvases/atoms/Vector.svelte';
+
+export type {
+  FeatureKind,
+  FeatureTree,
+  TradeOffOption,
+  TradeOffRow,
+  MapValue,
+  PlayerState,
+  MapAxisDef,
+  MapTerritoryDef,
+  MapPlayerDef,
+  MapTensionDef,
+  MapVectorDef,
+} from './canvases/types';

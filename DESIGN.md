@@ -1,7 +1,8 @@
 ---
 name: Visual Narrative Library
-description: Premium Dark Mode DevTools — semantic visual grammar in a precision-engineered dark interface
+description: DX-native visual modeling kit — declarative visual grammar, UI is its projection
 colors:
+  # ── Blueprint Engine (library default projection) ──
   deep-space: "#080b0f"
   abyss: "#0f131a"
   void: "#161b24"
@@ -22,6 +23,19 @@ colors:
   amber: "#d4a040"
   amber-dim: "rgba(212,160,64,0.05)"
   amber-border: "rgba(212,160,64,0.10)"
+  # ── Launch Console (canvas kit projection) ──
+  carbon: "#0b0c0f"
+  glass: "#14161b"
+  glass-raised: "#1a1d24"
+  glass-panel: "rgba(255,255,255,0.035)"
+  smoke: "#f2f3f6"
+  signal-border: "rgba(255,255,255,0.12)"
+  signal-cyan: "#22d3ee"
+  signal-violet: "#a78bfa"
+  signal-amber: "#fbbf24"
+  signal-mint: "#34d399"
+  signal-rose: "#fb7185"
+  signal-orange: "#fb923c"
 typography:
   display:
     fontFamily: "Inter, SF Pro, system-ui, -apple-system, sans-serif"
@@ -53,6 +67,12 @@ typography:
     fontWeight: 500
     lineHeight: 1.2
     letterSpacing: "0.05em"
+  chip:
+    fontFamily: "Inter, SF Pro, system-ui, -apple-system, sans-serif"
+    fontSize: "13px"
+    fontWeight: 600
+    lineHeight: 1.35
+    letterSpacing: "-0.01em"
   mono:
     fontFamily: "'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace"
     fontSize: "14px"
@@ -107,197 +127,203 @@ components:
     textColor: "{colors.mint}"
     rounded: "{rounded.sm}"
     padding: "2px 8px"
+  # ── Launch Console components ──
+  sticky-note:
+    backgroundColor: "{colors.glass-panel}"
+    textColor: "{colors.smoke}"
+    rounded: "{rounded.lg}"
+    padding: "8px 14px"
+  canvas-section:
+    backgroundColor: "{colors.glass-panel}"
+    textColor: "{colors.smoke}"
+    rounded: "{rounded.md}"
+    padding: "10px 12px"
 ---
 
 # Design System: Visual Narrative Library
 
-<!-- DIRECTIONAL: established with the user as a replacement world. The current codebase implements a paper/sketch theme that must be updated to match this document. -->
+<!-- TWO PROJECTIONS, ONE MODEL: The declarative model (taxonomy + canonical kits) is projection-independent. The Blueprint Engine is the library default projection; The Launch Console is the canvas kit projection. Rules are projection-scoped — a Blueprint rule does not govern the Launch Console world. -->
 
 ## Overview
 
-**Creative North Star: "The Blueprint Engine"**
+**Creative North Star: "The Blueprint Engine"** — and its sibling projection, **"The Launch Console"**.
 
-A precision instrument for composing visual thought. The interface is a dark, silent engineering workspace — deep-space slate backgrounds, hairline borders, and a single mint-teal accent that marks structure and state. Nothing screams. Nothing persuades. The system earns its authority through restraint: every pixel is load-bearing, every glow has a function.
+This is a DX-native visual modeling kit: developers declaratively describe a model of thinking with components, and the UI is its projection. The declarative model — the 16-primitive taxonomy (semantic objects, layout predicates, attention predicates), the canonical kits (Value Proposition Canvas, Lean Canvas, Feature Model, Trade-off Matrix), and the Scene as the Visual Thought Unit — is projection-independent. Projections are the voices: they may change geometry (9:16 vs 16:9), material, typography, and depth language, but never semantics. The Entity is always a noun; amber always means jobs.
 
-The aesthetic draws from premium developer tools (Linear, Vercel, Supabase) where the interface recedes and the work stands forward. It is a tool for serious people reasoning about complex systems — the visual equivalent of a blueprint table in a darkened workshop. The only "decoration" is a faint orthogonal grid that covers every surface, whispering: *this is where things get built*.
+**The Blueprint Engine** is the library's default projection: a precision instrument for composing visual thought — dark, silent engineering workspace, deep-space slate, hairline borders, a single mint accent. Draws from premium developer tools (Linear, Vercel, Supabase). The visual equivalent of a blueprint table in a darkened workshop; a faint orthogonal grid whispers: *this is where things get built*.
+
+**The Launch Console** is the canvas kit's projection: carbon-dark mission control with glass panels, neon-signal edges, and glow — IBM Think cinema × a young AI startup. Built for thought leadership on YouTube (16:9 horizontal): every canvas reads as a startup about to launch something. The dot-grid stage, the mono uppercase header with a cyan→violet neon thread beneath it, and the glass chips with colored borders are its signatures. It speaks two registers: **the chip grammar** (glass, colored borders, glow — board-type canvases: VPC, Lean, Feature Model, Trade-off Matrix) and **the diagram grammar** (thin 1px geometry, typographic hierarchy, accents only on semantic state — plot-type canvases: Positioning Map, later User Flow and Roadmap). The diagram grammar is the *technical editorial* register: hairline gridlines on a faint panel, mono captions, and color that exists only where the model changes meaning (focus=amber, tension=rose, vector=amber, territory=tonal zone). No glow, no gradient rings on diagram surfaces.
 
 **Key Characteristics:**
-- 95% monochrome deep-slate palette; color is exclusively functional (mint = activity, structure, connection)
-- Hairline borders (1px, 7–11% white opacity) replace shadows for layer separation
-- Swiss grotesk typography (Inter) with strict binary contrast — bright headings, muted body
-- Global blueprint grid at ~4% white opacity on every surface
-- Orthogonal (90°) line routing; dotted connections that visualise structure without weight
-- Mint glow is the sole "magic" effect — soft neon at connection nodes and active states
+- One declarative model, multiple projections; the model never changes when the voice does
+- Blueprint Engine: 95% monochrome deep-slate, hairline borders, mint-only-when-functional
+- Launch Console: carbon glass, colored signal borders carry semantics, cyan→violet gradient ring reserved for key cells
+- Launch Console diagram register (technical editorial): plot geometry, 1px lines, mono labels; color accents only on semantic state
+- Semantic color mapping is stable across projections (jobs=amber, pains=rose, gains=mint, products=cyan)
+- Scenes: 9:16 vertical in the library, 16:9 horizontal in the canvas kit (YouTube classic)
 
 ## Colors
 
+### The Blueprint Engine palette
+
 The palette is an exercise in near-monochrome depth. The deep-slate family creates a multi-layered dark surface that feels infinite rather than flat. Color enters only through the mint accent — and even then, sparingly.
 
-### Primary
-- **Mint** (#2dd4bf): The system's sole accent. Serves two distinct roles:
-  - **Spatial** (high opacity, ~1.0): Connection nodes, line junctions, blueprint markers. Mint marks structure — where lines meet, where things connect.
-  - **Functional** (medium opacity, ~0.7): Active/running state, selected items, progress indicators. The Linear pattern: color means *activity*, not *success* or *failure*.
+**Primary**
+- **Mint** (#2dd4bf): The system's sole accent. Two roles — *spatial* (high opacity: connection nodes, line junctions, blueprint markers) and *functional* (medium opacity: active/running state, selected items). Color means *activity*, not success.
 
-### Neutral
-- **Deep Space** (#080b0f): Page-level background. The darkest surface — the void behind everything. Carries the blueprint grid.
-- **Abyss** (#0f131a): Card and container background. One step above deep-space, creating the first layer of depth through contrast alone.
-- **Void** (#161b24): Raised surfaces — hover states, active cards, overlay panels. The third elevation tier.
-- **White Smoke** (#e6edf3): Primary text. Bright but slightly blue-shifted — never pure white, which would read as harsh against the dark slate.
-- **Ghost** (#6b7482): Secondary text, descriptions, metadata. Muted but legible at body sizes.
-- **Faint** (rgba(255,255,255,0.18)): Tertiary text, disabled labels, placeholder copy. At the edge of visibility.
-- **Stealth** (rgba(255,255,255,0.07)): Default border. Barely there — a hairline that separates layers without calling attention to itself.
-- **Stealth Active** (rgba(255,255,255,0.11)): Active/focus border. Slightly brighter, still understated.
+**Neutral**
+- **Deep Space** (#080b0f): Page background. The void behind everything; carries the blueprint grid.
+- **Abyss** (#0f131a): Card and container background. One step above deep-space.
+- **Void** (#161b24): Raised surfaces — hover states, active cards, overlays.
+- **White Smoke** (#e6edf3): Primary text. Never pure white — white would read harsh against slate.
+- **Ghost** (#6b7482): Secondary text, metadata. Legible at body sizes.
+- **Faint** (rgba(255,255,255,0.18)): Tertiary text, disabled labels. At the edge of visibility.
+- **Stealth** (rgba(255,255,255,0.07)) / **Stealth Active** (rgba(255,255,255,0.11)): Default and active borders.
 
-### Named Rules
-**The One Color Rule.** Mint (#2dd4bf) occupies ≤5% of any given screen. Its rarity is its power. If mint appears on more than two non-background elements, the design has lost restraint.
+**Named Rules (Blueprint Engine)**
+**The One Color Rule.** Mint (#2dd4bf) occupies ≤5% of any given screen. If mint appears on more than two non-background elements, the design has lost restraint.
 
-**The Binary Contrast Rule.** Text exists in exactly two brightnesses: White Smoke (primary) and Ghost (secondary). No intermediate grey. Hierarchy is communicated through size and weight, not through a graduated grey scale.
+**The Binary Contrast Rule.** Text exists in exactly two brightnesses: White Smoke and Ghost. No intermediate grey.
 
-**The Glow Is Functional Rule.** Every mint glow serves a specific state or structural purpose. No decorative ambient glow. No bloom for bloom's sake.
+**The Glow Is Functional Rule.** Every mint glow serves a state or structural purpose. No decorative bloom.
+
+### The Launch Console palette (canvas kit)
+
+Carbon, glass, and six signal colors. Each signal color carries a semantic role that is stable across projections — the same meaning, a different material. Chip backgrounds are the signal color at ~13% opacity over glass; borders are the signal at ~55%.
+
+**Neutral**
+- **Carbon** (#0b0c0f): Page background — the console chassis.
+- **Glass** (#14161b): Scene card and chip base. **Glass Raised** (#1a1d24) for hover.
+- **Glass Panel** (rgba(255,255,255,0.035)): Section fills — CanvasSection cells, VPC bands, FODA boxes.
+- **Smoke** (#f2f3f6): Primary text. **Signal Border** (rgba(255,255,255,0.12)): default hairline.
+
+**Signal colors (semantics stable across projections)**
+- **Signal Amber** (#fbbf24): Jobs, decisions, highlight labels (UVP cell text, FODA "1 of N" hints).
+- **Signal Rose** (#fb7185): Pains, sacrificed options, the ✗ cross badge.
+- **Signal Mint** (#34d399): Gains, chosen options, the ✓ check badge.
+- **Signal Cyan** (#22d3ee): Products, data, channels, metrics.
+- **Signal Violet** (#a78bfa): Unfair advantage; gradient partner of cyan.
+- **Signal Orange** (#fb923c): UVP value chips.
+
+**Named Rules (Launch Console)**
+**The Neon Edge Rule.** The colored border of a glass chip *is* the semantics — never decorative. A chip's border color must match its semantic role (amber=jobs, rose=pains, mint=gains, cyan=products).
+
+**The Gradient Ring Rule.** The cyan→violet gradient border is reserved for exactly one element per canvas: the key cell (UVP in Lean Canvas, root in Feature Model, highlight in VPC). One signal per screen; the gradient is the loudest voice.
+
+**The Editorial Diagram Rule.** Diagram surfaces (plot-type canvases: Positioning Map, and later User Flow, Roadmap) live in the technical-editorial register: hairline 1px lines and gridlines on a faint panel, JetBrains Mono captions at 10px, uppercase where the element is chrome (axes, territories) and sentence-cased where it is data (labels). Color exists only as semantic state — focus=amber, tension=rose, vector=amber, territory=tonal zone — never as decoration. No glow, no gradient rings, no glass chips inside a plot; the chip grammar belongs to board-type canvases.
 
 ## Typography
 
 **Display/UI Font:** Inter (with SF Pro and system-ui fallback)
 **Mono Font:** JetBrains Mono (with SF Mono and Cascadia Code fallback)
 
-**Character:** Swiss functionalism meets modern screen typography. Inter's tall x-height and clean geometry read as precise and engineered — the typographic equivalent of a machined part. No serifs, no flourishes, no hand-drawn warmth. The contrast between bright headings and muted body creates a strict visual hierarchy that guides attention without colour.
+**Character (Blueprint Engine):** Swiss functionalism meets modern screen typography. Inter's tall x-height and clean geometry read as precise and engineered — a machined part. No serifs, no flourishes. Strict binary contrast: bright headings, muted body.
+
+**Character (Launch Console):** The same Inter, re-voiced. Chips use Inter 600 at 13px with tight tracking (-0.01em) — data-bearing labels, not handwriting. Headers and captions are JetBrains Mono, uppercase, wide-tracked (0.16em), like telemetry readouts on a console.
 
 ### Hierarchy
-- **Display** (700, 28px, 1.1): Scene titles, hero headlines. Used ≤3 times per viewport.
-- **Headline** (600, 20px, 1.2): Section headers, card titles, primary labels.
-- **Title** (600, 16px, 1.3): Component titles, group labels, navigation items.
-- **Body** (400, 14px, 1.5): Descriptions, explanations, running text. Max line length 65ch.
-- **Label** (500, 11px, 1.2, 0.05em tracking, uppercase): Metadata, badges, timestamps, predicate type labels (the "flow →" / "compare" annotations).
-- **Mono** (400, 13px, 1.45): Values, units, code snippets, numerical data, technical identifiers. Tabular numbers (`font-variant-numeric: tabular-nums`).
+- **Display** (700, 28px, 1.1): Scene titles, hero headlines. ≤3 times per viewport.
+- **Headline** (600, 20px, 1.2): Section headers, card titles.
+- **Title** (600, 16px, 1.3): Component titles, group labels.
+- **Body** (400, 14px, 1.5): Descriptions, running text. Max 65ch.
+- **Chip** (600, 13px, 1.35, -0.01em): Glass chip labels (Launch Console). The chip is data-bearing, never decorative.
+- **Label** (500, 11px, 1.2, 0.05em, uppercase): Metadata, badges, timestamps, predicate annotations.
+- **Mono** (400, 13px, 1.45): Values, code, technical identifiers. Tabular numbers.
+- **Caption** (400, 10px, 1.2, 0.06em): Section labels, hints, FODA markers, legend items.
 
 ### Named Rules
-**The Two-Brightness Rule.** Text colour is binary: White Smoke or Ghost. Never use Faint for any text that must be read. If a label needs to recede, use size and letter-spacing, not reduced opacity.
+**The Two-Brightness Rule.** (Blueprint Engine) Text colour is binary: White Smoke or Ghost. Recede with size, not opacity.
 
-**The Metric Weight Rule.** All numerical values (digits, units, counters) use Mono + tabular-nums. A Value component's digit must never appear in Inter. The shift in typeface is the signal: *this is data, not prose*.
+**The Metric Weight Rule.** All numerical values use Mono + tabular-nums. A digit must never appear in Inter — the typeface shift signals *this is data, not prose*.
+
+**The Console Voice Rule.** (Launch Console) In the canvas kit, uppercase mono with wide tracking is reserved for chrome (headers, section labels, hints). Chips and decisions speak Inter 600. The shift between the two is the console's rhythm.
 
 ## Layout
 
-**Grid:** 4px base unit. Every spacing value is a multiple of 4. The system is built on an 8px soft grid (component padding: 8px, 16px, 24px, 32px).
+**Grid:** 4px base unit; every spacing value is a multiple of 4. 8px soft grid for components.
 
-**Container model:** Components are inline-flex by default — they take the space their content needs. Layout predicates (Flow, Compare, Containment) are the sole source of structural arrangement. No global page grid; the Scene (9:16 vertical card) is the primary spatial unit.
+**Container model (Blueprint Engine):** Components are inline-flex by default; layout predicates (Flow, Compare, Containment) are the sole source of structural arrangement. The Scene (9:16 vertical card) is the primary spatial unit.
 
-**Blueprint pattern:** A faint orthogonal grid at 32px spacing, rendered as 1px dots or 1px lines at ~4% white opacity. Applied globally to the page background and inherited by all transparent surfaces. Cards and containers sit on top with solid fills (Abyss), creating a *figure-on-blueprint* relationship. The grid is purely atmospheric — it does not snap, align, or constrain layout.
+**Blueprint pattern:** A faint orthogonal grid at 32px spacing — 1px dots or lines at ~4% white opacity, applied globally, inherited by transparent surfaces. Purely atmospheric; never snaps or constrains.
 
-**Spacing rhythm:** Generous internal padding (16px default), wide gaps between composed elements (16–24px), and airy section separation (32–48px). The premium feel comes from *what isn't there* — empty space is the most expensive material in the system.
+**Canvas kit (Launch Console):** 16:9 horizontal aspect ratio, locked (YouTube classic, not Shorts). Canvases render inside Scene cards on a dot-grid stage (28px, ~3.5% white). Canonical kits own their internal layout — the Strategyzer two-panel VPC, the 9-block Lean grid — the developer declares content, never coordinates. Responsive: VPC stacks vertically below 520px; the circle collapses to a band.
 
-**Responsive:** Scenes are locked to 9:16 aspect ratio. At viewport widths below 360px, internal padding compresses to 8px. Above 768px, scenes may render at up to 400×711px but never exceed that height. The blueprint grid scales with the viewport but maintains 32px spacing.
+**Spacing rhythm:** Generous internal padding (16px default), wide gaps (16–24px), airy section separation (32–48px). The premium feel is empty space.
 
 ## Elevation & Depth
 
-This is a flat system that creates depth through layered darkness, not shadow. Surfaces are separated exclusively by hairline borders (Stealth, 1px) and increasingly light background tones (Deep Space → Abyss → Void). No drop shadows, no box-shadows for elevation, no blur-based depth.
+### Blueprint Engine — flat by doctrine
+Depth through layered darkness, never shadow. Surfaces separate exclusively by hairline borders (Stealth, 1px) and background lightening (Deep Space → Abyss → Void). The "drafting table" model: translucent sheets on a dark surface.
 
-The result is a "drafting table" model: layers of translucent sheets stacked on a dark surface, each separated by a barely-visible edge. Depth is *perceived* rather than measured — the eye understands the layering without the system announcing it.
+**The No-Shadow Rule.** Elevation is communicated through background lightening and border brightness, never box-shadow. The single most important rule of the Blueprint aesthetic.
 
-### Elevation Tiers
-- **L0 — Page** (Deep Space #080b0f + grid): The blueprint table. Everything sits on this.
-- **L1 — Surface** (Abyss #0f131a): Cards, containers, scene backgrounds. Separated from L0 by a 1px Stealth border.
-- **L2 — Raised** (Void #161b24): Hover states, active elements, tooltips, overlay panels. Separated from L1 by a 1px Stealth-Active border.
+**The Hairline Separation Rule.** Every border is exactly 1px. Variation comes from opacity (7% vs 11%), not line weight.
 
-### Named Rules
-**The No-Shadow Rule.** Elevation is communicated through background lightening and border brightness, never through box-shadow. A lifted element is a lighter slate with a slightly brighter border. This is the single most important rule for the DevTools aesthetic.
+### Launch Console — glass over glow
+The console has depth: a scene card floats on a deep drop shadow (0 24px 60px rgba(0,0,0,0.55)), and each chip carries a compact ambient shadow (0 6px 14px rgba(0,0,0,0.45)) plus a colored glow of its border color at ~28% (0 0 14px). Hover lifts the chip 2px with a brightness bump (1.12) — the chip leans into its light.
 
-**The Hairline Separation Rule.** Every border in the system is exactly 1px. No 2px, no 3px, no "strong" vs "weak" border weights. Variation comes from opacity (Stealth 7% vs Stealth-Active 11%), not line weight.
+**The Console Glow Rule.** Glow is always the chip's own signal color — never white, never a neutral bloom. A mint chip glows mint; a rose chip glows rose. The glow extends the semantics instead of decorating the surface.
 
 ## Shapes
 
-**Corner strategy:** Minimal radius. Cards and containers use 6px–8px rounding — enough to remove the sharp pixel corner but not enough to feel "rounded." Buttons and chips use 4px. No pill shapes, no circles, no fully rounded elements. The blueprint aesthetic favours the orthogonal; curves are a concession, not a feature.
+**Corner strategy (Blueprint Engine):** Minimal radius. Cards 6–8px, buttons and chips 4px. No pills, no circles, no fully rounded elements. The blueprint aesthetic favours the orthogonal; curves are a concession.
 
-**Border language:** Every container, card, scene, and input is enclosed by a 1px Stealth border. The border is the primary visual separator. Dashed borders are reserved for predicate annotation labels (the "flow →" subtle markers) — 1px dashed at Ghost opacity, never heavier.
+**Border language (Blueprint Engine):** Every container enclosed by 1px Stealth border. Dashed borders reserved for predicate annotation labels. Icons: outline-style, mono-weight, 1.5–2px stroke, 16px inline / 20px standalone, never filled.
 
-**Icon vocabulary:** Outline-style, mono-weight, 1.5px–2px stroke. Phosphor Icons or Lucide. Never filled, never dual-tone, never brand-coloured. Icons inherit text colour. Icon size is standardised: 16px for inline, 20px for standalone.
+**Corner strategy (Launch Console):** Glass chips at 8px radius, sections at 8px, scene cards at 12px. The console allows the circle where canon demands it — the VPC Customer Profile is a true circle (border-radius: 50%), because Strategyzer's form is the canon.
 
-**Blueprint grid pattern:** Implemented as a CSS `background-image` using `radial-gradient` (dots) or a subtle `linear-gradient` crosshatch at 32px intervals. Dot variant preferred for the global background — dots read as a reference grid without the visual noise of continuous lines. Line variant available for container-level use (architecture diagrams, schema views).
+**The Gradient Ring technique:** key cells draw a 1px gradient border (cyan→violet) via a layered background — `linear-gradient(highlight-bg) padding-box, linear-gradient(135deg, cyan, violet) border-box`. The ring is a material, not a line; it can wrap any shape.
+
+**Dot-grid stage:** 28px radial dots at ~3.5% white opacity inside the scene card — the Launch Console's answer to the blueprint grid.
 
 ## Components
 
-Every component inherits the hairline-border, no-shadow, mint-only-when-functional philosophy. States are communicated through background shifts and border brightness changes — never through shadow, scale transforms, or colour shifts outside mint.
+### Blueprint Engine components
 
-### Entity
-The fundamental object. A label inside a bordered container.
-- **Shape:** 6px radius, 1px Stealth border, Abyss background
-- **Default:** Abyss fill, White Smoke text
-- **Hover / Active:** Void fill, Stealth-Active border
-- **Variants:** Circle (rare — use only for avatar-style identity markers), Plate (transparent background, border-only — for secondary or de-emphasised entities), Cube (rotated -2deg — for work-in-progress or unstable entities)
-- **Typography:** Title weight (600), 14px
+Every component inherits the hairline-border, no-shadow, mint-only-when-functional philosophy. States are communicated through background shifts and border brightness — never shadow, never scale, never colour outside mint.
 
-### Relation
-Inline connector between entities. SVG-drawn, mono-weight.
-- **Shape:** 2px stroke for lines, solid arrowhead (orthogonal fill, not curved)
-- **Variants:** Arrow (directed), Line (undirected), Dashed (tentative/inferred connection), Chain (bidirectional, two arrowheads)
-- **Colour:** Ghost by default, Mint when the relation is active/selected
-- **Connection routing:** Orthogonal — lines route at 90° angles, never diagonal. Dotted variant for lightweight connections.
-- **Typography:** Label in Mono at 11px, italic
+**Entity:** 6px radius, 1px Stealth border, Abyss fill, White Smoke text; hover = Void fill + Stealth-Active border. Title weight (600), 14px.
 
-### State
-Modulation wrapper — applies status semantics to an Entity.
-- **Mechanism:** A small chip above the entity + border colour override on the wrapped entity
-- **Chip shape:** 4px radius, 1px Stealth border, Mono 10px uppercase label
-- **Active states:** Mint chip + Mint entity border (functional role — something is running/active)
-- **Error state:** Red chip (#ef4444 at 70% opacity) + red entity border — used only for system errors, never for "wrong answer"
-- **Completed state:** Ghost chip — muted, no colour. Completion is the absence of state.
+**Relation:** Inline SVG connector, 2px stroke, solid orthogonal arrowhead; Ghost by default, Mint when active. Orthogonal routing (90°), dashed for tentative links. Label Mono 11px italic.
 
-### Value
-Quantitative measurement. Numerical display with optional visual encoding.
-- **Bar:** Thin horizontal bar (80px × 8px), 4px radius, Abyss background, Mint fill proportional to value
-- **Digit:** Mono typeface, tabular-nums, White Smoke, 20px
-- **Thermo:** Vertical bar (12px × 40px), 4px radius, Mint fill from bottom
-- **Chart:** Inline SVG sparkline, 1.5px Mint stroke, no fill, no axes
-- **Unit:** Mono, 11px, Ghost, attached to digit with no space
-- **Direction indicator:** Mint ↑ or Ghost ↓, 12px Mono
+**State:** Chip above entity + border override. Active = mint chip/mint border; error = red chip (#ef4444 at 70%) for system errors only; completed = Ghost chip (completion is the absence of state).
 
-### Event
-Temporal marker. Icon + label.
-- **Shape:** Inline SVG icon (16px) + Mono label
-- **Variants:** Flash (bolt icon, Mint), Appear (concentric rings, Ghost → Mint transition), Wave (sine wave, Mint)
-- **Typography:** Label in Mono 12px, weight 500
+**Value:** 80×8px bar with Mint proportional fill; digit in Mono 20px tabular-nums; unit Mono 11px Ghost.
 
-### Layout Predicates (Flow, Compare, Containment, Hierarchy, Timeline, Cycle, TradeOff)
-Structural containers that arrange child objects.
-- **Default state:** 1px Stealth border, transparent background (shows blueprint grid through), 8px–16px internal padding
-- **Active/hover:** Abyss background (grid obscured), Stealth-Active border
-- **Predicate label:** Small Mono label (9px, uppercase, Ghost) positioned absolutely at the top-right corner of the container. The label names the predicate type ("flow →", "compare", "⊂").
-- **Connection lines:** 1.5px dotted or solid, Ghost. Orthogonal routing (90° turns only). Mint at connection nodes and junctions.
-- **TradeOff axes:** Two orthogonal dashed lines (Ghost, 1px), crossing at centre. Labels at endpoints in Mono 10px.
+**Event:** Icon (16px SVG) + Mono 12px label. Variants: Flash (bolt, Mint), Appear (rings), Wave (sine).
 
-### Attention Predicates (Focus, Reveal, Highlight, Dim)
-Transforms over content — modulate visual emphasis.
-- **Focus:** Container border transitions from Stealth to Mint. Content scales 1.08×. Outer mint glow (mint-glow, 8px blur, no spread).
-- **Reveal:** Content animates from Ghost opacity (0.25) to White Smoke (1.0). Border appears from Stealth to Stealth-Active.
-- **Highlight:** Amber/Mint glow ring (2px spread, mint-glow) around container. Background lifts to Abyss.
-- **Dim:** Content drops to 0.35 opacity + grayscale(0.8). Container border fades to Faint.
+**Layout Predicates:** 1px Stealth border, transparent background (grid shows through), predicate label Mono 9px uppercase top-right ("flow →"). Connections 1.5px Ghost, orthogonal, Mint at junctions. TradeOff: two dashed Ghost axes crossing at centre.
 
-### Scene
-The Visual Thought Unit — a 9:16 vertical card. The primary composition surface.
-- **Shape:** 8px radius, 1px Stealth border, Abyss background
-- **Aspect ratio:** 9:16, locked. Width determined by container, height derived.
-- **Header:** Deep Space background, Mint label (Mono, 10px, uppercase, tracking 0.08em), 1px Stealth border-bottom. Contains the scene's title/ID.
-- **Stage:** Flex-1 centre-aligned area. Abyss background with subtle blueprint grid visible at 2% opacity. Where the composed thought lives.
-- **Footer:** 40px tall, Stealth border-top. Reaction/hint area — Mono 12px, Ghost.
-- **Blueprint context:** The scene's own grid (2% opacity, 32px) sits above the global page grid, creating a subtle *grid-on-grid* layering — the scene is a focused area on the drafting table.
+**Attention Predicates:** Focus = Mint border + 1.08× scale + mint glow ring. Reveal = opacity 0.25→1.0. Highlight = amber/mint glow ring + Abyss lift. Dim = 0.35 opacity + grayscale(0.8).
+
+**Scene (9:16):** 8px radius, Abyss background, Deep Space header with Mint Mono label, stage with 2% grid, 40px footer with Stealth border-top. Grid-on-grid layering: the scene is a focused area on the drafting table.
+
+### Launch Console components (canvas kit)
+
+The same model, projected as mission control. Chips replace sticky notes; glass panels replace paper cells; the glow carries what the hairline used to.
+
+**StickyNote (glass chip):** The kit's atom. 8px radius, 1px border in the signal color, background = signal at 13% over glass, text Inter 600 13px (chip role), ambient shadow + signal glow. Mark badges: a solid 18px circle at the corner — ✓ mint, ✗ rose — with a 2px ring of the page color, glyph in carbon. Chips sit straight — the Miro rotation is retired. Hover: -2px lift + brightness 1.12.
+
+**CanvasSection (glass cell):** 8px radius, 1px Signal Border, Glass Panel fill, mono uppercase label (caption role), optional bottom hint in mono. `tone="highlight"` applies the Gradient Ring + amber label — used for the UVP cell, exactly once per canvas.
+
+**FeatureNode (FODA):** 6px radius box on Glass Panel, mono 10px label. Markers: mandatory = filled Smoke dot, optional = hollow Smoke, alternative = hollow amber, excluded = 45% opacity + line-through + rose dot. Root variant wears the Gradient Ring. Branch connectors are 1px Signal Border lines (drop, rail, risers).
+
+**TradeOffRow / TradeOffMatrix:** A row is a decision (amber chip) + option chips with mark badges. Chosen = mint chip + ✓ badge; sacrificed = rose chip + ✗ badge. The legend beneath repeats the badges as mono captions. This is the kit's explicit "what we chose, what we sacrificed" grammar.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** use the Two-Brightness Rule: White Smoke for primary text, Ghost for secondary. Never invent an intermediate grey.
-- **Do** use exactly 1px borders for all layer separation. Variation comes from opacity (Stealth 7% → Stealth-Active 11%), never line weight.
-- **Do** use Mint exclusively for functional signals (activity, connection nodes, structural markers). If mint appears on a decorative element, remove it.
-- **Do** route all connection lines orthogonally (90° turns). Diagonal or curved connections belong in the paper/sketch world — not here.
-- **Do** apply the blueprint grid globally. Every surface without a solid fill shows the grid. Solid-filled cards (Abyss) sit *on top* of it.
-- **Do** use Mono for all numerical values, units, and technical identifiers. The typeface shift signals data vs. language.
-- **Do** keep spacing generous — 16px minimum internal padding, 24px between composed elements, 48px between sections. The premium feel is air.
-- **Do** use outline-style, mono-weight icons (Phosphor or Lucide). 16px inline, 20px standalone. Never filled, never coloured outside Mint for active states.
+- **Do** keep the declarative model identical across projections. A VPC declared once must project into the Blueprint Engine, the Launch Console, or any future voice without a single model change.
+- **Do** preserve the semantic color mapping in every projection (jobs=amber, pains=rose, gains=mint, products=cyan). The meaning is the contract; the material is the voice.
+- **Do** (Blueprint Engine) use the Two-Brightness Rule, exactly 1px borders, Mint only for functional signals, orthogonal routing, blueprint grid on every surface, Mono for all numerals.
+- **Do** (Launch Console) let a chip's colored border and glow carry its semantics; reserve the Gradient Ring for the one key cell per canvas; keep headers and captions in uppercase wide-tracked mono.
+- **Do** use canonical kit forms — Strategyzer VPC, 9-block Lean Canvas, FODA feature trees. The kit's recognizability is its value; inventing a new form for a known framework is waste.
+- **Do** keep spacing generous — 16px minimum internal padding, 24px between elements, 48px between sections.
 
 ### Don't:
-- **Don't** use drop shadows or box-shadow for elevation. Depth comes from background lightening (Deep Space → Abyss → Void) and border brightness. The No-Shadow Rule is the system's defining constraint.
-- **Don't** use pure black (#000000) as a background. The darkest surface is Deep Space (#080b0f) — a near-black with blue undertone.
-- **Don't** use pure white (#ffffff) for text. The brightest text is White Smoke (#e6edf3) — slightly blue-shifted to feel natural against dark slate.
-- **Don't** add more than one accent colour. Mint is the system's only chromatic voice. Red (for errors) and amber (for warnings) exist as functional states only, never as palette entries.
-- **Don't** use border-radius above 8px. No pills, no circles, no fully rounded elements. The blueprint is orthogonal.
-- **Don't** use more than 2 type sizes on any surface. Hierarchy comes from weight and brightness, not a graduated size scale.
-- **Don't** animate for delight. Motion is functional: state transitions (0.2s ease), reveal sequences (0.3s ease). No bounce, no spring, no bounce-in on entrance.
-- **Don't** mix the paper/sketch theme tokens with this system. This world replaces, not extends, the old one.
+- **Don't** mix two projections inside one Scene. One scene, one voice.
+- **Don't** add new layouts to kits to express a new idea. New expression belongs to the projection layer; the kit layer stays canonical and finite.
+- **Don't** use drop shadows in the Blueprint Engine (No-Shadow Rule) — and **don't** expect the Launch Console to obey it: the console's glow is its own doctrine.
+- **Don't** revive the paper sticky aesthetic (Miro). It was a tested hypothesis and is retired; the canvas kit projects as the Launch Console.
+- **Don't** use pure black (#000000) or pure white (#ffffff). The darkest surface is Carbon (#0b0c0f) or Deep Space (#080b0f); the brightest text is Smoke (#f2f3f6) or White Smoke (#e6edf3).
+- **Don't** animate for delight in either projection. Motion is functional: chip lift (150ms ease), state transitions (200ms), reveals (300ms). No bounce, no spring.

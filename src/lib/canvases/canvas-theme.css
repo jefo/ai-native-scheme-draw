@@ -1,9 +1,17 @@
 /* ============================================================
-   CANVAS THEME — Miro-style sticky notes
+   CANVAS THEME — NEON DARK (IBM Think × молодой AI-стартап)
    ------------------------------------------------------------
-   Strategic thinking canvases (VPC, Lean Canvas, Roadmap, …).
-   Light paper surface, colored sticky notes, marker typography,
-   dotted strokes, subtle shadows.
+   Стратегические канвасы для YouTube-канала thought leadership:
+   тёмный углерод, стеклянные панели, неоновая кромка
+   cyan→violet, glow-тени, mono-подписи.
+
+   Семантика цветов сохранена (прежние роли):
+     amber  → jobs / decisions
+     rose   → pains / sacrificed
+     mint   → gains / chosen
+     cyan   → products / data
+     orange → UVP
+     violet → unfair advantage
 
    Применение: <div class="theme-canvas"> …канвасы… </div>
    ------------------------------------------------------------
@@ -13,41 +21,41 @@
    ============================================================ */
 
 .theme-canvas {
-  /* ── surface: paper stack ── */
-  --vnp-paper: #faf8f5;              /* warm off-white paper */
-  --vnp-paper-deep: #f0ebe0;         /* kraft paper undertone */
-  --vnp-card: #ffffff;
-  --vnp-card-raised: #fefefe;
+  /* ── surface: углерод ── */
+  --vnp-paper: #0b0c0f;
+  --vnp-paper-deep: #101117;
+  --vnp-card: #14161b;
+  --vnp-card-raised: #1a1d24;
 
-  /* ── ink: soft charcoal ── */
-  --vnp-ink: #2d2d2d;
-  --vnp-ink-soft: #777777;
-  --vnp-ink-faint: #bbbbbb;
+  /* ── ink: светлый на тёмном ── */
+  --vnp-ink: #f2f3f6;
+  --vnp-ink-soft: #9aa0ab;
+  --vnp-ink-faint: #565b66;
 
-  /* ── accent: muted, editorial ── */
-  --vnp-good: #5b9bd5;               /* steel blue (not mint) */
-  --vnp-bad: #e05555;
-  --vnp-warn: #e0a040;
-  --vnp-info: #5b9bd5;
-  --vnp-glow: rgba(91, 155, 213, 0.15);
-  --vnp-glow-soft: rgba(91, 155, 213, 0.06);
+  /* ── accent: неон ── */
+  --vnp-good: #34d399;               /* mint */
+  --vnp-bad: #fb7185;                /* rose */
+  --vnp-warn: #fbbf24;               /* amber */
+  --vnp-info: #22d3ee;               /* cyan */
+  --vnp-glow: rgba(34, 211, 238, 0.16);
+  --vnp-glow-soft: rgba(34, 211, 238, 0.07);
 
-  /* ── stroke: dotted pen lines (не hairline blueprint) ── */
-  --vnp-border-color: rgba(0, 0, 0, 0.1);
-  --vnp-border-color-active: rgba(0, 0, 0, 0.18);
+  /* ── stroke: hairline на тёмном ── */
+  --vnp-border-color: rgba(255, 255, 255, 0.10);
+  --vnp-border-color-active: rgba(255, 255, 255, 0.22);
   --vnp-border: 1px solid var(--vnp-border-color);
   --vnp-border-active: 1px solid var(--vnp-border-color-active);
-  --vnp-border-soft: 1px dotted rgba(0, 0, 0, 0.15);
+  --vnp-border-soft: 1px solid rgba(255, 255, 255, 0.07);
   --vnp-shadow: none;
 
-  /* ── radius: slightly softer ── */
-  --vnp-radius: 8px;
-  --vnp-radius-sm: 4px;
-  --vnp-radius-chip: 4px;
+  /* ── radius: стекло ── */
+  --vnp-radius: 10px;
+  --vnp-radius-sm: 6px;
+  --vnp-radius-chip: 6px;
 
-  /* ── type: читаемый sans + marker display ── */
+  /* ── type: Inter bold display + mono данные ── */
   --vnp-font: 'Inter', system-ui, -apple-system, sans-serif;
-  --vnp-font-hand: 'Permanent Marker', 'Caveat', 'Comic Sans MS', cursive, sans-serif;
+  --vnp-font-hand: 'Inter', system-ui, -apple-system, sans-serif;
   --vnp-font-display: 'Inter', system-ui, -apple-system, sans-serif;
   --vnp-font-mono: 'JetBrains Mono', 'SF Mono', monospace;
 
@@ -58,54 +66,90 @@
 /* ── canvas-specific tokens (не --vnp-*) ── */
 
 .theme-canvas {
-  --canvas-sticky-yellow: #ffd866;
-  --canvas-sticky-yellow-border: #e6c04a;
-  --canvas-sticky-pink: #ffb3b3;
-  --canvas-sticky-pink-border: #e89999;
-  --canvas-sticky-green: #b3e6cc;
-  --canvas-sticky-green-border: #8fd4af;
-  --canvas-sticky-blue: #b3d9ff;
-  --canvas-sticky-blue-border: #8fc4f0;
+  /* стеклянный чип: цветной фон + кромка = семантика */
+  --canvas-sticky-yellow: rgba(251, 191, 36, 0.13);
+  --canvas-sticky-yellow-border: rgba(251, 191, 36, 0.55);
+  --canvas-sticky-pink: rgba(251, 113, 133, 0.13);
+  --canvas-sticky-pink-border: rgba(251, 113, 133, 0.55);
+  --canvas-sticky-green: rgba(52, 211, 153, 0.13);
+  --canvas-sticky-green-border: rgba(52, 211, 153, 0.55);
+  --canvas-sticky-blue: rgba(34, 211, 238, 0.13);
+  --canvas-sticky-blue-border: rgba(34, 211, 238, 0.55);
+  --canvas-sticky-orange: rgba(251, 146, 60, 0.13);
+  --canvas-sticky-orange-border: rgba(251, 146, 60, 0.55);
+  --canvas-sticky-purple: rgba(167, 139, 250, 0.13);
+  --canvas-sticky-purple-border: rgba(167, 139, 250, 0.55);
 
-  --canvas-ink: #2d2d2d;
-  --canvas-ink-soft: #999999;
-  --canvas-font-marker: 'Permanent Marker', 'Caveat', 'Comic Sans MS', cursive, sans-serif;
-  --canvas-note-shadow: 2px 2px 6px rgba(0, 0, 0, 0.10);
-  --canvas-stroke: 1px dotted rgba(0, 0, 0, 0.20);
+  --canvas-ink: #f2f3f6;
+  --canvas-ink-soft: #9aa0ab;
+  --canvas-note-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+  --canvas-stroke: 1px solid rgba(255, 255, 255, 0.12);
+
+  /* ── панели и неоновые акценты ── */
+  --canvas-panel-bg: rgba(255, 255, 255, 0.035);
+  --canvas-gradient: linear-gradient(135deg, #22d3ee, #a78bfa);
+  --canvas-panel-gradient: linear-gradient(135deg, rgba(34, 211, 238, 0.55), rgba(167, 139, 250, 0.55));
+
+  /* ── highlight: ключевые ячейки (UVP) — amber ── */
+  --canvas-highlight-bg: rgba(251, 191, 36, 0.07);
+  --canvas-highlight-ink: #fbbf24;
+
+  /* ── trade-off marks: бейджи ✓ chosen / ✗ sacrificed ── */
+  --canvas-mark-check: #34d399;
+  --canvas-mark-cross: #fb7185;
+
+  /* ── plot: диаграммная поверхность (Positioning Map) ── */
+  --canvas-plot-grid: rgba(255, 255, 255, 0.05);
+  --canvas-plot-axis: rgba(255, 255, 255, 0.25);
+  --canvas-plot-tension: rgba(251, 113, 133, 0.7);
 }
 
-/* ── Scene chrome override: paper card ── */
+/* ── Scene chrome override: тёмная стеклянная карта ── */
 
 .theme-canvas .scene {
   border: var(--canvas-stroke);
-  border-radius: 8px;
+  border-radius: 12px;
   background: var(--vnp-card);
-  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
 }
 
+/* tech dot-grid вместо blueprint grid */
 .theme-canvas .scene::before {
-  display: none; /* убираем blueprint grid, здесь не нужен */
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
 .theme-canvas .scene__header {
-  background: var(--vnp-paper-deep);
-  color: var(--vnp-ink);
-  font-family: var(--canvas-font-marker);
-  font-size: 14px;
-  font-weight: 400;
-  text-transform: none;
-  letter-spacing: 0.02em;
-  border-bottom: var(--canvas-stroke);
-  padding: 12px 18px;
+  background: transparent;
+  color: var(--vnp-ink-soft);
+  font-family: var(--vnp-font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px 16px;
+}
+
+/* неоновая нить под заголовком */
+.theme-canvas .scene__header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--canvas-gradient);
+  opacity: 0.45;
 }
 
 .theme-canvas .scene__footer {
-  border-top: var(--canvas-stroke);
-  background: var(--vnp-paper);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: transparent;
 }
 
 .theme-canvas .scene__reaction {
   font-family: var(--vnp-font-mono);
   font-size: 10px;
-  color: var(--canvas-ink-soft);
+  color: var(--vnp-ink-faint);
 }
