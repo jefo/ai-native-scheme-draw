@@ -72,6 +72,9 @@ export { default as Phase } from './canvases/atoms/Phase.svelte';
 export { default as Milestone } from './canvases/atoms/Milestone.svelte';
 export { default as Dependency } from './canvases/atoms/Dependency.svelte';
 
+// System Diagram grammar — «показать identity loop» (Capability → Buyer → Product)
+export { default as SystemDiagram } from './canvases/SystemDiagram.svelte';
+
 // Composition system — Stage → Composition → Organism → Primitive
 export { default as Stage } from './canvases/stage/Stage.svelte';
 export { default as Stack } from './canvases/layout/Stack.svelte';
@@ -109,6 +112,9 @@ export type {
   RoadmapStepDef,
   RoadmapHorizonDef,
   RoadmapDependencyDef,
+  SystemDiagramRole,
+  SystemDiagramNodeDef,
+  SystemDiagramEdgeDef,
   Gap,
 } from './canvases/types';
 export type { StageAspect, StageComposition, StageDensity, StageSafeArea } from './canvases/stage-context';

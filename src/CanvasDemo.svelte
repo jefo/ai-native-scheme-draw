@@ -25,6 +25,7 @@
     Phase,
     Milestone,
     Dependency,
+    SystemDiagram,
     Stage,
     Stack,
     Split,
@@ -242,6 +243,25 @@
               </TradeOffRow>
             {/snippet}
           </TradeOffMatrix>
+        </Scene>
+      </div>
+
+      <!-- ═══ SYSTEM DIAGRAM — data mode (T1 F7) ═══ -->
+      <div class="cdemo__item">
+        <span class="cdemo__badge">system diagram · data — T1 F7 Identity Loop</span>
+        <Scene title="System Diagram — Capability → Buyer → Product">
+          <SystemDiagram
+            nodes={[
+              { id: 'cap', label: 'Runway API', role: 'capability' },
+              { id: 'buy', label: 'Developer', role: 'buyer' },
+              { id: 'prd', label: 'ACF $149/mo', role: 'product' },
+            ]}
+            edges={[
+              { from: 'cap', to: 'buy', label: 'enables' },
+              { from: 'buy', to: 'prd', label: 'builds' },
+            ]}
+            focusNode="buy"
+          />
         </Scene>
       </div>
     </div>

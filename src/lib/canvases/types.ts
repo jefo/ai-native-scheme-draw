@@ -186,3 +186,23 @@ export interface RoadmapDependencyDef {
   from: string;
   to: string;
 }
+
+/* ═══ System Diagram grammar — операция мышления: показать identity loop ═══
+ *
+ *  Три узла и рёбра между ними. Роль узла = семантический цвет чипа.
+ *  Focus — акцент на зрителе. Ребро — связь с подписью (enables, builds).
+ *  Каноническая форма: Capability → Buyer → Product. */
+
+export type SystemDiagramRole = 'capability' | 'buyer' | 'product';
+
+export interface SystemDiagramNodeDef {
+  id: string;
+  label: string;
+  role: SystemDiagramRole;
+}
+
+export interface SystemDiagramEdgeDef {
+  from: string;
+  to: string;
+  label?: string;
+}
