@@ -206,3 +206,14 @@ export interface SystemDiagramEdgeDef {
   to: string;
   label?: string;
 }
+
+/* ═══ Customer Profile grammar — операция мышления: портрет buyer'а ═══
+ *
+ *  Профилирующая карточка: роль, метрики (бюджет/цель/ограничение),
+ *  jobs (что делает), pains (что мешает), цена продукта.
+ *  Каноническая форма: Strategyzer Customer Profile + JTBD-персона. */
+
+export interface CustomerProfileMetricDef {
+  label: string;
+  value: string;
+}

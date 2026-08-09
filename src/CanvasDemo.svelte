@@ -26,6 +26,7 @@
     Milestone,
     Dependency,
     SystemDiagram,
+    CustomerProfile,
     Stage,
     Stack,
     Split,
@@ -261,6 +262,24 @@
               { from: 'buy', to: 'prd', label: 'builds' },
             ]}
             focusNode="buy"
+          />
+        </Scene>
+      </div>
+
+      <!-- ═══ CUSTOMER PROFILE — data mode (T1 F1) ═══ -->
+      <div class="cdemo__item">
+        <span class="cdemo__badge">customer profile · data — T1 F1 Buyer Portrait</span>
+        <Scene title="Customer Profile — Performance Marketer">
+          <CustomerProfile
+            role="Performance Marketer"
+            metrics={[
+              { label: 'Budget', value: '$15k / month' },
+              { label: 'Goal', value: 'acquire customers' },
+              { label: 'Bottleneck', value: 'creative throughput' },
+            ]}
+            jobs={['run campaigns', 'scale creative output', 'optimise spend']}
+            pains={['designer bottleneck', '5 creatives / week']}
+            productPrice="$149 / month"
           />
         </Scene>
       </div>

@@ -75,6 +75,9 @@ export { default as Dependency } from './canvases/atoms/Dependency.svelte';
 // System Diagram grammar — «показать identity loop» (Capability → Buyer → Product)
 export { default as SystemDiagram } from './canvases/SystemDiagram.svelte';
 
+// Customer Profile grammar — «портрет buyer'а» (Role → Metrics → Jobs → Pains → Price)
+export { default as CustomerProfile } from './canvases/CustomerProfile.svelte';
+
 // Composition system — Stage → Composition → Organism → Primitive
 export { default as Stage } from './canvases/stage/Stage.svelte';
 export { default as Stack } from './canvases/layout/Stack.svelte';
@@ -115,6 +118,7 @@ export type {
   SystemDiagramRole,
   SystemDiagramNodeDef,
   SystemDiagramEdgeDef,
+  CustomerProfileMetricDef,
   Gap,
 } from './canvases/types';
 export type { StageAspect, StageComposition, StageDensity, StageSafeArea } from './canvases/stage-context';
