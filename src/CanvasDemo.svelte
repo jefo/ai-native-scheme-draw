@@ -27,6 +27,8 @@
     Dependency,
     SystemDiagram,
     CustomerProfile,
+    ProcessMap,
+    CapabilityMap,
     Stage,
     Stack,
     Split,
@@ -280,6 +282,48 @@
             jobs={['run campaigns', 'scale creative output', 'optimise spend']}
             pains={['designer bottleneck', '5 creatives / week']}
             productPrice="$149 / month"
+          />
+        </Scene>
+      </div>
+
+      <!-- ═══ PROCESS MAP — data mode (T1 F2) ═══ -->
+      <div class="cdemo__item">
+        <span class="cdemo__badge">process map · data — T1 F2 Service Blueprint</span>
+        <Scene title="Process Map — Creative Production Flow">
+          <ProcessMap
+            stages={[
+              { name: 'Traffic', actor: 'Ads', state: 'normal', metric: { label: 'volume', value: '$15k/month' } },
+              { name: 'Campaign', state: 'normal', metric: { label: 'count', value: 'dozens' } },
+              { name: 'Brief', state: 'normal' },
+              { name: 'Designer', actor: 'Human', state: 'bottleneck', metric: { label: 'throughput', value: '5/week' }, branches: [{ name: 'creative 1' }, { name: 'creative 2' }, { name: 'creative 3' }, { name: 'creative 4' }, { name: 'creative 5' }] },
+              { name: 'Launch', state: 'normal' },
+            ]}
+          />
+        </Scene>
+      </div>
+
+      <!-- ═══ CAPABILITY MAP — data mode (T1 F3) ═══ -->
+      <div class="cdemo__item">
+        <span class="cdemo__badge">capability map · data — T1 F3 Gap Analysis</span>
+        <Scene title="Capability Map — AI vs Campaign Need">
+          <CapabilityMap
+            capability={{
+              name: 'AI Capability',
+              description: 'Text → Video',
+              metrics: [
+                { label: 'Cost', value: '$0.75' },
+                { label: 'Speed', value: 'seconds' },
+              ],
+            }}
+            need={{
+              name: 'Campaign Need',
+              description: 'Many launch-ready creatives',
+              metrics: [
+                { label: 'Volume', value: 'dozens/week' },
+                { label: 'Quality', value: 'campaign-ready' },
+              ],
+            }}
+            gap={{ label: 'GAP' }}
           />
         </Scene>
       </div>

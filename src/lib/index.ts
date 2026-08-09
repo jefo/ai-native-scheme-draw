@@ -78,6 +78,12 @@ export { default as SystemDiagram } from './canvases/SystemDiagram.svelte';
 // Customer Profile grammar — «портрет buyer'а» (Role → Metrics → Jobs → Pains → Price)
 export { default as CustomerProfile } from './canvases/CustomerProfile.svelte';
 
+// Process Map grammar — «показать процесс и узкое место» (linear flow + bottleneck)
+export { default as ProcessMap } from './canvases/ProcessMap.svelte';
+
+// Capability Map grammar — «разрыв между возможностью и потребностью» (gap analysis)
+export { default as CapabilityMap } from './canvases/CapabilityMap.svelte';
+
 // Composition system — Stage → Composition → Organism → Primitive
 export { default as Stage } from './canvases/stage/Stage.svelte';
 export { default as Stack } from './canvases/layout/Stack.svelte';
@@ -119,6 +125,10 @@ export type {
   SystemDiagramNodeDef,
   SystemDiagramEdgeDef,
   CustomerProfileMetricDef,
+  StageState,
+  ProcessMapStageDef,
+  CapabilityMapSideDef,
+  CapabilityMapGapDef,
   Gap,
 } from './canvases/types';
 export type { StageAspect, StageComposition, StageDensity, StageSafeArea } from './canvases/stage-context';

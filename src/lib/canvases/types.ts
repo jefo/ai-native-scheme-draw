@@ -217,3 +217,34 @@ export interface CustomerProfileMetricDef {
   label: string;
   value: string;
 }
+
+/* ═══ Process Map grammar — операция мышления: показать процесс и узкое место ═══
+ *
+ *  Линейный flow стадий. Каждая стадия — шаг с опциональным актором и метрикой.
+ *  Bottleneck — стадия с состоянием 'bottleneck' (amber highlight).
+ *  Опционально: ветвление на стадии (branches) — например, multiple creatives. */
+
+export type StageState = 'normal' | 'bottleneck' | 'blocked';
+
+export interface ProcessMapStageDef {
+  name: string;
+  actor?: string;
+  state: StageState;
+  metric?: { label: string; value: string };
+  branches?: { name: string }[];
+}
+
+/* ═══ Capability Map grammar — операция мышления: показать разрыв между возможностью и потребностью ═══
+ *
+ *  Две панели: Capability (что уже существует) и Need (что требуется).
+ *  GAP — индикатор несоответствия между ними. */
+
+export interface CapabilityMapSideDef {
+  name: string;
+  description?: string;
+  metrics: { label: string; value: string }[];
+}
+
+export interface CapabilityMapGapDef {
+  label: string;
+}
