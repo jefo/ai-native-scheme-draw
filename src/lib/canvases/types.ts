@@ -248,3 +248,34 @@ export interface CapabilityMapSideDef {
 export interface CapabilityMapGapDef {
   label: string;
 }
+
+/* ═══ Before/After Economics grammar — операция мышления: показать смену экономической модели ═══
+ *
+ *  Две колонки: OLD vs NEW. Каждая: цена → единица → throughput → время.
+ *  Unit shift — ключевой акцент: старая единица покупки → новая. */
+
+export interface BeforeAfterSideDef {
+  label: string;
+  price: string;
+  unit: string;
+  throughput: string;
+  time: string;
+}
+
+export interface UnitShiftDef {
+  from: string;
+  to: string;
+}
+
+/* ═══ Opportunity Solution Tree grammar — операция мышления: outcome → opportunities → solutions ═══
+ *
+ *  Канон Teresa Torres. Root = desired buyer outcome. Level 1 = opportunities.
+ *  Level 2 = solutions с состоянием chosen | alternative.
+ *  Winner path = цепочка, где solutions отмечены 'chosen'. */
+
+export type SolutionState = 'chosen' | 'alternative';
+
+export interface OpportunityDef {
+  name: string;
+  solutions: { name: string; state: SolutionState }[];
+}

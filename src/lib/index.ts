@@ -84,6 +84,12 @@ export { default as ProcessMap } from './canvases/ProcessMap.svelte';
 // Capability Map grammar — «разрыв между возможностью и потребностью» (gap analysis)
 export { default as CapabilityMap } from './canvases/CapabilityMap.svelte';
 
+// Before/After Economics — «смена экономической модели» (OLD vs NEW + unit shift)
+export { default as BeforeAfterEconomics } from './canvases/BeforeAfterEconomics.svelte';
+
+// Opportunity Solution Tree — «outcome → opportunities → solutions» (Teresa Torres)
+export { default as OpportunitySolutionTree } from './canvases/OpportunitySolutionTree.svelte';
+
 // Composition system — Stage → Composition → Organism → Primitive
 export { default as Stage } from './canvases/stage/Stage.svelte';
 export { default as Stack } from './canvases/layout/Stack.svelte';
@@ -129,6 +135,10 @@ export type {
   ProcessMapStageDef,
   CapabilityMapSideDef,
   CapabilityMapGapDef,
+  BeforeAfterSideDef,
+  UnitShiftDef,
+  SolutionState,
+  OpportunityDef,
   Gap,
 } from './canvases/types';
 export type { StageAspect, StageComposition, StageDensity, StageSafeArea } from './canvases/stage-context';

@@ -29,6 +29,8 @@
     CustomerProfile,
     ProcessMap,
     CapabilityMap,
+    BeforeAfterEconomics,
+    OpportunitySolutionTree,
     Stage,
     Stack,
     Split,
@@ -324,6 +326,56 @@
               ],
             }}
             gap={{ label: 'GAP' }}
+          />
+        </Scene>
+      </div>
+
+      <!-- ═══ BEFORE/AFTER ECONOMICS — data mode (T1 F6) ═══ -->
+      <div class="cdemo__item">
+        <span class="cdemo__badge">before/after economics · data — T1 F6 Unit Economics</span>
+        <Scene title="Before/After — Studio vs ACF">
+          <BeforeAfterEconomics
+            before={{
+              label: 'Studio',
+              price: '$300–500',
+              unit: '1 creative',
+              throughput: '1 creative',
+              time: 'days',
+            }}
+            after={{
+              label: 'ACF',
+              price: '$149/month',
+              unit: 'campaign batch',
+              throughput: 'dozens',
+              time: 'minutes',
+            }}
+            unitShift={{ from: 'per creative', to: 'per workflow/month' }}
+          />
+        </Scene>
+      </div>
+
+      <!-- ═══ OPPORTUNITY SOLUTION TREE — data mode (T1 F4) ═══ -->
+      <div class="cdemo__item">
+        <span class="cdemo__badge">opportunity solution tree · data — T1 F4 Teresa Torres</span>
+        <Scene title="Opportunity Solution Tree — More Creative Throughput">
+          <OpportunitySolutionTree
+            outcome="More Creative Throughput"
+            opportunities={[
+              {
+                name: 'Generate video',
+                solutions: [
+                  { name: 'Runway API', state: 'alternative' },
+                ],
+              },
+              {
+                name: 'Produce campaigns',
+                solutions: [
+                  { name: 'Creative Factory — Brief', state: 'chosen' },
+                  { name: '10 variants', state: 'chosen' },
+                  { name: 'Export → Launch', state: 'chosen' },
+                ],
+              },
+            ]}
           />
         </Scene>
       </div>
