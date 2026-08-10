@@ -8,9 +8,12 @@
   import RunwayDemo from './RunwayDemo.svelte';
   import IDPipelineDemo from './IDPipelineDemo.svelte';
   import EventLoopDemo from './EventLoopDemo.svelte';
+  import RepMatrixDemo from './RepMatrixDemo.svelte';
 </script>
 
-{#if router.page === 'event-loop'}
+{#if router.page === 'rep-matrix'}
+  <RepMatrixDemo />
+{:else if router.page === 'event-loop'}
   <EventLoopDemo />
 {:else if router.page === 'id-pipeline'}
   <IDPipelineDemo />

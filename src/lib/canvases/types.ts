@@ -407,3 +407,62 @@ export interface ContextConnectionDef {
   to: string;
   label: string;
 }
+
+/* ═══ State Machine grammar — операция мышления: увидеть изменение состояния ═══
+ *
+ *  Nodes = states, edges = transitions. Initial state → ... → terminal.
+ *  Guards опциональны: условие на переходе. */
+
+export interface StateNodeDef {
+  id: string;
+  label: string;
+  initial?: boolean;
+  terminal?: boolean;
+}
+
+export interface StateTransitionDef {
+  from: string;
+  to: string;
+  label?: string;   // guard / event name
+}
+
+/* ═══ Sequence Diagram grammar — операция мышления: увидеть взаимодействие во времени ═══
+ *
+ *  Participants = вертикальные линии жизни, messages = горизонтальные стрелки.
+ *  Время течёт сверху вниз. */
+
+export interface SequenceParticipantDef {
+  id: string;
+  label: string;
+}
+
+export interface SequenceMessageDef {
+  from: string;
+  to: string;
+  label: string;
+  /** Опционально: ответ (возврат) — рисуется пунктиром. */
+  isReturn?: boolean;
+}
+
+/* ═══ Feedback Loop grammar — операция мышления: увидеть control loop ═══
+ *
+ *  Циклическая цепочка: Desired → Observe → Actual → Diff → Act → ...
+ *  Центральная аннотация описывает, что стабилизируется. */
+
+export interface FeedbackNodeDef {
+  id: string;
+  label: string;
+}
+
+export interface FeedbackEdgeDef {
+  from: string;
+  to: string;
+  label?: string;
+}
+
+/** Замыкающая дуга — визуально возвращается к началу цикла. */
+export interface FeedbackLoopDef {
+  nodes: FeedbackNodeDef[];
+  edges: FeedbackEdgeDef[];
+  annotation?: string;
+}

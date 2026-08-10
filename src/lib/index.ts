@@ -106,6 +106,11 @@ export { default as LearnerJourney } from './canvases/LearnerJourney.svelte';
 export { default as EvidenceMap } from './canvases/EvidenceMap.svelte';
 export { default as ContextMap } from './canvases/ContextMap.svelte';
 
+// Mechanism representational systems — объяснение поведения систем
+export { default as StateMachine } from './canvases/StateMachine.svelte';
+export { default as SequenceDiagram } from './canvases/SequenceDiagram.svelte';
+export { default as FeedbackLoop } from './canvases/FeedbackLoop.svelte';
+
 // Composition system — Stage → Composition → Organism → Primitive
 export { default as Stage } from './canvases/stage/Stage.svelte';
 export { default as Stack } from './canvases/layout/Stack.svelte';
@@ -171,6 +176,13 @@ export type {
   EvidenceClaimDef,
   ContextBoxDef,
   ContextConnectionDef,
+  StateNodeDef,
+  StateTransitionDef,
+  SequenceParticipantDef,
+  SequenceMessageDef,
+  FeedbackNodeDef,
+  FeedbackEdgeDef,
+  FeedbackLoopDef,
   Gap,
 } from './canvases/types';
 export type { StageAspect, StageComposition, StageDensity, StageSafeArea } from './canvases/stage-context';
