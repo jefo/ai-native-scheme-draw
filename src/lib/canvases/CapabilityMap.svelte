@@ -1,27 +1,47 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import type { CapabilityMapSideDef, CapabilityMapGapDef } from './types';
+  import type { CapabilityMapSideDef, CapabilityMapGapDef, MethodDef, CapabilityGroupDef } from './types';
 
-  /** CapabilityMap — разрыв между возможностью и потребностью.
+  /** CapabilityMap — две операции мышления:
    *
-   *  Две панели: capability (cyan) и need (amber). Между ними — GAP-индикатор.
-   *  Dual API: data props + named slots. */
+   *  mode="gap" (default): разрыв между возможностью и потребностью.
+   *    Две панели — capability (cyan) и need (amber), между ними GAP-индикатор.
+   *
+   *  mode="group": сгруппировать методы/фичи в capability.
+   *    Methods (нейтральные чипы) → provocation (зачёркнутый ложный вывод) →
+   *    capabilities (циановые плашки-результаты). */
 
   let {
+    mode = 'gap' as 'gap' | 'group',
+    // gap mode
     capability = { name: '', metrics: [] } as CapabilityMapSideDef,
     need = { name: '', metrics: [] } as CapabilityMapSideDef,
     gap = { label: '' } as CapabilityMapGapDef,
     capabilitySlot,
     needSlot,
     gapSlot,
+    // group mode
+    methods = [] as MethodDef[],
+    capabilities = [] as CapabilityGroupDef[],
+    provocation = '',
+    methodsSlot,
+    capabilitiesSlot,
+    provocationSlot,
     children,
   }: {
+    mode?: 'gap' | 'group';
     capability?: CapabilityMapSideDef;
     need?: CapabilityMapSideDef;
     gap?: CapabilityMapGapDef;
     capabilitySlot?: Snippet;
     needSlot?: Snippet;
     gapSlot?: Snippet;
+    methods?: MethodDef[];
+    capabilities?: CapabilityGroupDef[];
+    provocation?: string;
+    methodsSlot?: Snippet;
+    capabilitiesSlot?: Snippet;
+    provocationSlot?: Snippet;
     children?: Snippet;
   } = $props();
 </script>
@@ -29,6 +49,51 @@
 <div class="cmap">
   {#if children}
     {@render children()}
+  {:else if mode === 'group'}
+    <!-- ═══ GROUP MODE: methods → provocation → capabilities ═══ -->
+    <div class="cmap__group">
+      <!-- zone 1: methods -->
+      <div class="cmap__group-zone cmap__group-zone--in">
+        {#if methodsSlot}
+          {@render methodsSlot()}
+        {:else}
+          <div class="cmap__group-chips">
+            {#each methods as m}
+              <span class="cmap__group-chip">{m.name}</span>
+            {/each}
+          </div>
+        {/if}
+      </div>
+
+      <!-- zone 2: provocation (false label, crossed out) -->
+      {#if provocationSlot || provocation}
+        <div class="cmap__group-provocation">
+          {#if provocationSlot}
+            {@render provocationSlot()}
+          {:else}
+            <span class="cmap__group-provocation-label">{provocation}</span>
+            <span class="cmap__group-provocation-strike"></span>
+          {/if}
+          <span class="cmap__group-stop">СТОП</span>
+        </div>
+      {/if}
+
+      <!-- zone 3: capabilities (result) -->
+      <div class="cmap__group-zone cmap__group-zone--out">
+        {#if capabilitiesSlot}
+          {@render capabilitiesSlot()}
+        {:else}
+          {#each capabilities as c}
+            <div class="cmap__group-cap">
+              <span class="cmap__group-cap-name">{c.name}</span>
+              {#if c.description}
+                <span class="cmap__group-cap-desc">{c.description}</span>
+              {/if}
+            </div>
+          {/each}
+        {/if}
+      </div>
+    </div>
   {:else}
     <div class="cmap__panels">
       <!-- capability panel -->
@@ -184,5 +249,132 @@
     text-align: center;
     line-height: 1.3;
     max-width: 60px;
+  }
+
+  /* ── GROUP MODE: methods → provocation → capabilities ── */
+  .cmap__group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 14px 20px;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .cmap__group-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: var(--canvas-stroke);
+    background: var(--canvas-panel-bg);
+    width: 100%;
+  }
+  .cmap__group-zone--in {
+    opacity: 0.68;
+  }
+  .cmap__group-zone--out {
+    border-color: var(--canvas-sticky-blue-border);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--canvas-sticky-blue-border) 20%, transparent);
+  }
+
+  /* method chips */
+  .cmap__group-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .cmap__group-chip {
+    font-family: var(--vnp-font);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    padding: 7px 15px;
+    border-radius: 8px;
+    border: 1px solid color-mix(in srgb, var(--canvas-ink-soft) 34%, transparent);
+    background: var(--canvas-panel-bg);
+    color: var(--canvas-ink);
+    white-space: nowrap;
+  }
+
+  /* provocation: crossed-out label */
+  .cmap__group-provocation {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 22px;
+    border: 1px solid color-mix(in srgb, var(--canvas-mark-cross) 45%, transparent);
+    border-radius: 8px;
+    background: var(--canvas-panel-bg);
+  }
+  .cmap__group-provocation-label {
+    font-family: var(--vnp-font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--canvas-mark-cross);
+  }
+  .cmap__group-provocation-strike {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    right: 10px;
+    height: 2px;
+    background: var(--canvas-mark-cross);
+    border-radius: 2px;
+    transform: translateY(-50%) rotate(-7deg);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .cmap__group-stop {
+    font-family: var(--vnp-font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--canvas-mark-cross);
+    border: 1.5px solid var(--canvas-mark-cross);
+    border-radius: 4px;
+    padding: 2px 10px;
+  }
+
+  /* capability result plates */
+  .cmap__group-cap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 14px 28px;
+    border: 1px solid var(--canvas-sticky-blue-border);
+    border-radius: 8px;
+    background: var(--canvas-panel-bg);
+    box-shadow:
+      var(--canvas-note-shadow),
+      0 0 18px color-mix(in srgb, var(--canvas-sticky-blue-border) 24%, transparent);
+  }
+  .cmap__group-cap-name {
+    font-family: var(--vnp-font);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--canvas-ink);
+  }
+  .cmap__group-cap-desc {
+    font-family: var(--vnp-font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--canvas-ink-soft);
   }
 </style>

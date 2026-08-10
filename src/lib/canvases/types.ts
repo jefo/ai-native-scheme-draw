@@ -279,3 +279,131 @@ export interface OpportunityDef {
   name: string;
   solutions: { name: string; state: SolutionState }[];
 }
+
+/* ═══ Grouping grammar (CapabilityMap mode="group") — операция мышления: сгруппировать ═══
+ *
+ *  Методы/фичи как входы → capability как результат группировки.
+ *  Provocation — ложный вывод, который зачёркивается перед результатом. */
+
+export interface MethodDef {
+  name: string;
+}
+
+export interface CapabilityGroupDef {
+  name: string;
+  description?: string;
+}
+
+/* ═══ Contrast grammar (ProcessMap mode="contrast") — операция мышления: противопоставить ═══
+ *
+ *  Две колонки: «как ты думаешь» (одиночный вызов) vs «что это на самом деле» (конвейер).
+ *  kind = 'single' → один чип с подписью; 'pipeline' → цепочка стадий + API-точки. */
+
+export interface ContrastSideDef {
+  kind: 'single' | 'pipeline';
+  label: string;
+  note?: string;
+  singleCall?: string;
+  stages?: string[];
+}
+
+/* ═══ Buyer Job grammar — операция мышления: связать workflow с buyer'ом ═══
+ *
+ *  Роль → job (какую работу закрывает) → product shape (форма продукта).
+ *  winner = true → зелёный акцент (выбранный путь). */
+
+export interface BuyerJobDef {
+  role: string;
+  job: string;
+  shape: string;
+  winner?: boolean;
+}
+
+/* ═══ Decision Matrix grammar — операция мышления: отфильтровать ═══
+ *
+ *  Критерии (constraints) сверху, кандидаты снизу с вердиктом.
+ *  pass = ✓ зелёный, partial = ~ янтарный, fail = ✗ розовый (приглушён). */
+
+export type Verdict = 'pass' | 'partial' | 'fail';
+
+export interface DecisionCandidateDef {
+  name: string;
+  verdict: Verdict;
+  why: string;
+}
+
+/* ═══ Thesis grammar — операция мышления: синтезировать ═══
+ *
+ *  Claim (ставка) + anatomy (buyer / job / stake). */
+
+export interface ThesisDef {
+  claim: string;
+  buyer: string;
+  job: string;
+  stake: string;
+}
+
+/* ═══ Dependency Graph grammar — операция мышления: упорядочить prerequisites ═══
+ *
+ *  Узлы концептов с зависимостями. Визуально: цепочка сверху вниз,
+ *  стрелки показывают «что нужно понять до чего». */
+
+export interface DependencyNodeDef {
+  id: string;
+  label: string;
+  requires: string[];
+}
+
+/* ═══ Causal Chain grammar — операция мышления: показать причинный механизм ═══
+ *
+ *  Вертикальная цепочка: каждая стрелка аннотирована механизмом (почему X ведёт к Y). */
+
+export interface CausalStepDef {
+  from: string;
+  to: string;
+  mechanism: string;
+}
+
+/* ═══ Learner Journey grammar — операция мышления: показать когнитивный путь ═══
+ *
+ *  Стадии открытия: Confusion → Prediction → Observation → Explanation → Model.
+ *  Каждая стадия имеет когнитивное состояние и описание. */
+
+export type JourneyState = 'confusion' | 'prediction' | 'observation' | 'explanation' | 'model' | 'application';
+
+export interface JourneyStageDef {
+  state: JourneyState;
+  description: string;
+  content?: string;
+}
+
+/* ═══ Evidence Map grammar — операция мышления: обосновать утверждение ═══
+ *
+ *  Claim (утверждение) + evidence (подтверждения разного типа). */
+
+export type EvidenceType = 'benchmark' | 'example' | 'counterexample' | 'source' | 'analogy';
+
+export interface EvidenceItemDef {
+  type: EvidenceType;
+  description: string;
+}
+
+export interface EvidenceClaimDef {
+  statement: string;
+  evidence: EvidenceItemDef[];
+}
+
+/* ═══ Context Map grammar — операция мышления: показать границы подсистем ═══
+ *
+ *  Бounded contexts с сущностями внутри и labelled connections между ними. */
+
+export interface ContextBoxDef {
+  name: string;
+  entities: string[];
+}
+
+export interface ContextConnectionDef {
+  from: string;
+  to: string;
+  label: string;
+}

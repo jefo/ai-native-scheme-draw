@@ -90,6 +90,22 @@ export { default as BeforeAfterEconomics } from './canvases/BeforeAfterEconomics
 // Opportunity Solution Tree — «outcome → opportunities → solutions» (Teresa Torres)
 export { default as OpportunitySolutionTree } from './canvases/OpportunitySolutionTree.svelte';
 
+// Buyer Job Map — «связать workflow с buyer'ом» (role → job → product shape)
+export { default as BuyerJobMap } from './canvases/BuyerJobMap.svelte';
+
+// Decision Matrix — «отфильтровать кандидатов критериями» (constraints → verdicts)
+export { default as DecisionMatrix } from './canvases/DecisionMatrix.svelte';
+
+// Thesis Card — «синтезировать продуктовую ставку» (claim + anatomy)
+export { default as ThesisCard } from './canvases/ThesisCard.svelte';
+
+// Cognitive projection frameworks — instructional design layer
+export { default as DependencyGraph } from './canvases/DependencyGraph.svelte';
+export { default as CausalChain } from './canvases/CausalChain.svelte';
+export { default as LearnerJourney } from './canvases/LearnerJourney.svelte';
+export { default as EvidenceMap } from './canvases/EvidenceMap.svelte';
+export { default as ContextMap } from './canvases/ContextMap.svelte';
+
 // Composition system — Stage → Composition → Organism → Primitive
 export { default as Stage } from './canvases/stage/Stage.svelte';
 export { default as Stack } from './canvases/layout/Stack.svelte';
@@ -139,6 +155,22 @@ export type {
   UnitShiftDef,
   SolutionState,
   OpportunityDef,
+  MethodDef,
+  CapabilityGroupDef,
+  ContrastSideDef,
+  BuyerJobDef,
+  Verdict,
+  DecisionCandidateDef,
+  ThesisDef,
+  DependencyNodeDef,
+  CausalStepDef,
+  JourneyState,
+  JourneyStageDef,
+  EvidenceType,
+  EvidenceItemDef,
+  EvidenceClaimDef,
+  ContextBoxDef,
+  ContextConnectionDef,
   Gap,
 } from './canvases/types';
 export type { StageAspect, StageComposition, StageDensity, StageSafeArea } from './canvases/stage-context';

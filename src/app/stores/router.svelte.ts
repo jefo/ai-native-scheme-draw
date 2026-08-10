@@ -1,6 +1,6 @@
 /** Simple hash-based SPA router. */
 
-export type Route = 'dashboard' | 'library' | 'project' | 'canvases';
+export type Route = 'dashboard' | 'library' | 'project' | 'canvases' | 'runway' | 'id-pipeline' | 'event-loop';
 
 let _route = $state<{ page: Route; params: Record<string, string> }>({ page: 'dashboard', params: {} });
 
@@ -25,7 +25,7 @@ export const router = {
     const params: Record<string, string> = {};
     if (qs) new URLSearchParams(qs).forEach((v, k) => (params[k] = v));
 
-    if (page === 'library' || page === 'project' || page === 'canvases') {
+    if (page === 'library' || page === 'project' || page === 'canvases' || page === 'runway' || page === 'id-pipeline' || page === 'event-loop') {
       _route = { page, params };
     } else {
       _route = { page: 'dashboard', params: {} };
