@@ -9,9 +9,15 @@
   import IDPipelineDemo from './IDPipelineDemo.svelte';
   import EventLoopDemo from './EventLoopDemo.svelte';
   import RepMatrixDemo from './RepMatrixDemo.svelte';
+  import EventLoopStoryboard from './EventLoopStoryboard.svelte';
+  import LearnEventLoop from './LearnEventLoop.svelte';
 </script>
 
-{#if router.page === 'rep-matrix'}
+{#if router.page === 'learn-el'}
+  <LearnEventLoop />
+{:else if router.page === 'el-storyboard'}
+  <EventLoopStoryboard />
+{:else if router.page === 'rep-matrix'}
   <RepMatrixDemo />
 {:else if router.page === 'event-loop'}
   <EventLoopDemo />
