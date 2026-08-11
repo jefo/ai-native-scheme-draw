@@ -74,6 +74,7 @@
             contexts={[
               { name: 'JS Engine', entities: ['Call Stack', 'Heap'] },
               { name: 'Web APIs', entities: ['Timer', 'fetch', 'DOM'] },
+              { name: 'Event Loop', entities: ['drain microtasks', 'pick macrotask', 'trigger render'] },
               { name: 'Microtask Queue', entities: ['Promise.then', 'queueMicrotask'] },
               { name: 'Task Queue', entities: ['setTimeout cb', 'I/O events'] },
               { name: 'Render', entities: ['Style', 'Layout', 'Paint'] },
@@ -82,9 +83,10 @@
               { from: 'JS Engine', to: 'Web APIs', label: 'delegates' },
               { from: 'Web APIs', to: 'Task Queue', label: 'enqueues' },
               { from: 'Web APIs', to: 'Microtask Queue', label: 'enqueues' },
-              { from: 'Microtask Queue', to: 'JS Engine', label: 'drains first' },
-              { from: 'Task Queue', to: 'JS Engine', label: 'next tick' },
-              { from: 'JS Engine', to: 'Render', label: 'triggers' },
+              { from: 'Event Loop', to: 'Microtask Queue', label: 'drains first' },
+              { from: 'Event Loop', to: 'Task Queue', label: 'picks next' },
+              { from: 'Event Loop', to: 'JS Engine', label: 'pushes to stack' },
+              { from: 'Event Loop', to: 'Render', label: 'triggers' },
             ]}
           />
         </Scene>
@@ -93,54 +95,156 @@
       <!-- закрытие aggregate: что теперь целостно -->
       <div class="ld__close">
         <span class="ld__close-icon">✓</span>
-        <span class="ld__close-text">Теперь ты знаешь: <b>две очереди — Microtask и Task. Это разные структуры.</b> Promise.then идёт в Microtask. setTimeout — в Task.</span>
+        <span class="ld__close-text">Теперь ты знаешь: <b>Event Loop — центр управления.</b> Две очереди — Microtask и Task. Event Loop решает, что и когда выполнять. Promise.then идёт в Microtask. setTimeout — в Task.</span>
       </div>
     </section>
 
-    <!-- ═══ STEP 4: SEQUENCE — aggregate = structure + sequence ═══ -->
+    <!-- ═══ STEP 4: MISCONCEPTION — flow showing the learner's current model ═══ -->
     <section class="ld__step">
       <span class="ld__num">4</span>
-      <h2 class="ld__q">Что происходит после setTimeout(fn, 0)?</h2>
+      <h2 class="ld__q">Ты сейчас думаешь так:</h2>
 
-      <!-- memory: структура из шага 3 -->
       <div class="ld__mem">
         <span class="ld__mem-label">Уже знаем:</span>
         <span class="ld__mem-chip">Microtask Queue</span>
         <span class="ld__mem-chip">Task Queue</span>
-        <span class="ld__mem-chip">JS Engine</span>
-        <span class="ld__mem-chip">Web APIs</span>
+        <span class="ld__mem-chip">Event Loop — главный</span>
       </div>
 
-      <div class="ld__frame">
-        <Scene>
-          <SequenceDiagram
-            participants={[
-              { id: 'js', label: 'JS Engine' },
-              { id: 'timer', label: 'Timer API' },
-              { id: 'tq', label: 'Task Queue' },
-              { id: 'el', label: 'Event Loop' },
-              { id: 'cs', label: 'Call Stack' },
-            ]}
-            messages={[
-              { from: 'js', to: 'timer', label: 'setTimeout(fn, 0)' },
-              { from: 'timer', to: 'tq', label: 'enqueue' },
-              { from: 'tq', to: 'el', label: 'ready' },
-              { from: 'el', to: 'cs', label: 'push fn' },
-              { from: 'cs', to: 'js', label: 'fn() done', isReturn: true },
-            ]}
-          />
-        </Scene>
+      <!-- MISCONCEPTION: Event Loop as passive courier -->
+      <div class="ld__misconception">
+        <span class="ld__misconception-label">Твоя текущая модель</span>
+        <div class="ld__courier-flow">
+          <span class="ld__courier-node">setTimeout(fn, 0)</span>
+          <span class="ld__courier-arrow">→</span>
+          <span class="ld__courier-node ld__courier-node--ghost">Event Loop<br><small>«курьер»</small></span>
+          <span class="ld__courier-arrow">→</span>
+          <span class="ld__courier-node">fn()<br><small>выполнилось</small></span>
+        </div>
+        <p class="ld__misconception-why">Модель «курьер»: setTimeout → callback ждёт → Event Loop переносит → выполнилось.<br><b>Здесь Event Loop — пассивный. Он просто moving parts.</b></p>
+      </div>
+
+      <p class="ld__insight">Но в этой модели <b>нет арбитража.</b> Нет проверки стека. Нет выбора между очередями. Нет условий.</p>
+    </section>
+
+    <!-- ═══ STEP 5: ARBITRATOR — contrast: Event Loop as active decision-maker ═══ -->
+    <section class="ld__step">
+      <span class="ld__num">5</span>
+      <h2 class="ld__q">А на самом деле — кто принимает решение?</h2>
+
+      <div class="ld__mem">
+        <span class="ld__mem-label">Уже знаем:</span>
+        <span class="ld__mem-chip">Microtask Queue</span>
+        <span class="ld__mem-chip">Task Queue</span>
+        <span class="ld__mem-chip">модель «курьер» — ложная</span>
+        <span class="ld__mem-chip">Event Loop — главный</span>
+      </div>
+
+      <p class="ld__insight">Event Loop — не курьер. Он <b>вышибала у сцены.</b> Вот что происходит — и как меняется состояние после каждого шага.</p>
+
+<p class="ld__insight">Event Loop — не курьер. Он <b>вышибала у сцены.</b> Все герои — на своих местах. История идёт сверху вниз.</p>
+
+      <!-- Stage-based storytelling: characters in fixed positions, steps below -->
+      <div class="ld__stage">
+        <!-- CHARACTERS — always visible in fixed positions -->
+        <div class="ld__cast">
+          <div class="ld__actor ld__actor--js">
+            <span class="ld__actor-name">JS-код</span>
+            <span class="ld__actor-role">пишет и выполняет</span>
+          </div>
+          <div class="ld__actor ld__actor--timer">
+            <span class="ld__actor-name">Timer API</span>
+            <span class="ld__actor-role">внешний помощник</span>
+          </div>
+          <div class="ld__actor ld__actor--eloop">
+            <span class="ld__actor-name">Event Loop</span>
+            <span class="ld__actor-role">арбитр</span>
+          </div>
+          <div class="ld__actor ld__actor--vip">
+            <span class="ld__actor-name">VIP-очередь</span>
+            <span class="ld__actor-role">Microtask</span>
+          </div>
+          <div class="ld__actor ld__actor--normal">
+            <span class="ld__actor-name">Обычная очередь</span>
+            <span class="ld__actor-role">Task</span>
+          </div>
+          <div class="ld__actor ld__actor--stack">
+            <span class="ld__actor-name">Стек</span>
+            <span class="ld__actor-role">сцена</span>
+          </div>
+          <div class="ld__actor ld__actor--browser">
+            <span class="ld__actor-name">Браузер</span>
+            <span class="ld__actor-role">зритель</span>
+          </div>
+        </div>
+
+        <!-- STEPS — numbered interactions between characters -->
+        <div class="ld__steps">
+          <div class="ld__step-row">
+            <span class="ld__step-num">1</span>
+            <span class="ld__step-from">JS-код</span>
+            <span class="ld__step-arrow">→ setTimeout(fn, 0) →</span>
+            <span class="ld__step-to">Timer API</span>
+            <span class="ld__step-state"><span class="ld__mini-stack"><span class="ld__mini-frame">D</span><span class="ld__mini-frame">A</span></span> VIP: — | Обычная: —</span>
+          </div>
+          <div class="ld__step-row">
+            <span class="ld__step-num">2</span>
+            <span class="ld__step-from">Timer API</span>
+            <span class="ld__step-arrow">→ ставит callback →</span>
+            <span class="ld__step-to">Обычная</span>
+            <span class="ld__step-state"><span class="ld__mini-stack"><span class="ld__mini-frame">D</span><span class="ld__mini-frame">A</span></span> VIP: — | <b>Обычная: [fn]</b></span>
+          </div>
+          <div class="ld__step-row">
+            <span class="ld__step-num">3</span>
+            <span class="ld__step-from">Promise.then</span>
+            <span class="ld__step-arrow">→ ставит callback →</span>
+            <span class="ld__step-to">VIP-очередь</span>
+            <span class="ld__step-state"><span class="ld__mini-stack"><span class="ld__mini-frame">D</span><span class="ld__mini-frame">A</span></span> <b>VIP: [pr]</b> | Обычная: [fn]</span>
+          </div>
+          <div class="ld__step-row ld__step-row--key">
+            <span class="ld__step-num">4</span>
+            <span class="ld__step-from">Стек</span>
+            <span class="ld__step-arrow">→ опустел →</span>
+            <span class="ld__step-to">Event Loop</span>
+            <span class="ld__step-state"><span class="ld__mini-stack ld__mini-stack--empty"><span class="ld__mini-frame ld__mini-frame--empty">∅</span></span> <b>VIP: [pr]</b> | Обычная: [fn]</span>
+          </div>
+          <div class="ld__step-row ld__step-row--key">
+            <span class="ld__step-num">5</span>
+            <span class="ld__step-from">Event Loop</span>
+            <span class="ld__step-arrow">→ drain ВСЕХ →</span>
+            <span class="ld__step-to">VIP → Стек</span>
+            <span class="ld__step-state"><span class="ld__mini-stack"><span class="ld__mini-frame">pr()</span></span> <b>VIP: пусто ✓</b> | Обычная: [fn]</span>
+          </div>
+          <div class="ld__step-row ld__step-row--key">
+            <span class="ld__step-num">6</span>
+            <span class="ld__step-from">Event Loop</span>
+            <span class="ld__step-arrow">→ берёт ОДНУ →</span>
+            <span class="ld__step-to">Обычная → Стек</span>
+            <span class="ld__step-state"><span class="ld__mini-stack"><span class="ld__mini-frame">fn()</span></span> VIP: пусто | <b>Обычная: пусто ✓</b></span>
+          </div>
+          <div class="ld__step-row">
+            <span class="ld__step-num">7</span>
+            <span class="ld__step-from">Стек</span>
+            <span class="ld__step-arrow">→ render →</span>
+            <span class="ld__step-to">Браузер</span>
+            <span class="ld__step-state">A, D, C, B — зритель видит результат</span>
+          </div>
+          <div class="ld__step-loop">
+            <span class="ld__step-loop-icon">↻</span>
+            <span>Event Loop возвращается к шагу 4. Бесконечно.</span>
+          </div>
+        </div>
       </div>
 
       <div class="ld__close">
         <span class="ld__close-icon">✓</span>
-        <span class="ld__close-text">Теперь ты знаешь: <b>setTimeout не выполняет код. Он договаривается с браузером.</b> Callback проходит: Timer API → Task Queue → Event Loop → Call Stack. Между «запланировать» и «выполнить» — 4 шага.</span>
+        <span class="ld__close-text">Теперь ты знаешь: <b>Event Loop — вышибала, не курьер.</b> Он решает, кто идёт на сцену. Правила простые: сначала все из VIP, потом один из обычных, потом показать зрителю. Повторить.</span>
       </div>
     </section>
 
-    <!-- ═══ STEP 5: STATE — aggregate = structure + sequence + state ═══ -->
+    <!-- ═══ STEP 6: STATE — aggregate = structure + sequence + state ═══ -->
     <section class="ld__step">
-      <span class="ld__num">5</span>
+      <span class="ld__num">6</span>
       <h2 class="ld__q">В каком состоянии находится callback?</h2>
 
       <div class="ld__mem">
@@ -175,9 +279,9 @@
       </div>
     </section>
 
-    <!-- ═══ STEP 6: CAUSAL — aggregate += causal ═══ -->
+    <!-- ═══ STEP 7: CAUSAL — aggregate += causal ═══ -->
     <section class="ld__step">
-      <span class="ld__num">6</span>
+      <span class="ld__num">7</span>
       <h2 class="ld__q">Почему Promise.then обгоняет setTimeout?</h2>
 
       <div class="ld__mem">
@@ -205,9 +309,9 @@
       </div>
     </section>
 
-    <!-- ═══ STEP 7: FEEDBACK — aggregate += feedback ═══ -->
+    <!-- ═══ STEP 8: FEEDBACK — aggregate += feedback ═══ -->
     <section class="ld__step">
-      <span class="ld__num">7</span>
+      <span class="ld__num">8</span>
       <h2 class="ld__q">Как цикл замыкается?</h2>
 
       <div class="ld__mem">
@@ -247,9 +351,9 @@
       </div>
     </section>
 
-    <!-- ═══ STEP 8: RE-PREDICT — полный aggregate проверяется ═══ -->
+    <!-- ═══ STEP 9: RE-PREDICT — полный aggregate проверяется ═══ -->
     <section class="ld__step ld__step--final">
-      <span class="ld__num">8</span>
+      <span class="ld__num">9</span>
       <h2 class="ld__q">Теперь ты. Что выведет этот код?</h2>
 
       <div class="ld__mem">
@@ -337,4 +441,53 @@
   .ld__answer { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; justify-content: center; }
   .ld__answer-label { font: var(--vnp-font-mono) 11px/600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--canvas-ink-soft); }
   .ld__answer-val { font: var(--vnp-font-mono) 18px/700; color: var(--canvas-mark-check); letter-spacing: 0.04em; }
+
+  /* ═══ STAGE-BASED STORYTELLING — fixed characters, eye follows arrows ═══ */
+  .ld__stage { width: 100%; max-width: 760px; display: flex; flex-direction: column; gap: 14px; }
+
+  /* cast — characters in fixed positions */
+  .ld__cast { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: flex-start; padding: 14px 18px; border: var(--canvas-stroke); border-radius: 12px; background: var(--canvas-panel-bg); }
+  .ld__actor { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 14px; border-radius: 8px; border: 1px solid; min-width: 90px; }
+  .ld__actor-name { font: var(--vnp-font) 12px/700; color: var(--canvas-ink); letter-spacing: -0.01em; text-align: center; }
+  .ld__actor-role { font: var(--vnp-font-mono) 8px/500; color: var(--canvas-ink-soft); text-transform: uppercase; letter-spacing: 0.05em; }
+  .ld__actor--js { border-color: var(--canvas-sticky-green-border); background: color-mix(in srgb, var(--canvas-sticky-green) 50%, transparent); }
+  .ld__actor--timer { border-color: color-mix(in srgb, var(--canvas-ink-soft) 30%, transparent); background: var(--canvas-panel-bg); }
+  .ld__actor--eloop { border-color: var(--vnp-info); background: var(--canvas-sticky-blue); box-shadow: 0 0 14px color-mix(in srgb, var(--vnp-info) 28%, transparent); }
+  .ld__actor--vip { border-color: var(--canvas-sticky-blue-border); background: color-mix(in srgb, var(--canvas-sticky-blue) 50%, transparent); }
+  .ld__actor--normal { border-color: color-mix(in srgb, var(--canvas-ink-soft) 30%, transparent); background: var(--canvas-panel-bg); }
+  .ld__actor--stack { border-color: var(--canvas-sticky-green-border); background: color-mix(in srgb, var(--canvas-sticky-green) 40%, transparent); }
+  .ld__actor--browser { border-color: color-mix(in srgb, var(--canvas-ink-soft) 24%, transparent); background: var(--canvas-panel-bg); opacity: 0.7; }
+
+  /* steps — numbered interactions between characters */
+  .ld__steps { display: flex; flex-direction: column; gap: 2px; }
+  .ld__step-row { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 6px; background: var(--canvas-panel-bg); border: 1px solid rgba(255,255,255,0.04); flex-wrap: wrap; }
+  .ld__step-row--key { background: color-mix(in srgb, var(--vnp-info) 6%, transparent); border-color: color-mix(in srgb, var(--vnp-info) 20%, transparent); }
+  .ld__step-num { font: var(--vnp-font-mono) 13px/700; color: var(--canvas-ink-soft); opacity: 0.35; min-width: 18px; }
+  .ld__step-from { font: var(--vnp-font) 12px/700; color: var(--canvas-ink); letter-spacing: -0.01em; padding: 2px 8px; border-radius: 4px; background: var(--vnp-card); border: 1px solid color-mix(in srgb, var(--canvas-ink-soft) 24%, transparent); white-space: nowrap; }
+  .ld__step-arrow { font: var(--vnp-font-mono) 10px/500; color: var(--canvas-ink-soft); white-space: nowrap; }
+  .ld__step-to { font: var(--vnp-font) 12px/700; color: var(--canvas-ink); letter-spacing: -0.01em; padding: 2px 8px; border-radius: 4px; background: var(--vnp-card); border: 1px solid color-mix(in srgb, var(--canvas-ink-soft) 24%, transparent); white-space: nowrap; }
+  .ld__step-state { font: var(--vnp-font-mono) 9px/500; color: var(--canvas-ink-soft); margin-left: auto; }
+  .ld__step-state b { font-weight: 600; color: var(--canvas-highlight-ink); }
+
+  /* mini stack — visual LIFO representation */
+  .ld__mini-stack { display: inline-flex; flex-direction: column-reverse; align-items: stretch; gap: 0; border: 1px solid var(--canvas-sticky-green-border); border-radius: 4px; overflow: hidden; vertical-align: middle; margin-right: 4px; background: var(--vnp-card); }
+  .ld__mini-stack--empty { border-style: dashed; opacity: 0.45; }
+  .ld__mini-frame { font: var(--vnp-font-mono) 9px/600; color: var(--canvas-ink); padding: 1px 7px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.06); background: color-mix(in srgb, var(--canvas-sticky-green) 25%, transparent); min-width: 24px; }
+  .ld__mini-frame:last-child { border-bottom: none; }
+  .ld__mini-frame--empty { background: transparent; color: var(--canvas-ink-soft); }
+
+  .ld__step-loop { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: color-mix(in srgb, var(--vnp-info) 4%, transparent); border-radius: 6px; font: var(--vnp-font) 12px/1.4; color: var(--canvas-ink-soft); }
+  .ld__step-loop-icon { font-size: 16px; color: var(--vnp-info); flex-shrink: 0; }
+
+
+  /* ═══ MISCONCEPTION FLOW — learner's current (wrong) courier model ═══ */
+  .ld__misconception { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 16px 22px; border: 1px solid color-mix(in srgb, var(--canvas-mark-cross) 40%, transparent); border-radius: 10px; background: color-mix(in srgb, var(--canvas-mark-cross) 4%, transparent); }
+  .ld__misconception-label { font: var(--vnp-font-mono) 9px/600; text-transform: uppercase; letter-spacing: 0.10em; color: var(--canvas-mark-cross); }
+  .ld__courier-flow { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .ld__courier-node { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 10px 18px; border-radius: 8px; font: var(--vnp-font) 13px/600; color: var(--canvas-ink); letter-spacing: -0.01em; text-align: center; background: var(--canvas-panel-bg); border: 1px solid color-mix(in srgb, var(--canvas-ink-soft) 34%, transparent); }
+  .ld__courier-node small { font: var(--vnp-font-mono) 9px/500; color: var(--canvas-ink-soft); }
+  .ld__courier-node--ghost { border-style: dashed; opacity: 0.65; }
+  .ld__courier-arrow { font-size: 20px; color: var(--canvas-ink-soft); opacity: 0.4; }
+  .ld__misconception-why { font: var(--vnp-font) 12px/1.45; color: var(--canvas-mark-cross); margin: 0; text-align: center; max-width: 500px; }
+  .ld__misconception-why b { color: var(--canvas-mark-cross); }
 </style>

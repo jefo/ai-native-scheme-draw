@@ -1,0 +1,222 @@
+/* Demo app styles — consumes the kit exactly like an external
+   project would: tokens.css first, then page-level layout. */
+@import './lib/styles/tokens.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--bbg-bg);
+}
+
+body {
+  background: var(--bbg-bg);
+  color: var(--bbg-ink);
+  font-family: var(--bbg-font);
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 48px 32px 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ── page header ─────────────────────────────────────────── */
+.page-head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.page-head h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.page-head p {
+  color: var(--bbg-ink-soft);
+  max-width: 560px;
+}
+
+.page-meta {
+  font-family: var(--bbg-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bbg-ink-faint);
+}
+
+/* ── sections ────────────────────────────────────────────── */
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sec-title {
+  font-family: var(--bbg-font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--bbg-ink-soft);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.sec-title span {
+  color: var(--bbg-ink-faint);
+  letter-spacing: 0.03em;
+  text-transform: none;
+  font-family: var(--bbg-font);
+  font-size: 13px;
+}
+
+.sec-sub {
+  font-family: var(--bbg-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--bbg-ink-faint);
+}
+
+/* ── hero diagram ────────────────────────────────────────── */
+.hero-diagram {
+  display: grid;
+  grid-template-columns:
+    minmax(170px, 1fr) 120px minmax(150px, 1fr) 120px minmax(220px, 1.4fr) 120px
+    minmax(150px, 1fr);
+  align-items: stretch;
+  gap: 12px 0;
+}
+
+.flow-col {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+}
+
+.mini-row {
+  display: flex;
+  gap: 8px;
+}
+
+.mini-row > :global(*) {
+  flex: 1;
+}
+
+.run-note {
+  font-family: var(--bbg-font-mono);
+  font-size: 10.5px;
+  color: var(--bbg-amber);
+}
+
+.icon-row {
+  display: flex;
+  gap: 10px;
+  color: var(--bbg-ink-soft);
+  padding: 4px 0;
+}
+
+/* ── actors + comparison under the diagram ───────────────── */
+.hero-actors {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 8px 0 0;
+}
+
+.hero-actors .flow-col {
+  width: 120px;
+}
+
+.hero-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+/* ── gallery grids ───────────────────────────────────────── */
+.gallery {
+  display: grid;
+  gap: 14px;
+}
+
+.gallery--cards {
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+}
+
+.gallery--row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.gallery--icons {
+  grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
+  gap: 10px;
+}
+
+.icon-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 8px 10px;
+  background: var(--bbg-surface);
+  border: 1px solid var(--bbg-border);
+  border-radius: var(--bbg-radius-sm);
+  color: var(--bbg-ink-soft);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.icon-tile:hover {
+  border-color: var(--bbg-border-strong);
+  color: var(--bbg-ink);
+}
+
+.icon-tile code {
+  font-family: var(--bbg-font-mono);
+  font-size: 9.5px;
+  color: var(--bbg-ink-faint);
+}
+
+.arrow-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 170px;
+  flex: 1;
+}
+
+.arrow-cell--vertical {
+  height: 90px;
+}
+
+.arrow-cell code {
+  font-family: var(--bbg-font-mono);
+  font-size: 10px;
+  color: var(--bbg-ink-faint);
+}
+
+.stage {
+  background: var(--bbg-surface);
+  border: 1px solid var(--bbg-border);
+  border-radius: var(--bbg-radius);
+  padding: 14px;
+}

@@ -1,0 +1,67 @@
+/* ============================================================
+   SysDiag UI Kit — design tokens
+   ByteByteGo-style dark theme: deep gray surfaces (not pure
+   black), hairline borders, four accent highlighters:
+   amber = attention, blue = storage/cold, green = success,
+   red = errors/blocked. Import once in your app root:
+   `import 'sysdiag-ui-kit/styles/tokens.css';`
+   ============================================================ */
+
+:root {
+  /* ── surfaces: elevation via brightness, never shadows ── */
+  --bbg-bg: #121212;            /* page background (deep gray) */
+  --bbg-surface: #1a1a1a;       /* raised surface, page cards */
+  --bbg-panel: #1f1f1f;         /* component card */
+  --bbg-panel-inset: #171717;   /* nested card (layer stacks) */
+  --bbg-panel-hover: #242424;
+
+  /* ── ink ── */
+  --bbg-ink: #ececec;           /* primary text */
+  --bbg-ink-soft: #9a9a9a;      /* secondary text */
+  --bbg-ink-faint: #5f5f5f;     /* tertiary / disabled */
+
+  /* ── borders: hairline only, vary opacity ── */
+  --bbg-border: rgba(255, 255, 255, 0.09);
+  --bbg-border-strong: rgba(255, 255, 255, 0.17);
+
+  /* ── accents (highlighters) ── */
+  --bbg-amber: #f5b93d;         /* attention, warnings, current step */
+  --bbg-blue: #4fa8e0;          /* storage, lakes, cold data */
+  --bbg-green: #3dd68c;         /* success, correct paths */
+  --bbg-red: #e5534b;           /* errors, failures, blocked links */
+
+  /* tinted companions (dim / border) */
+  --bbg-amber-dim: rgba(245, 185, 61, 0.12);
+  --bbg-amber-border: rgba(245, 185, 61, 0.38);
+  --bbg-blue-dim: rgba(79, 168, 224, 0.12);
+  --bbg-blue-border: rgba(79, 168, 224, 0.38);
+  --bbg-green-dim: rgba(61, 214, 140, 0.12);
+  --bbg-green-border: rgba(61, 214, 140, 0.38);
+  --bbg-red-dim: rgba(229, 83, 75, 0.12);
+  --bbg-red-border: rgba(229, 83, 75, 0.38);
+
+  /* ── focus / dim (attention mechanics) ── */
+  --bbg-dim-opacity: 0.35;      /* inactive elements recede to 35% */
+
+  /* ── typography ── */
+  --bbg-font: 'Inter', system-ui, -apple-system, sans-serif;
+  --bbg-font-mono: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace;
+
+  /* ── geometry ── */
+  --bbg-radius: 10px;           /* cards */
+  --bbg-radius-sm: 6px;         /* chips, badges */
+  --bbg-gap-sm: 8px;
+  --bbg-gap-md: 16px;
+  --bbg-gap-lg: 24px;
+}
+
+/* ── attention utilities ── */
+.bbg-dim {
+  opacity: var(--bbg-dim-opacity);
+  transition: opacity 0.2s ease;
+}
+
+.bbg-dim:hover,
+.bbg-dim:focus-within {
+  opacity: 1;
+}
