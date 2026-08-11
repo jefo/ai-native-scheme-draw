@@ -6,7 +6,7 @@
     class?: string;
   }
 
-  let { size = 16, tone = 'blue', strokeWidth = 2, class: className }: Props = $props();
+  let { size = 24, tone = 'blue', strokeWidth = 2, class: className }: Props = $props();
 </script>
 
 <svg

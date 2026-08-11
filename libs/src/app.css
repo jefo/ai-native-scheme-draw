@@ -16,7 +16,7 @@ body {
   background: var(--bbg-bg);
   color: var(--bbg-ink);
   font-family: var(--bbg-font);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -25,10 +25,10 @@ body {
 .page {
   max-width: 1160px;
   margin: 0 auto;
-  padding: 48px 32px 96px;
+  padding: 56px 32px 96px;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 56px;
 }
 
 /* ── page header ─────────────────────────────────────────── */
@@ -39,22 +39,22 @@ body {
 }
 
 .page-head h1 {
-  font-size: 28px;
+  font-size: 38px;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .page-head p {
-  color: var(--bbg-ink-soft);
+  color: var(--bbg-ink);
   max-width: 560px;
 }
 
 .page-meta {
   font-family: var(--bbg-font-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--bbg-ink-faint);
+  color: var(--bbg-ink);
 }
 
 /* ── sections ────────────────────────────────────────────── */
@@ -70,48 +70,49 @@ section {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--bbg-ink-soft);
+  color: var(--bbg-ink);
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  gap: 12px;
 }
 
 .sec-title span {
-  color: var(--bbg-ink-faint);
+  color: var(--bbg-ink);
   letter-spacing: 0.03em;
   text-transform: none;
   font-family: var(--bbg-font);
-  font-size: 13px;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .sec-sub {
   font-family: var(--bbg-font-mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--bbg-ink-faint);
+  color: var(--bbg-ink);
 }
 
 /* ── hero diagram ────────────────────────────────────────── */
 .hero-diagram {
   display: grid;
   grid-template-columns:
-    minmax(170px, 1fr) 120px minmax(150px, 1fr) 120px minmax(220px, 1.4fr) 120px
-    minmax(150px, 1fr);
+    minmax(200px, 1fr) 140px minmax(180px, 1fr) 140px minmax(260px, 1.4fr) 140px
+    minmax(180px, 1fr);
   align-items: stretch;
-  gap: 12px 0;
+  gap: 14px 0;
 }
 
 .flow-col {
   display: flex;
   align-items: center;
-  padding: 0 12px;
+  padding: 0 14px;
 }
 
 .mini-row {
   display: flex;
-  gap: 8px;
+  gap: 12px;
 }
 
 .mini-row > :global(*) {
@@ -120,7 +121,7 @@ section {
 
 .run-note {
   font-family: var(--bbg-font-mono);
-  font-size: 10.5px;
+  font-size: 13px;
   color: var(--bbg-amber);
 }
 
@@ -135,12 +136,12 @@ section {
 .hero-actors {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
   padding: 8px 0 0;
 }
 
 .hero-actors .flow-col {
-  width: 120px;
+  width: 140px;
 }
 
 .hero-compare {
@@ -153,31 +154,31 @@ section {
 /* ── gallery grids ───────────────────────────────────────── */
 .gallery {
   display: grid;
-  gap: 14px;
+  gap: 18px;
 }
 
 .gallery--cards {
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 
 .gallery--row {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 18px;
   align-items: center;
 }
 
 .gallery--icons {
-  grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 12px;
 }
 
 .icon-tile {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 14px 8px 10px;
+  gap: 10px;
+  padding: 18px 10px 14px;
   background: var(--bbg-surface);
   border: 1px solid var(--bbg-border);
   border-radius: var(--bbg-radius-sm);
@@ -192,8 +193,8 @@ section {
 
 .icon-tile code {
   font-family: var(--bbg-font-mono);
-  font-size: 9.5px;
-  color: var(--bbg-ink-faint);
+  font-size: 12px;
+  color: var(--bbg-ink);
 }
 
 .arrow-cell {
@@ -205,18 +206,72 @@ section {
 }
 
 .arrow-cell--vertical {
-  height: 90px;
+  height: 110px;
 }
 
 .arrow-cell code {
   font-family: var(--bbg-font-mono);
-  font-size: 10px;
-  color: var(--bbg-ink-faint);
+  font-size: 12px;
+  color: var(--bbg-ink);
 }
 
 .stage {
   background: var(--bbg-surface);
   border: 1px solid var(--bbg-border);
   border-radius: var(--bbg-radius);
-  padding: 14px;
+  padding: 18px;
+}
+
+/* ── mobile: collapse demo grids ─────────────────────────── */
+@media (max-width: 860px) {
+  .hero-diagram {
+    grid-template-columns: 1fr;
+    gap: 12px 0;
+  }
+
+  .hero-diagram > *,
+  .stage-demo > * {
+    min-width: 0;
+  }
+
+  .flow-col {
+    padding: 4px 0;
+  }
+
+  .mini-row {
+    flex-wrap: wrap;
+  }
+
+  /* !important: page-level collapses must beat the components'
+     scoped rules (scoped selectors outrank plain page selectors) */
+  .stage {
+    flex-direction: column !important;
+  }
+
+  .stage > :global(.bbg-divider) {
+    display: none !important;
+  }
+
+  .stage-demo {
+    grid-template-columns: 1fr !important;
+    gap: 12px 0 !important;
+  }
+
+  .sb-blackbox {
+    padding: 24px 16px !important;
+  }
+
+  /* pills must not force their min-content on 1fr tracks:
+     let labels wrap on narrow viewports (plain selectors —
+     app.css is raw CSS, :global() is not valid here) */
+  .bbg-comparison {
+    grid-template-columns: 1fr !important;
+  }
+
+  .bbg-badge {
+    white-space: normal !important;
+    height: auto !important;
+    min-height: 30px !important;
+    padding: 6px 14px !important;
+  }
 }

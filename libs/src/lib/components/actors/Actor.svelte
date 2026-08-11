@@ -18,9 +18,9 @@
     $props();
 
   const SIZE: Record<NonNullable<Props['size']>, number> = {
-    sm: 14,
-    md: 18,
-    lg: 24,
+    sm: 20,
+    md: 26,
+    lg: 34,
   };
 
   const ROLE_TAG: Record<ActorRole, string> = {
@@ -62,7 +62,7 @@
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     margin: 0;
     text-align: center;
   }
@@ -77,8 +77,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background: var(--bbg-panel);
     border: 1px solid var(--bbg-border);
@@ -86,12 +86,12 @@
   }
 
   .bbg-actor--sm .bbg-actor__glyph {
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
   }
   .bbg-actor--lg .bbg-actor__glyph {
-    width: 52px;
-    height: 52px;
+    width: 78px;
+    height: 78px;
   }
 
   /* mood colors the person */
@@ -122,17 +122,17 @@
   .bbg-actor__glasses i {
     position: absolute;
     top: 34%;
-    width: 3px;
-    height: 3px;
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
     background: var(--bbg-actor-color);
   }
 
   .bbg-actor__glasses i:first-child {
-    left: calc(50% - 5px);
+    left: calc(50% - 8px);
   }
   .bbg-actor__glasses i:last-child {
-    left: calc(50% + 2px);
+    left: calc(50% + 4px);
   }
 
   .bbg-actor__caption {
@@ -142,7 +142,7 @@
   }
 
   .bbg-actor__name {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
     color: var(--bbg-ink);
     line-height: 1.2;
@@ -150,10 +150,11 @@
 
   .bbg-actor__role {
     font-family: var(--bbg-font-mono);
-    font-size: 9.5px;
+    font-size: 12px;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--bbg-ink-faint);
+    color: var(--bbg-ink);
     line-height: 1.2;
   }
 </style>

@@ -107,11 +107,11 @@
 
   .bbg-panel__label {
     font-family: var(--bbg-font-mono);
-    font-size: 10.5px;
+    font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.09em;
-    color: var(--bbg-ink-soft);
+    color: var(--bbg-ink);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -120,11 +120,14 @@
   .bbg-panel__badge {
     margin-left: auto;
     font-family: var(--bbg-font-mono);
-    font-size: 10px;
-    color: var(--bbg-ink-faint);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--bbg-ink);
     border: 1px solid var(--bbg-border);
     border-radius: 999px;
-    padding: 1px 7px;
+    padding: 2px 10px;
     white-space: nowrap;
   }
 

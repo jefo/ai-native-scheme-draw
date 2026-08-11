@@ -188,12 +188,12 @@
     background: var(--bbg-bg);
     border: 1px solid var(--bbg-border);
     border-radius: 4px;
-    padding: 1px 8px;
+    padding: 2px 12px;
     font-family: var(--bbg-font-mono);
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.06em;
-    color: var(--bbg-ink-soft);
+    color: var(--bbg-ink);
     white-space: nowrap;
     pointer-events: none;
   }

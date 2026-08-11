@@ -1,13 +1,17 @@
 <script lang="ts">
   // Demo shell: hash-based page switch — #gallery (component
-  // inventory) and #storyboard (Router vs Controller scenes).
+  // inventory), #storyboard (Router vs Controller) and
+  // #lakehouse (fullscreen horizontal storyboard).
   import Gallery from './Gallery.svelte';
   import Storyboard from './Storyboard.svelte';
+  import Lakehouse from './Lakehouse.svelte';
 
-  type Page = 'gallery' | 'storyboard';
+  type Page = 'gallery' | 'storyboard' | 'lakehouse';
 
   function pageFromHash(): Page {
-    return location.hash === '#storyboard' ? 'storyboard' : 'gallery';
+    if (location.hash === '#storyboard') return 'storyboard';
+    if (location.hash === '#lakehouse') return 'lakehouse';
+    return 'gallery';
   }
 
   let page = $state<Page>(pageFromHash());
@@ -19,21 +23,27 @@
   });
 </script>
 
-<div class="shell">
-  <nav class="shell-nav">
-    <a href="#gallery" class="brand">SysDiag UI Kit</a>
-    <div class="links">
-      <a href="#gallery" class:active={page === 'gallery'}>Галерея</a>
-      <a href="#storyboard" class:active={page === 'storyboard'}>Раскадровка · Router vs Controller</a>
-    </div>
-  </nav>
+{#if page === 'lakehouse'}
+  <!-- fullscreen deck: no shell nav, scenes own the viewport -->
+  <Lakehouse />
+{:else}
+  <div class="shell">
+    <nav class="shell-nav">
+      <a href="#gallery" class="brand">SysDiag UI Kit</a>
+      <div class="links">
+        <a href="#gallery" class:active={page === 'gallery'}>Галерея</a>
+        <a href="#storyboard" class:active={page === 'storyboard'}>Раскадровка · Router vs Controller</a>
+        <a href="#lakehouse">Раскадровка · Lakehouse</a>
+      </div>
+    </nav>
 
-  {#if page === 'gallery'}
-    <Gallery />
-  {:else}
-    <Storyboard />
-  {/if}
-</div>
+    {#if page === 'gallery'}
+      <Gallery />
+    {:else}
+      <Storyboard />
+    {/if}
+  </div>
+{/if}
 
 <style>
   .shell-nav {
@@ -68,8 +78,8 @@
 
   .shell-nav a:not(.brand) {
     font-family: var(--bbg-font-mono);
-    font-size: 11px;
-    color: var(--bbg-ink-soft);
+    font-size: 12px;
+    color: var(--bbg-ink);
     text-decoration: none;
     padding: 6px 12px;
     border-radius: var(--bbg-radius-sm);
@@ -86,5 +96,21 @@
     color: var(--bbg-amber);
     background: var(--bbg-amber-dim);
     border-color: var(--bbg-amber-border);
+  }
+
+  @media (max-width: 860px) {
+    .shell-nav {
+      flex-wrap: wrap;
+      height: auto;
+      min-height: 52px;
+      padding: 8px 16px;
+      row-gap: 4px;
+    }
+
+    .links {
+      flex-wrap: wrap;
+      margin-left: 0;
+      width: 100%;
+    }
   }
 </style>

@@ -55,25 +55,25 @@
   .bbg-stage__bar {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 14px;
+    gap: 12px;
+    padding: 14px 18px;
     border-bottom: 1px solid var(--bbg-border);
   }
 
   .bbg-stage__index {
     font-family: var(--bbg-font-mono);
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--bbg-amber);
     background: var(--bbg-amber-dim);
     border: 1px solid var(--bbg-amber-border);
     border-radius: 999px;
-    padding: 2px 9px;
+    padding: 3px 12px;
     line-height: 1.4;
   }
 
   .bbg-stage__title {
-    font-size: 13.5px;
+    font-size: 18px;
     font-weight: 600;
     color: var(--bbg-ink);
     letter-spacing: 0.01em;
@@ -83,43 +83,43 @@
   .bbg-stage__time {
     margin-left: auto;
     font-family: var(--bbg-font-mono);
-    font-size: 10.5px;
+    font-size: 12px;
     letter-spacing: 0.06em;
-    color: var(--bbg-ink-faint);
+    color: var(--bbg-ink);
     white-space: nowrap;
   }
 
   .bbg-stage__goal {
     display: flex;
     align-items: baseline;
-    gap: 8px;
+    gap: 10px;
     margin: 0;
-    padding: 7px 14px;
+    padding: 8px 18px;
     border-bottom: 1px solid var(--bbg-border);
     background: var(--bbg-panel-inset);
     font-family: var(--bbg-font-mono);
-    font-size: 10.5px;
+    font-size: 14px;
     line-height: 1.6;
-    color: var(--bbg-ink-faint);
+    color: var(--bbg-ink);
   }
 
   .bbg-stage__goal-label {
     flex: none;
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--bbg-ink-faint);
+    color: var(--bbg-ink);
     border: 1px solid var(--bbg-border);
     border-radius: 4px;
-    padding: 1px 6px;
+    padding: 2px 8px;
   }
 
   .bbg-stage__screen {
-    padding: 18px 20px;
+    padding: 24px 28px;
     background: var(--bbg-bg);
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 18px;
   }
 </style>

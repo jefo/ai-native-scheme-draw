@@ -36,6 +36,16 @@ export type IconName =
   | 'bolt'
   | 'compass'
   | 'console'
+  // open table formats & engines
+  | 'iceberg'
+  | 'delta'
+  | 'hudi'
+  | 'rabbit'
+  | 'model'
+  | 'expand'
+  | 'dashboard'
+  | 'camera'
+  | 'chart'
   // status & people
   | 'check'
   | 'cross'
@@ -46,7 +56,11 @@ export type IconName =
   | 'clock'
   | 'refresh'
   | 'user'
-  | 'thumbsup';
+  | 'thumbsup'
+  | 'thumbsdown'
+  // navigation
+  | 'chevron-left'
+  | 'chevron-right';
 
 export const ICON_NAMES: IconName[] = [
   'data-lake',
@@ -76,6 +90,15 @@ export const ICON_NAMES: IconName[] = [
   'bolt',
   'compass',
   'console',
+  'iceberg',
+  'delta',
+  'hudi',
+  'rabbit',
+  'model',
+  'expand',
+  'dashboard',
+  'camera',
+  'chart',
   'check',
   'cross',
   'warn',
@@ -86,6 +109,9 @@ export const ICON_NAMES: IconName[] = [
   'refresh',
   'user',
   'thumbsup',
+  'thumbsdown',
+  'chevron-left',
+  'chevron-right',
 ];
 
 // Inner SVG markup per icon. Rendered via {@html} in Icon.svelte —
@@ -241,4 +267,50 @@ export const ICONS: Record<IconName, string> = {
   thumbsup: `
       <path d="M7 10v12"/>
       <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/>`,
+  thumbsdown: `
+      <path d="M17 10v12"/>
+      <path d="M9 5.88 10 10H4.17a2 2 0 0 0-1.92 2.56l2.33 8A2 2 0 0 0 6.5 22H20a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-2.76a2 2 0 0 1-1.79-1.11L12 2a3.13 3.13 0 0 0-3 3.88Z"/>`,
+  'chevron-left': `
+      <path d="M15 5.5 9 12l6 6.5"/>`,
+  'chevron-right': `
+      <path d="M9 5.5l6 6.5-6 6.5"/>`,
+  // open table formats & engines
+  iceberg: `
+      <path d="M5.4 14.4h13.2L12 4.8z"/>
+      <path d="M4.2 14.4h15.6"/>
+      <path d="M6.6 18.2h10.8"/>
+      <path d="M8.8 18.2v2.2M12 18.2v3M15.2 18.2v2.2"/>`,
+  delta: `
+      <path d="M4.6 18.4h14.8L12 5.6z"/>
+      <path d="M12 12.2v6.2"/>
+      <path d="M8.4 8.6l1.4 2.2M15.6 8.6l-1.4 2.2"/>`,
+  hudi: `
+      <path d="M7.4 4.6h9.2a3.2 3.2 0 0 1 2.8 1.6l3.1 5.4a3.2 3.2 0 0 1 0 3.2l-3.1 5.4a3.2 3.2 0 0 1-2.8 1.6H7.4a3.2 3.2 0 0 1-2.8-1.6l-3.1-5.4a3.2 3.2 0 0 1 0-3.2l3.1-5.4a3.2 3.2 0 0 1 2.8-1.6z"/>
+      <path d="M9.4 15.6V8.4h5.2v7.2"/>
+      <path d="M9.4 12h5.2"/>`,
+  rabbit: `
+      <circle cx="12" cy="13.8" r="5.7"/>
+      <path d="M9 10.3Q8.2 6.6 9 5.2 10.4 6.8 11.6 8.9"/>
+      <path d="M15 10.3Q15.8 6.6 15 5.2 13.6 6.8 12.4 8.9"/>
+      <circle cx="10.1" cy="13.3" r="0.6" fill="currentColor" stroke="none"/>
+      <circle cx="13.9" cy="13.3" r="0.6" fill="currentColor" stroke="none"/>
+      <path d="M10.2 16.5a2.6 2.6 0 0 0 3.6 0"/>`,
+  model: `
+      <circle cx="12" cy="4.8" r="2"/>
+      <circle cx="5.4" cy="16.6" r="2"/>
+      <circle cx="18.6" cy="16.6" r="2"/>
+      <path d="M11 6.5 6.6 14.9M13 6.5l4.4 8.4M7.4 16.6h9.2"/>`,
+  expand: `
+      <path d="M4 9.5V4h5.5M20 9.5V4h-5.5M4 14.5V20h5.5M20 14.5V20h-5.5"/>`,
+  dashboard: `
+      <rect x="3.5" y="4.5" width="17" height="15" rx="2"/>
+      <path d="M7.5 17.2v-5.4M12 17.2V8M16.5 17.2v-3.2"/>`,
+  camera: `
+      <path d="M3.5 8.6a2 2 0 0 1 2-2h2.7l1.2-2h5.2l1.2 2h2.7a2 2 0 0 1 2 2v8.6a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/>
+      <circle cx="12" cy="12.6" r="3.5"/>`,
+  chart: `
+      <path d="M4.5 4.5v15h15"/>
+      <path d="M6.8 14.4 10 10.9l2.5 2.2"/>
+      <path d="M16.7 8.6l2.8 3.1"/>
+      <path d="M13.6 13.2l1.9-1.6"/>`,
 };

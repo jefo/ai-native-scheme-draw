@@ -43,7 +43,7 @@
   /* ── horizontal ─────────────────────────────────────────── */
   .bbg-divider--horizontal {
     flex-direction: row;
-    gap: 10px;
+    gap: 12px;
     width: 100%;
   }
 
@@ -64,7 +64,7 @@
   .bbg-divider--vertical {
     flex-direction: column;
     width: 1px;
-    min-height: 60px;
+    min-height: 90px;
     align-self: stretch;
   }
 
@@ -80,11 +80,11 @@
     align-items: center;
     gap: 6px;
     font-family: var(--bbg-font-mono);
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--bbg-ink-soft);
+    color: var(--bbg-ink);
     white-space: nowrap;
   }
 

@@ -21,6 +21,12 @@ npm run dev      # http://localhost:5174
 - **Раскадровка** (`#storyboard`) — 6 сцен `Stage` на тему «Router vs
   Controller»: постановка вопроса → боль монолита → Router (ГДЕ?) →
   Controller (ЧТО ДЕЛАТЬ?) → метафора больницы → трейд-оффы.
+- **Раскадровка · Lakehouse** (`#lakehouse`) — полноэкранный фильм:
+  12 сцен «What is a Data Lakehouse?» на 100% экрана, горизонтальная
+  прокрутка (scroll-snap, ← → / колёсико / кнопки), HUD со сценами,
+  таймкодами и целями. Когнитивный путь: три архитектуры → боль двух
+  систем → сборка Lakehouse по слоям (Storage → Table Formats →
+  Catalog → Governance) → плата за архитектуру → матрица выбора.
 
 ## Установка в другой проект
 
@@ -49,7 +55,7 @@ import { Panel, Icon, StatusBadge, Arrow, Actor } from 'sysdiag-ui-kit';
 |---|---|---|
 | Контейнеры | `Panel` (tone: default/blue/green/amber/red, variant: card/inset, badge), `Comparison` (равные колонки), `Divider` (hor/ver, с label) | границы системы, слои абстракции, сравнение |
 | Сцены | `Stage` (index, title, timecode, goal) | рамка сцены раскадровки: одна законченная макро-композиция на экране |
-| Иконки | `Icon` + 37 контурных line-art иконок (`ICON_NAMES`, `IconName`) | метафоры систем, форматы данных, инструменты, статусы |
+| Иконки | `Icon` + 47 контурных line-art иконок (`ICON_NAMES`, `IconName`) | метафоры систем, форматы данных, инструменты, форматы таблиц (Iceberg/Delta/Hudi), статусы |
 | Индикаторы | `StatusBadge` (success/error/warning/info/running/neutral, pulse), `Spinner` | боль и успех: ✓ ✗ ⚠ 🔒 ⏱ |
 | Коннекторы | `Arrow` (direction 4, dashed, animated, blocked, label, tone) | статичные связи, метаданные, живые потоки, запреты |
 | Акторы | `Actor` (role: engineer/analyst/user, mood: neutral/happy/sad, dim) | «кто страдает, кто пользуется» |

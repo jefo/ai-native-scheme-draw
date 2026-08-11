@@ -62,15 +62,15 @@
         <div class="sb-server">
           <div class="sb-floats">
             <span class="sb-floating">
-              <Icon name="compass" size={12} /> Router?
+              <Icon name="compass" size={16} /> Router?
             </span>
             <span class="sb-floating sb-floating--con">
-              <Icon name="console" size={12} /> Controller?
+              <Icon name="console" size={16} /> Controller?
             </span>
           </div>
           <Panel label="Server" icon="server" badge="black box">
             <div class="sb-blackbox">
-              <Icon name="question" size={28} />
+              <Icon name="question" size={30} />
               <span class="sb-bb-label">что происходит внутри?</span>
             </div>
           </Panel>
@@ -88,7 +88,7 @@
       goal="Показать, почему обработка запросов в одном месте ведёт к архитектурному хаосу."
     >
       <div class="sb-reveal">
-        <Icon name="spark" size={12} />
+        <Icon name="spark" size={16} />
         <span>чёрный ящик раскрывается — внутри один файл</span>
       </div>
 
@@ -116,7 +116,7 @@
       goal="Показать решение проблемы навигации через ввод Роутера."
     >
       <div class="sb-constraint">
-        <Icon name="compass" size={13} />
+        <Icon name="compass" size={16} />
         Constraint 1: Address Matching <span>(Where?)</span>
       </div>
 
@@ -150,7 +150,7 @@
           <Arrow tone="green" label="matched" />
         </div>
         <div class="sb-handler">
-          <Icon name="bolt" size={13} />
+          <Icon name="bolt" size={16} />
           ShowProfile
         </div>
       </div>
@@ -172,14 +172,14 @@
       goal="Показать решение проблемы выполнения логики через ввод Контроллера."
     >
       <div class="sb-constraint">
-        <Icon name="console" size={13} />
+        <Icon name="console" size={16} />
         Constraint 2: Business Orchestration <span>(What to do?)</span>
       </div>
 
       <div class="sb-scene3">
         <div class="sb-col-left">
           <div class="sb-side-v">
-            <Icon name="browser" size={15} />
+            <Icon name="browser" size={20} />
             <span class="sb-req">Client</span>
             <Arrow direction="left" tone="green" label="200 OK" />
           </div>
@@ -321,60 +321,60 @@
   .sb-page {
     max-width: 1160px;
     margin: 0 auto;
-    padding: 40px 32px 96px;
+    padding: 56px 32px 96px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 56px;
   }
 
   /* ── page header ───────────────────────────────────────── */
   .sb-head {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
 
   .sb-head h1 {
-    font-size: 28px;
+    font-size: 38px;
     font-weight: 700;
     letter-spacing: -0.02em;
   }
 
   .sb-head p {
-    color: var(--bbg-ink-soft);
+    color: var(--bbg-ink);
     max-width: 640px;
   }
 
   .sb-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
   }
 
   .sb-chip {
     font-family: var(--bbg-font-mono);
-    font-size: 10px;
-    color: var(--bbg-ink-soft);
+    font-size: 12px;
+    color: var(--bbg-ink);
     border: 1px solid var(--bbg-border);
     border-radius: 999px;
-    padding: 2px 10px;
+    padding: 4px 12px;
   }
 
   .sb-nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
     margin-top: 4px;
   }
 
   .sb-nav a {
     font-family: var(--bbg-font-mono);
-    font-size: 10.5px;
-    color: var(--bbg-ink-soft);
+    font-size: 12px;
+    color: var(--bbg-ink);
     text-decoration: none;
     border: 1px solid var(--bbg-border);
     border-radius: var(--bbg-radius-sm);
-    padding: 4px 10px;
+    padding: 6px 12px;
   }
 
   .sb-nav a:hover {
@@ -390,12 +390,12 @@
   .sb-constraint {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     font-family: var(--bbg-font-mono);
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.06em;
-    color: var(--bbg-ink-soft);
+    color: var(--bbg-ink);
   }
 
   .sb-constraint :global(svg) {
@@ -403,44 +403,45 @@
   }
 
   .sb-constraint span {
-    color: var(--bbg-ink-faint);
+    color: var(--bbg-ink);
     font-weight: 400;
   }
 
   .sb-req {
     font-family: var(--bbg-font-mono);
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--bbg-amber);
     background: var(--bbg-amber-dim);
     border: 1px solid var(--bbg-amber-border);
     border-radius: var(--bbg-radius-sm);
-    padding: 6px 12px;
+    padding: 8px 14px;
     white-space: nowrap;
+    width: max-content;
   }
 
   .sb-caption {
     font-family: var(--bbg-font-mono);
-    font-size: 10px;
-    color: var(--bbg-ink-faint);
+    font-size: 12px;
+    color: var(--bbg-ink);
   }
 
   .sb-arrow-cell {
-    min-width: 60px;
+    min-width: 80px;
   }
 
   .flow-col {
     display: flex;
     align-items: center;
-    padding: 0 12px;
+    padding: 0 14px;
   }
 
   /* ── scene 0 ───────────────────────────────────────────── */
   .sb-scene0 {
     display: grid;
-    grid-template-columns: minmax(150px, 1fr) 90px minmax(180px, 1fr);
+    grid-template-columns: minmax(180px, 1fr) 110px minmax(200px, 1fr);
     align-items: center;
-    gap: 0 8px;
+    gap: 0 10px;
   }
 
   .sb-server {
@@ -449,11 +450,11 @@
 
   .sb-floats {
     position: absolute;
-    top: -14px;
+    top: -16px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 8px;
+    gap: 10px;
     z-index: 2;
     white-space: nowrap;
   }
@@ -461,14 +462,14 @@
   .sb-floating {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
     background: var(--bbg-bg);
     border: 1px solid var(--bbg-border-strong);
     border-radius: 999px;
-    padding: 3px 10px;
+    padding: 6px 12px;
     font-family: var(--bbg-font-mono);
-    font-size: 10px;
-    color: var(--bbg-ink-soft);
+    font-size: 12px;
+    color: var(--bbg-ink);
   }
 
   .sb-floating :global(svg) {
@@ -484,11 +485,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     background: #0b0b0b;
     border: 1px dashed var(--bbg-border-strong);
     border-radius: 8px;
-    padding: 26px 16px;
+    padding: 32px 20px;
   }
 
   .sb-blackbox :global(svg) {
@@ -497,18 +498,18 @@
 
   .sb-bb-label {
     font-family: var(--bbg-font-mono);
-    font-size: 10px;
-    color: var(--bbg-ink-faint);
+    font-size: 12px;
+    color: var(--bbg-ink);
   }
 
   /* ── scene 1 ───────────────────────────────────────────── */
   .sb-reveal {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     font-family: var(--bbg-font-mono);
-    font-size: 10.5px;
-    color: var(--bbg-ink-faint);
+    font-size: 13px;
+    color: var(--bbg-ink);
   }
 
   .sb-reveal :global(svg) {
@@ -517,14 +518,14 @@
 
   .sb-code {
     font-family: var(--bbg-font-mono);
-    font-size: 12px;
-    line-height: 1.9;
+    font-size: 14px;
+    line-height: 1.8;
     background: #0d0d0d;
     border: 1px solid var(--bbg-border);
     border-radius: 8px;
-    padding: 14px 16px;
+    padding: 16px 18px;
     overflow-x: auto;
-    color: var(--bbg-ink-soft);
+    color: var(--bbg-ink);
     white-space: pre;
   }
 
@@ -538,26 +539,26 @@
     color: var(--bbg-amber);
   }
   .c-comment {
-    color: var(--bbg-ink-faint);
+    color: var(--bbg-ink-soft);
   }
 
   .sb-pains {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
   }
 
   /* ── scene 2 ───────────────────────────────────────────── */
   .sb-scene2 {
     display: grid;
-    grid-template-columns: auto minmax(60px, 90px) minmax(240px, 1fr) minmax(60px, 90px) auto;
+    grid-template-columns: auto minmax(70px, 110px) minmax(260px, 1fr) minmax(70px, 110px) auto;
     align-items: center;
-    gap: 0 6px;
+    gap: 0 8px;
   }
 
   .sb-table {
     font-family: var(--bbg-font-mono);
-    font-size: 11px;
+    font-size: 12px;
     border: 1px solid var(--bbg-border);
     border-radius: var(--bbg-radius-sm);
     overflow: hidden;
@@ -566,10 +567,10 @@
   .sb-table-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 6px 12px;
+    gap: 12px;
+    padding: 8px 14px;
     border-top: 1px solid var(--bbg-border);
-    color: var(--bbg-ink-soft);
+    color: var(--bbg-ink);
   }
 
   .sb-table-row:first-child {
@@ -585,7 +586,7 @@
   .sb-t-m {
     color: var(--bbg-blue);
     font-weight: 600;
-    width: 40px;
+    width: 44px;
   }
 
   .sb-table-row--match .sb-t-m {
@@ -594,21 +595,22 @@
 
   .sb-t-h {
     margin-left: auto;
-    color: var(--bbg-ink-faint);
+    color: var(--bbg-ink);
+    font-weight: 400;
   }
 
   .sb-handler {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     font-family: var(--bbg-font-mono);
-    font-size: 11.5px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--bbg-ink);
     background: var(--bbg-green-dim);
     border: 1px solid var(--bbg-green-border);
     border-radius: 8px;
-    padding: 8px 14px;
+    padding: 10px 16px;
     white-space: nowrap;
   }
 
@@ -619,22 +621,23 @@
   /* ── scene 3 ───────────────────────────────────────────── */
   .sb-scene3 {
     display: grid;
-    grid-template-columns: 150px 1fr 200px;
+    grid-template-columns: 170px 1fr 220px;
     align-items: center;
-    gap: 0 16px;
+    gap: 0 20px;
   }
 
   .sb-col-main {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
     justify-self: center;
-    width: min(320px, 100%);
+    width: min(360px, 100%);
   }
 
   .sb-v {
-    height: 46px;
+    height: 60px;
     display: flex;
+    justify-content: center;
   }
 
   .sb-col-left {
@@ -651,7 +654,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     width: 100%;
   }
 
@@ -659,7 +662,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     width: 100%;
   }
 
@@ -668,7 +671,7 @@
   }
 
   .sb-side-v :global(svg) {
-    color: var(--bbg-ink-faint);
+    color: var(--bbg-ink);
   }
 
   /* ── scene 4 ───────────────────────────────────────────── */
@@ -676,19 +679,19 @@
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: stretch;
-    gap: 14px;
+    gap: 18px;
   }
 
   .sb-room {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 12px;
+    gap: 20px;
+    margin-bottom: 14px;
   }
 
   .sb-journal {
     font-family: var(--bbg-font-mono);
-    font-size: 10.5px;
+    font-size: 12px;
     border: 1px solid var(--bbg-border);
     border-radius: var(--bbg-radius-sm);
     overflow: hidden;
@@ -699,9 +702,9 @@
     display: flex;
     justify-content: space-between;
     gap: 16px;
-    padding: 4px 10px;
+    padding: 6px 12px;
     border-top: 1px solid var(--bbg-border);
-    color: var(--bbg-ink-soft);
+    color: var(--bbg-ink);
   }
 
   .sb-journal-row:first-child {
@@ -715,20 +718,20 @@
   .sb-proc {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
     flex: 1;
   }
 
   .sb-proc-row {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     font-family: var(--bbg-font-mono);
-    font-size: 10.5px;
-    color: var(--bbg-ink-soft);
+    font-size: 12px;
+    color: var(--bbg-ink);
     border: 1px solid var(--bbg-border);
     border-radius: var(--bbg-radius-sm);
-    padding: 4px 10px;
+    padding: 6px 12px;
   }
 
   .sb-proc-n {
@@ -739,17 +742,17 @@
   .sb-bubbles {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
   }
 
   .sb-bubble {
     font-family: var(--bbg-font-mono);
-    font-size: 11px;
+    font-size: 13px;
     color: var(--bbg-ink);
     background: var(--bbg-panel-inset);
     border: 1px solid var(--bbg-border-strong);
     border-radius: 8px;
-    padding: 6px 10px;
+    padding: 8px 12px;
     max-width: 92%;
   }
 
@@ -770,12 +773,12 @@
   .sb-qa {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
   }
 
   .sb-q {
     font-family: var(--bbg-font-mono);
-    font-size: 16px;
+    font-size: 22px;
     font-weight: 700;
     letter-spacing: 0.02em;
   }
@@ -790,17 +793,18 @@
 
   .sb-a {
     font-family: var(--bbg-font-mono);
-    font-size: 10.5px;
+    font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--bbg-ink-faint);
+    color: var(--bbg-ink);
+    font-weight: 400;
   }
 
   .sb-axis {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 4px;
+    gap: 12px;
+    margin-top: 8px;
   }
 
   .sb-axis-row {
@@ -808,13 +812,13 @@
     justify-content: space-between;
     gap: 16px;
     font-family: var(--bbg-font-mono);
-    font-size: 10.5px;
-    color: var(--bbg-ink-soft);
+    font-size: 12px;
+    color: var(--bbg-ink);
   }
 
   .sb-axis-bar {
     position: relative;
-    height: 6px;
+    height: 10px;
     background: var(--bbg-border);
     border-radius: 999px;
   }
@@ -830,10 +834,10 @@
     position: absolute;
     top: 50%;
     left: 38%;
-    width: 12px;
-    height: 12px;
+    width: 18px;
+    height: 18px;
     background: var(--bbg-amber);
-    border: 2px solid var(--bbg-bg);
+    border: 3px solid var(--bbg-bg);
     border-radius: 2px;
     transform: translate(-50%, -50%) rotate(45deg);
   }
@@ -851,7 +855,34 @@
     }
 
     .sb-floats {
-      top: -12px;
+      top: -14px;
+    }
+
+    /* collapse the auto track minimum so 1fr tracks shrink to the
+       viewport and nowrap rows wrap instead of overflowing */
+    .sb-scene0 > *,
+    .sb-scene2 > *,
+    .sb-scene3 > *,
+    .sb-hospital > * {
+      min-width: 0;
+    }
+
+    .sb-side-h {
+      flex-wrap: wrap;
+      min-width: 0;
+    }
+
+    /* arrow cell keeps a floor wide enough for its centered label */
+    .sb-side-h .sb-arrow-cell {
+      flex: 1 1 170px !important;
+    }
+
+    .sb-scene2 {
+      justify-items: start;
+    }
+
+    .sb-table-row {
+      flex-wrap: wrap;
     }
   }
 </style>

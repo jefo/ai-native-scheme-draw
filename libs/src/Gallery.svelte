@@ -37,7 +37,7 @@
       <Panel label="E-commerce Platform" icon="ecommerce" tone="blue">
         <div class="mini-row">
           <Panel label="Web App" icon="bolt" variant="inset">
-            <Icon name="api" size={16} />
+            <Icon name="api" size={22} />
           </Panel>
           <Panel label="Orders DB" icon="database" variant="inset">
             <StatusBadge tone="success" label="Writes ok" />
@@ -52,7 +52,7 @@
 
       <Panel label="ETL · Compaction" icon="etl" tone="amber" badge="cron">
         <div class="mini-row">
-          <Spinner tone="amber" size={14} />
+          <Spinner tone="amber" size={22} />
           <span class="run-note">compaction running</span>
         </div>
         <StatusBadge tone="running" label="Scheduled 02:00" />
@@ -72,10 +72,10 @@
         </Panel>
         <Panel label="Object Storage" icon="object-storage" variant="inset" tone="blue">
           <div class="icon-row">
-            <Icon name="parquet" size={16} />
-            <Icon name="json" size={16} />
-            <Icon name="log" size={16} />
-            <Icon name="image" size={16} />
+            <Icon name="parquet" size={22} />
+            <Icon name="json" size={22} />
+            <Icon name="log" size={22} />
+            <Icon name="image" size={22} />
           </div>
           <StatusBadge tone="error" label="Write failed — OOM" />
         </Panel>
@@ -158,7 +158,7 @@
       <Divider label="horizontal divider" />
       <Divider label="blue divider" tone="blue" />
       <Divider label="with icon">
-        <Icon name="lock" size={11} />
+        <Icon name="lock" size={14} />
       </Divider>
     </div>
   </section>
@@ -181,7 +181,7 @@
         </div>
         <Panel label="Server" icon="server" badge="black box">
           <div class="sb-blackbox">
-            <Icon name="question" size={22} />
+            <Icon name="question" size={30} />
           </div>
         </Panel>
       </div>
@@ -194,7 +194,7 @@
     <div class="gallery gallery--icons">
       {#each ICON_NAMES as name}
         <div class="icon-tile">
-          <Icon name={name} size={20} />
+          <Icon name={name} size={26} />
           <code>{name}</code>
         </div>
       {/each}
@@ -217,11 +217,11 @@
     </div>
 
     <div class="gallery gallery--row">
-      <Spinner tone="blue" size={18} />
-      <Spinner tone="green" size={18} />
-      <Spinner tone="amber" size={18} />
-      <Spinner tone="red" size={18} />
-      <Spinner tone="neutral" size={18} />
+      <Spinner tone="blue" size={26} />
+      <Spinner tone="green" size={26} />
+      <Spinner tone="amber" size={26} />
+      <Spinner tone="red" size={26} />
+      <Spinner tone="neutral" size={26} />
     </div>
   </section>
 
@@ -288,7 +288,7 @@
   .stage {
     display: flex;
     align-items: stretch;
-    gap: 14px;
+    gap: 18px;
   }
 
   .stage > :global(.bbg-panel) {
@@ -297,8 +297,39 @@
 
   .stage-demo {
     display: grid;
-    grid-template-columns: minmax(140px, 1fr) 100px minmax(160px, 1fr);
+    grid-template-columns: minmax(160px, 1fr) 120px minmax(180px, 1fr);
     align-items: center;
-    gap: 0 8px;
+    gap: 0 10px;
+  }
+
+  /* request chip + black-box target inside the Stage demo
+     (mirrors Storyboard's scene-0 bits) */
+  .sb-req {
+    font-family: var(--bbg-font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--bbg-amber);
+    background: var(--bbg-amber-dim);
+    border: 1px solid var(--bbg-amber-border);
+    border-radius: var(--bbg-radius-sm);
+    padding: 6px 12px;
+    white-space: nowrap;
+    width: max-content;
+  }
+
+  .sb-blackbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #0b0b0b;
+    border: 1px dashed var(--bbg-border-strong);
+    border-radius: 8px;
+    padding: 32px 20px;
+  }
+
+  .sb-blackbox :global(svg) {
+    color: var(--bbg-amber);
   }
 </style>

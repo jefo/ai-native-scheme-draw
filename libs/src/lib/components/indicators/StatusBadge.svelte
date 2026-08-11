@@ -20,18 +20,21 @@
     icon?: IconName;
     /** soft glow pulse — for live/active states */
     pulse?: boolean;
+    /** inline styles — e.g. `--bbg-pulse-glow` to recolor the pulse */
+    style?: string;
     class?: string;
   }
 
-  let { tone = 'success', label, icon, pulse = false, class: className }: Props = $props();
+  let { tone = 'success', label, icon, pulse = false, style, class: className }: Props = $props();
 </script>
 
 <span
   class="bbg-badge bbg-badge--{tone} {className ?? ''}"
   class:bbg-badge--pulse={pulse}
+  style={style}
   role="status"
 >
-  <Icon name={icon ?? TONE_ICON[tone]} size={12} class="bbg-badge__icon" />
+  <Icon name={icon ?? TONE_ICON[tone]} size={15} class="bbg-badge__icon" />
   <span class="bbg-badge__label">{label}</span>
 </span>
 
@@ -39,9 +42,9 @@
   .bbg-badge {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    height: 22px;
-    padding: 0 9px;
+    gap: 8px;
+    height: 30px;
+    padding: 0 14px;
     border-radius: 999px;
     border: 1px solid transparent;
     white-space: nowrap;
@@ -49,9 +52,9 @@
 
   .bbg-badge__label {
     font-family: var(--bbg-font-mono);
-    font-size: 10.5px;
+    font-size: 13px;
     font-weight: 600;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     color: var(--bbg-ink);
   }
 
