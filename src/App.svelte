@@ -11,10 +11,28 @@
   import RepMatrixDemo from './RepMatrixDemo.svelte';
   import EventLoopStoryboard from './EventLoopStoryboard.svelte';
   import LearnEventLoop from './LearnEventLoop.svelte';
+  import DataFlowDemo from './DataFlowDemo.svelte';
+  import RateLimiterDiagram from './lib/data-flow/RateLimiterDiagram.svelte';
+  import QueueDiagram from './lib/data-flow/QueueDiagram.svelte';
+  import CacheAsideDiagram from './lib/data-flow/CacheAsideDiagram.svelte';
+  import FailoverDiagram from './lib/data-flow/FailoverDiagram.svelte';
+  import PaymentLesson from './lib/data-flow/PaymentLesson.svelte';
 </script>
 
 {#if router.page === 'learn-el'}
   <LearnEventLoop />
+{:else if router.page === 'data-flow'}
+  <DataFlowDemo />
+{:else if router.page === 'rate-limiter'}
+  <RateLimiterDiagram />
+{:else if router.page === 'queue'}
+  <QueueDiagram />
+{:else if router.page === 'cache-aside'}
+  <CacheAsideDiagram />
+{:else if router.page === 'failover'}
+  <FailoverDiagram />
+{:else if router.page === 'payment-lesson'}
+  <PaymentLesson />
 {:else if router.page === 'el-storyboard'}
   <EventLoopStoryboard />
 {:else if router.page === 'rep-matrix'}
