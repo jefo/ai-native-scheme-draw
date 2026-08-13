@@ -17,7 +17,27 @@
   import CacheAsideDiagram from './lib/data-flow/CacheAsideDiagram.svelte';
   import FailoverDiagram from './lib/data-flow/FailoverDiagram.svelte';
   import PaymentLesson from './lib/data-flow/PaymentLesson.svelte';
+
+  // навигация по диаграммам (hash-роуты — не вбивать руками)
+  const nav = [
+    { page: 'payment-lesson', label: 'Урок: платёж' },
+    { page: 'failover', label: 'Failover' },
+    { page: 'cache-aside', label: 'Cache-aside' },
+    { page: 'queue', label: 'Queue' },
+    { page: 'rate-limiter', label: 'Rate limiter' },
+    { page: 'data-flow', label: 'CDN' },
+  ] as const;
 </script>
+
+<nav class="app-nav">
+  {#each nav as item}
+    <a
+      href="#/{item.page}"
+      class:app-nav__link--active={router.page === item.page}
+      class="app-nav__link"
+    >{item.label}</a>
+  {/each}
+</nav>
 
 {#if router.page === 'learn-el'}
   <LearnEventLoop />

@@ -95,3 +95,41 @@ body {
 #app {
   min-height: 100vh;
 }
+
+/* ═══ навигация по диаграммам (шапка) ═══ */
+.app-nav {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  border-bottom: var(--vnp-border);
+  background: var(--vnp-paper-deep);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.app-nav__link {
+  font-family: var(--vnp-font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--vnp-ink-soft);
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.app-nav__link:hover {
+  color: var(--vnp-ink);
+  border-color: var(--vnp-border-color-active);
+}
+
+.app-nav__link--active {
+  color: var(--vnp-good);
+  border-color: var(--vnp-color-entity-border);
+  background: var(--vnp-color-entity-dim);
+}
+
