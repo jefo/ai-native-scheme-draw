@@ -4,7 +4,12 @@
     "moduleResolution": "bundler",
     "module": "ESNext",
     "target": "ES2022",
-    "types": ["svelte", "vite/client"]
+    "types": ["svelte", "vite/client"],
+    "baseUrl": ".",
+    "paths": {
+      "sysdiag-ui-kit": ["../../libs/src/lib/index.ts"],
+      "sysdiag-ui-kit/styles/tokens.css": ["../../libs/src/lib/styles/tokens.css"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.svelte"]
+  "include": ["src/**/*.ts", "src/**/*.svelte", "../../libs/src/lib/**/*.ts", "../../libs/src/lib/**/*.svelte"]
 }
