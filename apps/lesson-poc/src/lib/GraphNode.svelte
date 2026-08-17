@@ -4,7 +4,7 @@
   // scope-бейдж + состояния highlight / dim / strike.
   interface Props {
     name: string;
-    scope?: 'REQUEST' | 'DEFAULT';
+    scope?: 'REQUEST' | 'DEFAULT' | '?';
     /** «выделяется» — янтарное кольцо внимания */
     highlight?: boolean;
     /** «уходит в тень» — не фокус сейчас */
@@ -26,7 +26,7 @@
   <span class="node__name">{name}</span>
   {#if scope}
     <span
-      class="node__scope node__scope--{scope.toLowerCase()}"
+      class="node__scope node__scope--{scope === '?' ? 'question' : scope.toLowerCase()}"
       class:node__scope--strike={strike}
     >
       {scope}
@@ -76,6 +76,13 @@
     background: rgba(255, 255, 255, 0.04);
     border-color: var(--bbg-border);
     color: var(--bbg-ink-soft);
+  }
+
+  /* «?» — незаполненное состояние: янтарный пунктир, пространство prediction */
+  .node__scope--question {
+    background: transparent;
+    border: 1px dashed var(--bbg-amber);
+    color: var(--bbg-amber);
   }
 
   .node__scope--strike {
