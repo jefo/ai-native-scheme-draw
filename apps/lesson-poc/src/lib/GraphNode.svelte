@@ -1,35 +1,26 @@
 <script lang="ts">
-  // Локальный примитив урока — узел графа со scope-меткой.
-  // Композиция из китовых токенов (не лезем в kit): имя + опциональный
-  // scope-бейдж + состояния highlight / dim / strike.
+  // Узел графа с накопленной историей scope (event sourcing).
+  // scopes — последовательность состояний: [DEFAULT, REQUEST] рендерится как
+  // «DEFAULT → REQUEST». Переход виден как событие, а не свёртка состояния.
   interface Props {
     name: string;
-    scope?: 'REQUEST' | 'DEFAULT' | '?';
+    /** накопленная история scope (в порядке появления) */
+    scopes?: ('REQUEST' | 'DEFAULT')[];
     /** «выделяется» — янтарное кольцо внимания */
     highlight?: boolean;
-    /** «уходит в тень» — не фокус сейчас */
-    dim?: boolean;
-    /** перечёркнутый scope — ошибочная модель */
-    strike?: boolean;
   }
 
-  let {
-    name,
-    scope,
-    highlight = false,
-    dim = false,
-    strike = false,
-  }: Props = $props();
+  let { name, scopes = [], highlight = false }: Props = $props();
 </script>
 
-<div class="node" class:node--highlight={highlight} class:node--dim={dim}>
+<div class="node" class:node--highlight={highlight}>
   <span class="node__name">{name}</span>
-  {#if scope}
-    <span
-      class="node__scope node__scope--{scope === '?' ? 'question' : scope.toLowerCase()}"
-      class:node__scope--strike={strike}
-    >
-      {scope}
+  {#if scopes.length > 0}
+    <span class="node__scopes">
+      {#each scopes as s, i (i)}
+        {#if i > 0}<span class="node__arrow" aria-hidden="true">→</span>{/if}
+        <span class="node__scope node__scope--{s.toLowerCase()}">{s}</span>
+      {/each}
     </span>
   {/if}
 </div>
@@ -44,7 +35,7 @@
     border: 1px solid var(--bbg-border);
     border-radius: var(--bbg-radius);
     white-space: nowrap;
-    transition: opacity 0.2s ease, border-color 0.15s ease;
+    transition: border-color 0.15s ease;
   }
 
   .node__name {
@@ -52,6 +43,20 @@
     font-size: 18px;
     font-weight: 600;
     color: var(--bbg-ink);
+  }
+
+  .node__scopes {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* стрелка перехода между состояниями — событие, не декорация */
+  .node__arrow {
+    font-family: var(--bbg-font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--bbg-ink-faint);
   }
 
   .node__scope {
@@ -65,7 +70,7 @@
     padding: 2px 10px;
   }
 
-  /* REQUEST = внимание (янтарь), DEFAULT = нейтральный (серый) */
+  /* REQUEST = янтарь, DEFAULT = нейтральный */
   .node__scope--request {
     background: var(--bbg-amber-dim);
     border-color: var(--bbg-amber-border);
@@ -78,23 +83,8 @@
     color: var(--bbg-ink-soft);
   }
 
-  /* «?» — незаполненное состояние: янтарный пунктир, пространство prediction */
-  .node__scope--question {
-    background: transparent;
-    border: 1px dashed var(--bbg-amber);
-    color: var(--bbg-amber);
-  }
-
-  .node__scope--strike {
-    text-decoration: line-through;
-  }
-
   .node--highlight {
     border-color: var(--bbg-amber);
     box-shadow: 0 0 0 1px var(--bbg-amber);
-  }
-
-  .node--dim {
-    opacity: var(--bbg-dim-opacity);
   }
 </style>

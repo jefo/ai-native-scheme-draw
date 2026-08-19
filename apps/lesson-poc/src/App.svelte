@@ -1,14 +1,10 @@
 <script lang="ts">
   import Lesson from './lib/Lesson.svelte';
-  import { lesson, lessonV2 } from './lessons/dependency-graph/index';
-
-  // По умолчанию — вторая редакция (кандидат). Переключить в консоли не нужно —
-  // обе экспортированы, Lesson рендерит lessonV2.
-  const active = lessonV2;
+  import { lesson } from './lessons/dependency-graph/index';
 </script>
 
 <main class="app">
-  <Lesson title={active.title} scenes={active.scenes} />
+  <Lesson title={lesson.title} moves={lesson.moves} Scenario={lesson.scenario} />
 </main>
 
 <style>
